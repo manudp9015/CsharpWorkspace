@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\FirstSolution\FirstProject\bin\Debug\net8.0\FirstProject.exe
+D:\CsharpWorkspace\FirstSolution\FirstProject\bin\Debug\net8.0\FirstProject.deps.json
+D:\CsharpWorkspace\FirstSolution\FirstProject\bin\Debug\net8.0\FirstProject.runtimeconfig.json
+D:\CsharpWorkspace\FirstSolution\FirstProject\bin\Debug\net8.0\FirstProject.dll
+D:\CsharpWorkspace\FirstSolution\FirstProject\bin\Debug\net8.0\FirstProject.pdb
+D:\CsharpWorkspace\FirstSolution\FirstProject\obj\Debug\net8.0\FirstProject.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\FirstSolution\FirstProject\obj\Debug\net8.0\FirstProject.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\FirstSolution\FirstProject\obj\Debug\net8.0\FirstProject.AssemblyInfo.cs
+D:\CsharpWorkspace\FirstSolution\FirstProject\obj\Debug\net8.0\FirstProject.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\FirstSolution\FirstProject\obj\Debug\net8.0\FirstProject.sourcelink.json
+D:\CsharpWorkspace\FirstSolution\FirstProject\obj\Debug\net8.0\FirstProject.dll
+D:\CsharpWorkspace\FirstSolution\FirstProject\obj\Debug\net8.0\refint\FirstProject.dll
+D:\CsharpWorkspace\FirstSolution\FirstProject\obj\Debug\net8.0\FirstProject.pdb
+D:\CsharpWorkspace\FirstSolution\FirstProject\obj\Debug\net8.0\FirstProject.genruntimeconfig.cache
+D:\CsharpWorkspace\FirstSolution\FirstProject\obj\Debug\net8.0\ref\FirstProject.dll

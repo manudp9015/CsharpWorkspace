@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\FirstSolution\ConstructorDemo\bin\Debug\net8.0\ConstructorDemo.exe
+D:\CsharpWorkspace\FirstSolution\ConstructorDemo\bin\Debug\net8.0\ConstructorDemo.deps.json
+D:\CsharpWorkspace\FirstSolution\ConstructorDemo\bin\Debug\net8.0\ConstructorDemo.runtimeconfig.json
+D:\CsharpWorkspace\FirstSolution\ConstructorDemo\bin\Debug\net8.0\ConstructorDemo.dll
+D:\CsharpWorkspace\FirstSolution\ConstructorDemo\bin\Debug\net8.0\ConstructorDemo.pdb
+D:\CsharpWorkspace\FirstSolution\ConstructorDemo\obj\Debug\net8.0\ConstructorDemo.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\FirstSolution\ConstructorDemo\obj\Debug\net8.0\ConstructorDemo.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\FirstSolution\ConstructorDemo\obj\Debug\net8.0\ConstructorDemo.AssemblyInfo.cs
+D:\CsharpWorkspace\FirstSolution\ConstructorDemo\obj\Debug\net8.0\ConstructorDemo.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\FirstSolution\ConstructorDemo\obj\Debug\net8.0\ConstructorDemo.sourcelink.json
+D:\CsharpWorkspace\FirstSolution\ConstructorDemo\obj\Debug\net8.0\ConstructorDemo.dll
+D:\CsharpWorkspace\FirstSolution\ConstructorDemo\obj\Debug\net8.0\refint\ConstructorDemo.dll
+D:\CsharpWorkspace\FirstSolution\ConstructorDemo\obj\Debug\net8.0\ConstructorDemo.pdb
+D:\CsharpWorkspace\FirstSolution\ConstructorDemo\obj\Debug\net8.0\ConstructorDemo.genruntimeconfig.cache
+D:\CsharpWorkspace\FirstSolution\ConstructorDemo\obj\Debug\net8.0\ref\ConstructorDemo.dll
