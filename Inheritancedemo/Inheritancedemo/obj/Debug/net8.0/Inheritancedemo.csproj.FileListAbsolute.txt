@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\Inheritancedemo\Inheritancedemo\bin\Debug\net8.0\Inheritancedemo.exe
+D:\CsharpWorkspace\Inheritancedemo\Inheritancedemo\bin\Debug\net8.0\Inheritancedemo.deps.json
+D:\CsharpWorkspace\Inheritancedemo\Inheritancedemo\bin\Debug\net8.0\Inheritancedemo.runtimeconfig.json
+D:\CsharpWorkspace\Inheritancedemo\Inheritancedemo\bin\Debug\net8.0\Inheritancedemo.dll
+D:\CsharpWorkspace\Inheritancedemo\Inheritancedemo\bin\Debug\net8.0\Inheritancedemo.pdb
+D:\CsharpWorkspace\Inheritancedemo\Inheritancedemo\obj\Debug\net8.0\Inheritancedemo.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\Inheritancedemo\Inheritancedemo\obj\Debug\net8.0\Inheritancedemo.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\Inheritancedemo\Inheritancedemo\obj\Debug\net8.0\Inheritancedemo.AssemblyInfo.cs
+D:\CsharpWorkspace\Inheritancedemo\Inheritancedemo\obj\Debug\net8.0\Inheritancedemo.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\Inheritancedemo\Inheritancedemo\obj\Debug\net8.0\Inheritancedemo.sourcelink.json
+D:\CsharpWorkspace\Inheritancedemo\Inheritancedemo\obj\Debug\net8.0\Inheritancedemo.dll
+D:\CsharpWorkspace\Inheritancedemo\Inheritancedemo\obj\Debug\net8.0\refint\Inheritancedemo.dll
+D:\CsharpWorkspace\Inheritancedemo\Inheritancedemo\obj\Debug\net8.0\Inheritancedemo.pdb
+D:\CsharpWorkspace\Inheritancedemo\Inheritancedemo\obj\Debug\net8.0\Inheritancedemo.genruntimeconfig.cache
+D:\CsharpWorkspace\Inheritancedemo\Inheritancedemo\obj\Debug\net8.0\ref\Inheritancedemo.dll

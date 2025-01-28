@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\Inheritancedemo\Parameterizedconstructordemo\bin\Debug\net8.0\Parameterizedconstructordemo.exe
+D:\CsharpWorkspace\Inheritancedemo\Parameterizedconstructordemo\bin\Debug\net8.0\Parameterizedconstructordemo.deps.json
+D:\CsharpWorkspace\Inheritancedemo\Parameterizedconstructordemo\bin\Debug\net8.0\Parameterizedconstructordemo.runtimeconfig.json
+D:\CsharpWorkspace\Inheritancedemo\Parameterizedconstructordemo\bin\Debug\net8.0\Parameterizedconstructordemo.dll
+D:\CsharpWorkspace\Inheritancedemo\Parameterizedconstructordemo\bin\Debug\net8.0\Parameterizedconstructordemo.pdb
+D:\CsharpWorkspace\Inheritancedemo\Parameterizedconstructordemo\obj\Debug\net8.0\Parameterizedconstructordemo.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\Inheritancedemo\Parameterizedconstructordemo\obj\Debug\net8.0\Parameterizedconstructordemo.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\Inheritancedemo\Parameterizedconstructordemo\obj\Debug\net8.0\Parameterizedconstructordemo.AssemblyInfo.cs
+D:\CsharpWorkspace\Inheritancedemo\Parameterizedconstructordemo\obj\Debug\net8.0\Parameterizedconstructordemo.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\Inheritancedemo\Parameterizedconstructordemo\obj\Debug\net8.0\Parameterizedconstructordemo.sourcelink.json
+D:\CsharpWorkspace\Inheritancedemo\Parameterizedconstructordemo\obj\Debug\net8.0\Parameterizedconstructordemo.dll
+D:\CsharpWorkspace\Inheritancedemo\Parameterizedconstructordemo\obj\Debug\net8.0\refint\Parameterizedconstructordemo.dll
+D:\CsharpWorkspace\Inheritancedemo\Parameterizedconstructordemo\obj\Debug\net8.0\Parameterizedconstructordemo.pdb
+D:\CsharpWorkspace\Inheritancedemo\Parameterizedconstructordemo\obj\Debug\net8.0\Parameterizedconstructordemo.genruntimeconfig.cache
+D:\CsharpWorkspace\Inheritancedemo\Parameterizedconstructordemo\obj\Debug\net8.0\ref\Parameterizedconstructordemo.dll

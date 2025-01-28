@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\AccesSpecifiersSolution\AccesSpecifiersdemo1\obj\Debug\net8.0\AccesSpecifiersdemo1.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\AccesSpecifiersSolution\AccesSpecifiersdemo1\obj\Debug\net8.0\AccesSpecifiersdemo1.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\AccesSpecifiersSolution\AccesSpecifiersdemo1\obj\Debug\net8.0\AccesSpecifiersdemo1.AssemblyInfo.cs
+D:\CsharpWorkspace\AccesSpecifiersSolution\AccesSpecifiersdemo1\obj\Debug\net8.0\AccesSpecifiersdemo1.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\AccesSpecifiersSolution\AccesSpecifiersdemo1\obj\Debug\net8.0\AccesSpecifiersdemo1.sourcelink.json
+D:\CsharpWorkspace\AccesSpecifiersSolution\AccesSpecifiersdemo1\bin\Debug\net8.0\AccesSpecifiersdemo1.exe
+D:\CsharpWorkspace\AccesSpecifiersSolution\AccesSpecifiersdemo1\bin\Debug\net8.0\AccesSpecifiersdemo1.deps.json
+D:\CsharpWorkspace\AccesSpecifiersSolution\AccesSpecifiersdemo1\bin\Debug\net8.0\AccesSpecifiersdemo1.runtimeconfig.json
+D:\CsharpWorkspace\AccesSpecifiersSolution\AccesSpecifiersdemo1\bin\Debug\net8.0\AccesSpecifiersdemo1.dll
+D:\CsharpWorkspace\AccesSpecifiersSolution\AccesSpecifiersdemo1\bin\Debug\net8.0\AccesSpecifiersdemo1.pdb
+D:\CsharpWorkspace\AccesSpecifiersSolution\AccesSpecifiersdemo1\obj\Debug\net8.0\AccesSpecifiersdemo1.dll
+D:\CsharpWorkspace\AccesSpecifiersSolution\AccesSpecifiersdemo1\obj\Debug\net8.0\refint\AccesSpecifiersdemo1.dll
+D:\CsharpWorkspace\AccesSpecifiersSolution\AccesSpecifiersdemo1\obj\Debug\net8.0\AccesSpecifiersdemo1.pdb
+D:\CsharpWorkspace\AccesSpecifiersSolution\AccesSpecifiersdemo1\obj\Debug\net8.0\AccesSpecifiersdemo1.genruntimeconfig.cache
+D:\CsharpWorkspace\AccesSpecifiersSolution\AccesSpecifiersdemo1\obj\Debug\net8.0\ref\AccesSpecifiersdemo1.dll
