@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\FirstSolution\Classdemo\bin\Debug\net8.0\Classdemo.exe
+D:\CsharpWorkspace\FirstSolution\Classdemo\bin\Debug\net8.0\Classdemo.deps.json
+D:\CsharpWorkspace\FirstSolution\Classdemo\bin\Debug\net8.0\Classdemo.runtimeconfig.json
+D:\CsharpWorkspace\FirstSolution\Classdemo\bin\Debug\net8.0\Classdemo.dll
+D:\CsharpWorkspace\FirstSolution\Classdemo\bin\Debug\net8.0\Classdemo.pdb
+D:\CsharpWorkspace\FirstSolution\Classdemo\obj\Debug\net8.0\Classdemo.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\FirstSolution\Classdemo\obj\Debug\net8.0\Classdemo.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\FirstSolution\Classdemo\obj\Debug\net8.0\Classdemo.AssemblyInfo.cs
+D:\CsharpWorkspace\FirstSolution\Classdemo\obj\Debug\net8.0\Classdemo.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\FirstSolution\Classdemo\obj\Debug\net8.0\Classdemo.sourcelink.json
+D:\CsharpWorkspace\FirstSolution\Classdemo\obj\Debug\net8.0\Classdemo.dll
+D:\CsharpWorkspace\FirstSolution\Classdemo\obj\Debug\net8.0\refint\Classdemo.dll
+D:\CsharpWorkspace\FirstSolution\Classdemo\obj\Debug\net8.0\Classdemo.pdb
+D:\CsharpWorkspace\FirstSolution\Classdemo\obj\Debug\net8.0\Classdemo.genruntimeconfig.cache
+D:\CsharpWorkspace\FirstSolution\Classdemo\obj\Debug\net8.0\ref\Classdemo.dll

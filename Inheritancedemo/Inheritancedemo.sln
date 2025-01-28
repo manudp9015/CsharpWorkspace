@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inheritancedemo", "Inheritancedemo\Inheritancedemo.csproj", "{BB976D3F-C79F-426E-AFCD-3536D95FAF1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parameterizedconstructordemo", "Parameterizedconstructordemo\Parameterizedconstructordemo.csproj", "{EC8EF5E4-6875-4C78-A958-B56B330D8178}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB976D3F-C79F-426E-AFCD-3536D95FAF1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB976D3F-C79F-426E-AFCD-3536D95FAF1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB976D3F-C79F-426E-AFCD-3536D95FAF1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB976D3F-C79F-426E-AFCD-3536D95FAF1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC8EF5E4-6875-4C78-A958-B56B330D8178}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC8EF5E4-6875-4C78-A958-B56B330D8178}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC8EF5E4-6875-4C78-A958-B56B330D8178}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC8EF5E4-6875-4C78-A958-B56B330D8178}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

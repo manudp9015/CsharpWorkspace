@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\VariablesSolution\Variables\bin\Debug\net8.0\Variables.exe
+D:\CsharpWorkspace\VariablesSolution\Variables\bin\Debug\net8.0\Variables.deps.json
+D:\CsharpWorkspace\VariablesSolution\Variables\bin\Debug\net8.0\Variables.runtimeconfig.json
+D:\CsharpWorkspace\VariablesSolution\Variables\bin\Debug\net8.0\Variables.dll
+D:\CsharpWorkspace\VariablesSolution\Variables\bin\Debug\net8.0\Variables.pdb
+D:\CsharpWorkspace\VariablesSolution\Variables\obj\Debug\net8.0\Variables.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\VariablesSolution\Variables\obj\Debug\net8.0\Variables.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\VariablesSolution\Variables\obj\Debug\net8.0\Variables.AssemblyInfo.cs
+D:\CsharpWorkspace\VariablesSolution\Variables\obj\Debug\net8.0\Variables.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\VariablesSolution\Variables\obj\Debug\net8.0\Variables.sourcelink.json
+D:\CsharpWorkspace\VariablesSolution\Variables\obj\Debug\net8.0\Variables.dll
+D:\CsharpWorkspace\VariablesSolution\Variables\obj\Debug\net8.0\refint\Variables.dll
+D:\CsharpWorkspace\VariablesSolution\Variables\obj\Debug\net8.0\Variables.pdb
+D:\CsharpWorkspace\VariablesSolution\Variables\obj\Debug\net8.0\Variables.genruntimeconfig.cache
+D:\CsharpWorkspace\VariablesSolution\Variables\obj\Debug\net8.0\ref\Variables.dll

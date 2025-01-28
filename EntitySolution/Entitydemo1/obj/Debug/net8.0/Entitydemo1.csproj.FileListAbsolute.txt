@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\EntitySolution\Entitydemo1\obj\Debug\net8.0\Entitydemo1.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\EntitySolution\Entitydemo1\obj\Debug\net8.0\Entitydemo1.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\EntitySolution\Entitydemo1\obj\Debug\net8.0\Entitydemo1.AssemblyInfo.cs
+D:\CsharpWorkspace\EntitySolution\Entitydemo1\obj\Debug\net8.0\Entitydemo1.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\EntitySolution\Entitydemo1\obj\Debug\net8.0\Entitydemo1.sourcelink.json
+D:\CsharpWorkspace\EntitySolution\Entitydemo1\bin\Debug\net8.0\Entitydemo1.exe
+D:\CsharpWorkspace\EntitySolution\Entitydemo1\bin\Debug\net8.0\Entitydemo1.deps.json
+D:\CsharpWorkspace\EntitySolution\Entitydemo1\bin\Debug\net8.0\Entitydemo1.runtimeconfig.json
+D:\CsharpWorkspace\EntitySolution\Entitydemo1\bin\Debug\net8.0\Entitydemo1.dll
+D:\CsharpWorkspace\EntitySolution\Entitydemo1\bin\Debug\net8.0\Entitydemo1.pdb
+D:\CsharpWorkspace\EntitySolution\Entitydemo1\obj\Debug\net8.0\Entitydemo1.dll
+D:\CsharpWorkspace\EntitySolution\Entitydemo1\obj\Debug\net8.0\refint\Entitydemo1.dll
+D:\CsharpWorkspace\EntitySolution\Entitydemo1\obj\Debug\net8.0\Entitydemo1.pdb
+D:\CsharpWorkspace\EntitySolution\Entitydemo1\obj\Debug\net8.0\Entitydemo1.genruntimeconfig.cache
+D:\CsharpWorkspace\EntitySolution\Entitydemo1\obj\Debug\net8.0\ref\Entitydemo1.dll
