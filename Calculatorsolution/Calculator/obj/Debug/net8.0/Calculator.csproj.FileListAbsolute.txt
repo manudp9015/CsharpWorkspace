@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\Calculatorsolution\Calculator\bin\Debug\net8.0\Calculator.exe
+D:\CsharpWorkspace\Calculatorsolution\Calculator\bin\Debug\net8.0\Calculator.deps.json
+D:\CsharpWorkspace\Calculatorsolution\Calculator\bin\Debug\net8.0\Calculator.runtimeconfig.json
+D:\CsharpWorkspace\Calculatorsolution\Calculator\bin\Debug\net8.0\Calculator.dll
+D:\CsharpWorkspace\Calculatorsolution\Calculator\bin\Debug\net8.0\Calculator.pdb
+D:\CsharpWorkspace\Calculatorsolution\Calculator\obj\Debug\net8.0\Calculator.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\Calculatorsolution\Calculator\obj\Debug\net8.0\Calculator.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\Calculatorsolution\Calculator\obj\Debug\net8.0\Calculator.AssemblyInfo.cs
+D:\CsharpWorkspace\Calculatorsolution\Calculator\obj\Debug\net8.0\Calculator.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\Calculatorsolution\Calculator\obj\Debug\net8.0\Calculator.sourcelink.json
+D:\CsharpWorkspace\Calculatorsolution\Calculator\obj\Debug\net8.0\Calculator.dll
+D:\CsharpWorkspace\Calculatorsolution\Calculator\obj\Debug\net8.0\refint\Calculator.dll
+D:\CsharpWorkspace\Calculatorsolution\Calculator\obj\Debug\net8.0\Calculator.pdb
+D:\CsharpWorkspace\Calculatorsolution\Calculator\obj\Debug\net8.0\Calculator.genruntimeconfig.cache
+D:\CsharpWorkspace\Calculatorsolution\Calculator\obj\Debug\net8.0\ref\Calculator.dll
