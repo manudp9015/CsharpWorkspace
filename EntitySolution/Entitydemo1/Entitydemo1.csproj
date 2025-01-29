@@ -5,7 +5,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <StartupObject>Entitydemo1.Student</StartupObject>
+    <StartupObject>Entitydemo1.NonTeaching</StartupObject>
   </PropertyGroup>
 
 </Project>
