@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\InterfaceSolution\Interfacedemo1\bin\Debug\net8.0\Interfacedemo1.exe
+D:\CsharpWorkspace\InterfaceSolution\Interfacedemo1\bin\Debug\net8.0\Interfacedemo1.deps.json
+D:\CsharpWorkspace\InterfaceSolution\Interfacedemo1\bin\Debug\net8.0\Interfacedemo1.runtimeconfig.json
+D:\CsharpWorkspace\InterfaceSolution\Interfacedemo1\bin\Debug\net8.0\Interfacedemo1.dll
+D:\CsharpWorkspace\InterfaceSolution\Interfacedemo1\bin\Debug\net8.0\Interfacedemo1.pdb
+D:\CsharpWorkspace\InterfaceSolution\Interfacedemo1\obj\Debug\net8.0\Interfacedemo1.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\InterfaceSolution\Interfacedemo1\obj\Debug\net8.0\Interfacedemo1.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\InterfaceSolution\Interfacedemo1\obj\Debug\net8.0\Interfacedemo1.AssemblyInfo.cs
+D:\CsharpWorkspace\InterfaceSolution\Interfacedemo1\obj\Debug\net8.0\Interfacedemo1.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\InterfaceSolution\Interfacedemo1\obj\Debug\net8.0\Interfacedemo1.sourcelink.json
+D:\CsharpWorkspace\InterfaceSolution\Interfacedemo1\obj\Debug\net8.0\Interfacedemo1.dll
+D:\CsharpWorkspace\InterfaceSolution\Interfacedemo1\obj\Debug\net8.0\refint\Interfacedemo1.dll
+D:\CsharpWorkspace\InterfaceSolution\Interfacedemo1\obj\Debug\net8.0\Interfacedemo1.pdb
+D:\CsharpWorkspace\InterfaceSolution\Interfacedemo1\obj\Debug\net8.0\Interfacedemo1.genruntimeconfig.cache
+D:\CsharpWorkspace\InterfaceSolution\Interfacedemo1\obj\Debug\net8.0\ref\Interfacedemo1.dll

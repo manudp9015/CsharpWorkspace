@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\OverridingSolution\Overridingdemo1\bin\Debug\net8.0\Overridingdemo1.exe
+D:\CsharpWorkspace\OverridingSolution\Overridingdemo1\bin\Debug\net8.0\Overridingdemo1.deps.json
+D:\CsharpWorkspace\OverridingSolution\Overridingdemo1\bin\Debug\net8.0\Overridingdemo1.runtimeconfig.json
+D:\CsharpWorkspace\OverridingSolution\Overridingdemo1\bin\Debug\net8.0\Overridingdemo1.dll
+D:\CsharpWorkspace\OverridingSolution\Overridingdemo1\bin\Debug\net8.0\Overridingdemo1.pdb
+D:\CsharpWorkspace\OverridingSolution\Overridingdemo1\obj\Debug\net8.0\Overridingdemo1.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\OverridingSolution\Overridingdemo1\obj\Debug\net8.0\Overridingdemo1.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\OverridingSolution\Overridingdemo1\obj\Debug\net8.0\Overridingdemo1.AssemblyInfo.cs
+D:\CsharpWorkspace\OverridingSolution\Overridingdemo1\obj\Debug\net8.0\Overridingdemo1.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\OverridingSolution\Overridingdemo1\obj\Debug\net8.0\Overridingdemo1.sourcelink.json
+D:\CsharpWorkspace\OverridingSolution\Overridingdemo1\obj\Debug\net8.0\Overridingdemo1.dll
+D:\CsharpWorkspace\OverridingSolution\Overridingdemo1\obj\Debug\net8.0\refint\Overridingdemo1.dll
+D:\CsharpWorkspace\OverridingSolution\Overridingdemo1\obj\Debug\net8.0\Overridingdemo1.pdb
+D:\CsharpWorkspace\OverridingSolution\Overridingdemo1\obj\Debug\net8.0\Overridingdemo1.genruntimeconfig.cache
+D:\CsharpWorkspace\OverridingSolution\Overridingdemo1\obj\Debug\net8.0\ref\Overridingdemo1.dll

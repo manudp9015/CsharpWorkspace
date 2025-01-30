@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\IMultiLeveldemoSolution\IMultiLeveldemo\bin\Debug\net8.0\IMultiLeveldemo.exe
+D:\CsharpWorkspace\IMultiLeveldemoSolution\IMultiLeveldemo\bin\Debug\net8.0\IMultiLeveldemo.deps.json
+D:\CsharpWorkspace\IMultiLeveldemoSolution\IMultiLeveldemo\bin\Debug\net8.0\IMultiLeveldemo.runtimeconfig.json
+D:\CsharpWorkspace\IMultiLeveldemoSolution\IMultiLeveldemo\bin\Debug\net8.0\IMultiLeveldemo.dll
+D:\CsharpWorkspace\IMultiLeveldemoSolution\IMultiLeveldemo\bin\Debug\net8.0\IMultiLeveldemo.pdb
+D:\CsharpWorkspace\IMultiLeveldemoSolution\IMultiLeveldemo\obj\Debug\net8.0\IMultiLeveldemo.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\IMultiLeveldemoSolution\IMultiLeveldemo\obj\Debug\net8.0\IMultiLeveldemo.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\IMultiLeveldemoSolution\IMultiLeveldemo\obj\Debug\net8.0\IMultiLeveldemo.AssemblyInfo.cs
+D:\CsharpWorkspace\IMultiLeveldemoSolution\IMultiLeveldemo\obj\Debug\net8.0\IMultiLeveldemo.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\IMultiLeveldemoSolution\IMultiLeveldemo\obj\Debug\net8.0\IMultiLeveldemo.sourcelink.json
+D:\CsharpWorkspace\IMultiLeveldemoSolution\IMultiLeveldemo\obj\Debug\net8.0\IMultiLeveldemo.dll
+D:\CsharpWorkspace\IMultiLeveldemoSolution\IMultiLeveldemo\obj\Debug\net8.0\refint\IMultiLeveldemo.dll
+D:\CsharpWorkspace\IMultiLeveldemoSolution\IMultiLeveldemo\obj\Debug\net8.0\IMultiLeveldemo.pdb
+D:\CsharpWorkspace\IMultiLeveldemoSolution\IMultiLeveldemo\obj\Debug\net8.0\IMultiLeveldemo.genruntimeconfig.cache
+D:\CsharpWorkspace\IMultiLeveldemoSolution\IMultiLeveldemo\obj\Debug\net8.0\ref\IMultiLeveldemo.dll
