@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\AbstarctSolution\Abstarctdemo1\bin\Debug\net8.0\Abstarctdemo1.exe
+D:\CsharpWorkspace\AbstarctSolution\Abstarctdemo1\bin\Debug\net8.0\Abstarctdemo1.deps.json
+D:\CsharpWorkspace\AbstarctSolution\Abstarctdemo1\bin\Debug\net8.0\Abstarctdemo1.runtimeconfig.json
+D:\CsharpWorkspace\AbstarctSolution\Abstarctdemo1\bin\Debug\net8.0\Abstarctdemo1.dll
+D:\CsharpWorkspace\AbstarctSolution\Abstarctdemo1\bin\Debug\net8.0\Abstarctdemo1.pdb
+D:\CsharpWorkspace\AbstarctSolution\Abstarctdemo1\obj\Debug\net8.0\Abstarctdemo1.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\AbstarctSolution\Abstarctdemo1\obj\Debug\net8.0\Abstarctdemo1.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\AbstarctSolution\Abstarctdemo1\obj\Debug\net8.0\Abstarctdemo1.AssemblyInfo.cs
+D:\CsharpWorkspace\AbstarctSolution\Abstarctdemo1\obj\Debug\net8.0\Abstarctdemo1.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\AbstarctSolution\Abstarctdemo1\obj\Debug\net8.0\Abstarctdemo1.sourcelink.json
+D:\CsharpWorkspace\AbstarctSolution\Abstarctdemo1\obj\Debug\net8.0\Abstarctdemo1.dll
+D:\CsharpWorkspace\AbstarctSolution\Abstarctdemo1\obj\Debug\net8.0\refint\Abstarctdemo1.dll
+D:\CsharpWorkspace\AbstarctSolution\Abstarctdemo1\obj\Debug\net8.0\Abstarctdemo1.pdb
+D:\CsharpWorkspace\AbstarctSolution\Abstarctdemo1\obj\Debug\net8.0\Abstarctdemo1.genruntimeconfig.cache
+D:\CsharpWorkspace\AbstarctSolution\Abstarctdemo1\obj\Debug\net8.0\ref\Abstarctdemo1.dll

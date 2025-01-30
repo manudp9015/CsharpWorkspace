@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\EnumerationSolution\Enumerationdemo1\obj\Debug\net8.0\Enumerationdemo1.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\EnumerationSolution\Enumerationdemo1\obj\Debug\net8.0\Enumerationdemo1.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\EnumerationSolution\Enumerationdemo1\obj\Debug\net8.0\Enumerationdemo1.AssemblyInfo.cs
+D:\CsharpWorkspace\EnumerationSolution\Enumerationdemo1\obj\Debug\net8.0\Enumerationdemo1.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\EnumerationSolution\Enumerationdemo1\obj\Debug\net8.0\Enumerationdemo1.sourcelink.json
+D:\CsharpWorkspace\EnumerationSolution\Enumerationdemo1\bin\Debug\net8.0\Enumerationdemo1.exe
+D:\CsharpWorkspace\EnumerationSolution\Enumerationdemo1\bin\Debug\net8.0\Enumerationdemo1.deps.json
+D:\CsharpWorkspace\EnumerationSolution\Enumerationdemo1\bin\Debug\net8.0\Enumerationdemo1.runtimeconfig.json
+D:\CsharpWorkspace\EnumerationSolution\Enumerationdemo1\bin\Debug\net8.0\Enumerationdemo1.dll
+D:\CsharpWorkspace\EnumerationSolution\Enumerationdemo1\bin\Debug\net8.0\Enumerationdemo1.pdb
+D:\CsharpWorkspace\EnumerationSolution\Enumerationdemo1\obj\Debug\net8.0\Enumerationdemo1.dll
+D:\CsharpWorkspace\EnumerationSolution\Enumerationdemo1\obj\Debug\net8.0\refint\Enumerationdemo1.dll
+D:\CsharpWorkspace\EnumerationSolution\Enumerationdemo1\obj\Debug\net8.0\Enumerationdemo1.pdb
+D:\CsharpWorkspace\EnumerationSolution\Enumerationdemo1\obj\Debug\net8.0\Enumerationdemo1.genruntimeconfig.cache
+D:\CsharpWorkspace\EnumerationSolution\Enumerationdemo1\obj\Debug\net8.0\ref\Enumerationdemo1.dll

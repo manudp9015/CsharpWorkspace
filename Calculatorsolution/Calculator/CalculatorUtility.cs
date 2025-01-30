@@ -10,7 +10,7 @@ namespace Calculator
     {
 
         //method which perform basic math operation
-        public void Calci() //give meaningful name
+        public void BasicCalculator() //give meaningful name
         {
             Console.WriteLine();
             Console.WriteLine("Basic Math Operations");
@@ -21,7 +21,7 @@ namespace Calculator
             Console.WriteLine();
             try
             {
-                Console.Write("Enter your Choice ");
+                Console.Write("Enter your Choice: ");
                 if (int.TryParse(Console.ReadLine(), out int operation))
                 {
                     switch (operation)
@@ -37,7 +37,7 @@ namespace Calculator
                         default: Console.WriteLine("invalid input..."); break;
                     }
                 }
-                else{ Console.WriteLine("invalid input give integer input"); }
+                else Console.WriteLine("Invalid Input. Give Valid Input"); 
             }
             catch (Exception)
             {
@@ -45,182 +45,153 @@ namespace Calculator
                 throw;
             }
         }
+
+
         public void Addition() //allow decimal
         {
             try
             {
                 Console.Write("Enter First Number: ");
-                if (int.TryParse(Console.ReadLine(), out int first))
+                if (double.TryParse(Console.ReadLine(), out double first))
                 {
                     Console.Write("Enter Second Number: ");
-                    if (int.TryParse(Console.ReadLine(), out int second))
+                    if (double.TryParse(Console.ReadLine(), out double second))
                     {
                         Console.WriteLine("Addition: " + (first + second)); // Fixed from subtraction
                     }
-                    else
-                    {
-                        Console.WriteLine("Please provide a valid integer for the second number.");
-                    }
+                    else Console.WriteLine("Invalid Input. Give Valid Input");
+                    
                 }
-                else
-                {
-                    Console.WriteLine("Please provide a valid integer for the first number.");
-                }
+                else Console.WriteLine("Invalid Input. Give Valid Input");
             }
             catch (Exception)
             {
-
                 throw;
             }
 
         }
+
+
         public void Subtraction()//allow decimal
         {
             try
             {
                 Console.Write("Enter First Number: ");
-                if (int.TryParse(Console.ReadLine(), out int first))
+                if (double.TryParse(Console.ReadLine(), out double first))
                 {
                     Console.Write("Enter Second Number: ");
-                    if (int.TryParse(Console.ReadLine(), out int second))
+                    if (double.TryParse(Console.ReadLine(), out double second))
                     {
                         Console.WriteLine("Subtraction: " + (first - second)); // Fixed from subtraction
                     }
-                    else
-                    {
-                        Console.WriteLine("Please provide a valid integer for the second number.");
-                    }
+                    else Console.WriteLine("Invalid Input. Give Valid Input");
                 }
-                else
-                {
-                    Console.WriteLine("Please provide a valid integer for the first number.");
-                }
+                else Console.WriteLine("Invalid Input. Give Valid Input");
             }
             catch (Exception)
             {
-
                 throw;
             }
 
 
 
         }
+
+
         public void Multiplication()//allow decimal
         {
             try
             {
 
                 Console.Write("Enter First Number: ");
-                if (int.TryParse(Console.ReadLine(), out int first))
+                if (double.TryParse(Console.ReadLine(), out double first))
                 {
                     Console.Write("Enter Second Number: ");
-                    if (int.TryParse(Console.ReadLine(), out int second))
+                    if (double.TryParse(Console.ReadLine(), out double second))
                     {
                         Console.WriteLine("Multiplication: " + (first * second)); // Fixed from subtraction
                     }
-                    else
-                    {
-                        Console.WriteLine("Please provide a valid integer for the second number.");
-                    }
+                    else  Console.WriteLine("Invalid Input. Give Valid Input");
                 }
-                else
-                {
-                    Console.WriteLine("Please provide a valid integer for the first number.");
-                }
+                else   Console.WriteLine("Invalid Input. Give Valid Input");
             }
             catch (Exception)
             {
-
                 throw;
             }
-
-
         }
+
+
         public void Division()//allow decimal
         {
-
             try
             {
-
                 Console.Write("Enter First Number: ");
-                if (int.TryParse(Console.ReadLine(), out int first))
+                if (double.TryParse(Console.ReadLine(), out double first))
                 {
                     Console.Write("Enter Second Number: ");
-                    if (int.TryParse(Console.ReadLine(), out int second))
+                    if (double.TryParse(Console.ReadLine(), out double second))
                     {
                         if (second == 0)
                         {
                             Console.WriteLine($"{first} can not  divided by zero");
                         }
-                        else
-                        {
-                            Console.WriteLine("Division: " + (first / second)); // Fixed from subtraction
-                        }
+                        else Console.WriteLine("Division: " + (first / second));
                     }
-                    else
-                    {
-                        Console.WriteLine("Please provide a valid integer for the second number.");
-                    }
+                    else  Console.WriteLine("Invalid Input. Give Valid Input");
                 }
-                
-
-            
-                else
-                {
-                    Console.WriteLine("please provide integer value");
-                }
+                else  Console.WriteLine("Invalid Input. Give Valid Input");
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
+
+
         public void Average()//allow decimal
         {
             try
             {
-                Console.Write("Enter First Number ");
+                Console.Write("Enter First Number: ");
                 double first = Convert.ToDouble(Console.ReadLine());
-                Console.Write("Enter Second Number ");
+                Console.Write("Enter Second Number: ");
                 double second = Convert.ToDouble(Console.ReadLine());
                 double d = (first + second) / 2;
-                Console.WriteLine("Average" + d);
+                Console.WriteLine("Average: " + d);
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
+
+
         public void Percentage()
         {
             try
             {
-                Console.Write("Enter Value ");
+                Console.Write("Enter Value: ");
                 double value = Convert.ToDouble(Console.ReadLine());
 
-                Console.Write("Enter Total");
+                Console.Write("Enter Total: ");
                 double total = Convert.ToDouble(Console.ReadLine());
 
-                if (total < value)
-                {
-                    Console.Write("invalid total value ");
-                }
+                if (total < value)   Console.WriteLine("Invalid Total Value ");
                 else
                 {
                     double perc = (value * 100) / total;
-                    Console.WriteLine("Percentage is"+ perc + "%");
+                    Console.WriteLine("Percentage is: "+ perc + "%");
                 }
             }
             catch (Exception)
             {
-
                 throw;
             }
 
-
         }
+
+
         public void CompoundInterest()
         {
             try
@@ -237,15 +208,16 @@ namespace Calculator
                 double a = p * Math.Pow((1 + r / 100), t);
                 double ci = a - p;
 
-                Console.WriteLine("Compound Interest" + ci);
-                Console.WriteLine("Total Amount" + a);
+                Console.WriteLine("Compound Interest: " +Math.Round( ci,2));
+                Console.WriteLine("Total Amount: " + Math.Round(a, 2));
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
+
+
         public void MainMenu()
         {
             try
@@ -260,34 +232,24 @@ namespace Calculator
                     Console.WriteLine("Enter 5: Exit");
                     Console.WriteLine();
 
-                    
-
-
-                    Console.Write("Enter your Choice ");
+                    Console.Write("Enter your Choice: ");
                     if (int.TryParse(Console.ReadLine(), out int input))
                     {
                         switch (input)
                         {
-                            case 1: Calci(); break;
+                            case 1: BasicCalculator(); break;
                             case 2: Average(); break;
                             case 3: Percentage(); break;
                             case 4: CompoundInterest(); break;
-                            case 5: Console.WriteLine("Calculator exit...."); return;
-                            default: Console.WriteLine("Invalid choice,select valid choice "); break;
+                            case 5: Console.WriteLine("Calculator exit..."); return;
+                            default: Console.WriteLine("Invalid Input. Give Valid Input"); break;
                         }
-
-
                     }
-                    else
-                    {
-                        Console.WriteLine("inavild type, input  provide integer input");
-                    }
-
+                    else   Console.WriteLine("Invalid Input. Give Valid Input");
                 }
             }
             catch (Exception)
             {
-
                 throw;
             }
         }

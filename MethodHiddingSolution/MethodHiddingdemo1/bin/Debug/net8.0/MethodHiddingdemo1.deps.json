@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "MethodHiddingdemo1/1.0.0": {
+        "runtime": {
+          "MethodHiddingdemo1.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MethodHiddingdemo1/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
