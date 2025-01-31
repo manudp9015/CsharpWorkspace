@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\ExtensionSolutionm\Extensiondemo\obj\Debug\net8.0\Extensiondemo.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\ExtensionSolutionm\Extensiondemo\obj\Debug\net8.0\Extensiondemo.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\ExtensionSolutionm\Extensiondemo\obj\Debug\net8.0\Extensiondemo.AssemblyInfo.cs
+D:\CsharpWorkspace\ExtensionSolutionm\Extensiondemo\obj\Debug\net8.0\Extensiondemo.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\ExtensionSolutionm\Extensiondemo\obj\Debug\net8.0\Extensiondemo.sourcelink.json
+D:\CsharpWorkspace\ExtensionSolutionm\Extensiondemo\bin\Debug\net8.0\Extensiondemo.exe
+D:\CsharpWorkspace\ExtensionSolutionm\Extensiondemo\bin\Debug\net8.0\Extensiondemo.deps.json
+D:\CsharpWorkspace\ExtensionSolutionm\Extensiondemo\bin\Debug\net8.0\Extensiondemo.runtimeconfig.json
+D:\CsharpWorkspace\ExtensionSolutionm\Extensiondemo\bin\Debug\net8.0\Extensiondemo.dll
+D:\CsharpWorkspace\ExtensionSolutionm\Extensiondemo\bin\Debug\net8.0\Extensiondemo.pdb
+D:\CsharpWorkspace\ExtensionSolutionm\Extensiondemo\obj\Debug\net8.0\Extensiondemo.dll
+D:\CsharpWorkspace\ExtensionSolutionm\Extensiondemo\obj\Debug\net8.0\refint\Extensiondemo.dll
+D:\CsharpWorkspace\ExtensionSolutionm\Extensiondemo\obj\Debug\net8.0\Extensiondemo.pdb
+D:\CsharpWorkspace\ExtensionSolutionm\Extensiondemo\obj\Debug\net8.0\Extensiondemo.genruntimeconfig.cache
+D:\CsharpWorkspace\ExtensionSolutionm\Extensiondemo\obj\Debug\net8.0\ref\Extensiondemo.dll

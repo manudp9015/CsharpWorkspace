@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\IndexerSolution\Indexerdemo2\bin\Debug\net8.0\Indexerdemo2.exe
+D:\CsharpWorkspace\IndexerSolution\Indexerdemo2\bin\Debug\net8.0\Indexerdemo2.deps.json
+D:\CsharpWorkspace\IndexerSolution\Indexerdemo2\bin\Debug\net8.0\Indexerdemo2.runtimeconfig.json
+D:\CsharpWorkspace\IndexerSolution\Indexerdemo2\bin\Debug\net8.0\Indexerdemo2.dll
+D:\CsharpWorkspace\IndexerSolution\Indexerdemo2\bin\Debug\net8.0\Indexerdemo2.pdb
+D:\CsharpWorkspace\IndexerSolution\Indexerdemo2\obj\Debug\net8.0\Indexerdemo2.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\IndexerSolution\Indexerdemo2\obj\Debug\net8.0\Indexerdemo2.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\IndexerSolution\Indexerdemo2\obj\Debug\net8.0\Indexerdemo2.AssemblyInfo.cs
+D:\CsharpWorkspace\IndexerSolution\Indexerdemo2\obj\Debug\net8.0\Indexerdemo2.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\IndexerSolution\Indexerdemo2\obj\Debug\net8.0\Indexerdemo2.sourcelink.json
+D:\CsharpWorkspace\IndexerSolution\Indexerdemo2\obj\Debug\net8.0\Indexerdemo2.dll
+D:\CsharpWorkspace\IndexerSolution\Indexerdemo2\obj\Debug\net8.0\refint\Indexerdemo2.dll
+D:\CsharpWorkspace\IndexerSolution\Indexerdemo2\obj\Debug\net8.0\Indexerdemo2.pdb
+D:\CsharpWorkspace\IndexerSolution\Indexerdemo2\obj\Debug\net8.0\Indexerdemo2.genruntimeconfig.cache
+D:\CsharpWorkspace\IndexerSolution\Indexerdemo2\obj\Debug\net8.0\ref\Indexerdemo2.dll

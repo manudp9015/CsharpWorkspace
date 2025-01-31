@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "ExtensionDemo3CeilingMethods(string,int)/1.0.0": {
+        "runtime": {
+          "ExtensionDemo3CeilingMethods(string,int).dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ExtensionDemo3CeilingMethods(string,int)/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

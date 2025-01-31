@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\ExtensionSolutionm\ExtensionDemo3CeilingMethods(string,int)\bin\Debug\net8.0\ExtensionDemo3CeilingMethods(string,int).exe
+D:\CsharpWorkspace\ExtensionSolutionm\ExtensionDemo3CeilingMethods(string,int)\bin\Debug\net8.0\ExtensionDemo3CeilingMethods(string,int).deps.json
+D:\CsharpWorkspace\ExtensionSolutionm\ExtensionDemo3CeilingMethods(string,int)\bin\Debug\net8.0\ExtensionDemo3CeilingMethods(string,int).runtimeconfig.json
+D:\CsharpWorkspace\ExtensionSolutionm\ExtensionDemo3CeilingMethods(string,int)\bin\Debug\net8.0\ExtensionDemo3CeilingMethods(string,int).dll
+D:\CsharpWorkspace\ExtensionSolutionm\ExtensionDemo3CeilingMethods(string,int)\bin\Debug\net8.0\ExtensionDemo3CeilingMethods(string,int).pdb
+D:\CsharpWorkspace\ExtensionSolutionm\ExtensionDemo3CeilingMethods(string,int)\obj\Debug\net8.0\ExtensionDemo3CeilingMethods(string,int).GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\ExtensionSolutionm\ExtensionDemo3CeilingMethods(string,int)\obj\Debug\net8.0\ExtensionDemo3CeilingMethods(string,int).AssemblyInfoInputs.cache
+D:\CsharpWorkspace\ExtensionSolutionm\ExtensionDemo3CeilingMethods(string,int)\obj\Debug\net8.0\ExtensionDemo3CeilingMethods(string,int).AssemblyInfo.cs
+D:\CsharpWorkspace\ExtensionSolutionm\ExtensionDemo3CeilingMethods(string,int)\obj\Debug\net8.0\ExtensionDemo3CeilingMethods(string,int).csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\ExtensionSolutionm\ExtensionDemo3CeilingMethods(string,int)\obj\Debug\net8.0\ExtensionDemo3CeilingMethods(string,int).sourcelink.json
+D:\CsharpWorkspace\ExtensionSolutionm\ExtensionDemo3CeilingMethods(string,int)\obj\Debug\net8.0\ExtensionDemo3CeilingMethods(string,int).dll
+D:\CsharpWorkspace\ExtensionSolutionm\ExtensionDemo3CeilingMethods(string,int)\obj\Debug\net8.0\refint\ExtensionDemo3CeilingMethods(string,int).dll
+D:\CsharpWorkspace\ExtensionSolutionm\ExtensionDemo3CeilingMethods(string,int)\obj\Debug\net8.0\ExtensionDemo3CeilingMethods(string,int).pdb
+D:\CsharpWorkspace\ExtensionSolutionm\ExtensionDemo3CeilingMethods(string,int)\obj\Debug\net8.0\ExtensionDemo3CeilingMethods(string,int).genruntimeconfig.cache
+D:\CsharpWorkspace\ExtensionSolutionm\ExtensionDemo3CeilingMethods(string,int)\obj\Debug\net8.0\ref\ExtensionDemo3CeilingMethods(string,int).dll
