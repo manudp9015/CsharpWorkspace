@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\PropertiesSolution\Propertiesdemo1\obj\Debug\net8.0\Propertiesdemo1.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\PropertiesSolution\Propertiesdemo1\obj\Debug\net8.0\Propertiesdemo1.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\PropertiesSolution\Propertiesdemo1\obj\Debug\net8.0\Propertiesdemo1.AssemblyInfo.cs
+D:\CsharpWorkspace\PropertiesSolution\Propertiesdemo1\obj\Debug\net8.0\Propertiesdemo1.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\PropertiesSolution\Propertiesdemo1\obj\Debug\net8.0\Propertiesdemo1.sourcelink.json
+D:\CsharpWorkspace\PropertiesSolution\Propertiesdemo1\bin\Debug\net8.0\Propertiesdemo1.exe
+D:\CsharpWorkspace\PropertiesSolution\Propertiesdemo1\bin\Debug\net8.0\Propertiesdemo1.deps.json
+D:\CsharpWorkspace\PropertiesSolution\Propertiesdemo1\bin\Debug\net8.0\Propertiesdemo1.runtimeconfig.json
+D:\CsharpWorkspace\PropertiesSolution\Propertiesdemo1\bin\Debug\net8.0\Propertiesdemo1.dll
+D:\CsharpWorkspace\PropertiesSolution\Propertiesdemo1\bin\Debug\net8.0\Propertiesdemo1.pdb
+D:\CsharpWorkspace\PropertiesSolution\Propertiesdemo1\obj\Debug\net8.0\Propertiesdemo1.dll
+D:\CsharpWorkspace\PropertiesSolution\Propertiesdemo1\obj\Debug\net8.0\refint\Propertiesdemo1.dll
+D:\CsharpWorkspace\PropertiesSolution\Propertiesdemo1\obj\Debug\net8.0\Propertiesdemo1.pdb
+D:\CsharpWorkspace\PropertiesSolution\Propertiesdemo1\obj\Debug\net8.0\Propertiesdemo1.genruntimeconfig.cache
+D:\CsharpWorkspace\PropertiesSolution\Propertiesdemo1\obj\Debug\net8.0\ref\Propertiesdemo1.dll
