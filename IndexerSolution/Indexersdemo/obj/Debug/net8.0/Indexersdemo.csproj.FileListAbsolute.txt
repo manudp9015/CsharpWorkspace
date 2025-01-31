@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\IndexerSolution\Indexersdemo\bin\Debug\net8.0\Indexersdemo.exe
+D:\CsharpWorkspace\IndexerSolution\Indexersdemo\bin\Debug\net8.0\Indexersdemo.deps.json
+D:\CsharpWorkspace\IndexerSolution\Indexersdemo\bin\Debug\net8.0\Indexersdemo.runtimeconfig.json
+D:\CsharpWorkspace\IndexerSolution\Indexersdemo\bin\Debug\net8.0\Indexersdemo.dll
+D:\CsharpWorkspace\IndexerSolution\Indexersdemo\bin\Debug\net8.0\Indexersdemo.pdb
+D:\CsharpWorkspace\IndexerSolution\Indexersdemo\obj\Debug\net8.0\Indexersdemo.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\IndexerSolution\Indexersdemo\obj\Debug\net8.0\Indexersdemo.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\IndexerSolution\Indexersdemo\obj\Debug\net8.0\Indexersdemo.AssemblyInfo.cs
+D:\CsharpWorkspace\IndexerSolution\Indexersdemo\obj\Debug\net8.0\Indexersdemo.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\IndexerSolution\Indexersdemo\obj\Debug\net8.0\Indexersdemo.sourcelink.json
+D:\CsharpWorkspace\IndexerSolution\Indexersdemo\obj\Debug\net8.0\Indexersdemo.dll
+D:\CsharpWorkspace\IndexerSolution\Indexersdemo\obj\Debug\net8.0\refint\Indexersdemo.dll
+D:\CsharpWorkspace\IndexerSolution\Indexersdemo\obj\Debug\net8.0\Indexersdemo.pdb
+D:\CsharpWorkspace\IndexerSolution\Indexersdemo\obj\Debug\net8.0\Indexersdemo.genruntimeconfig.cache
+D:\CsharpWorkspace\IndexerSolution\Indexersdemo\obj\Debug\net8.0\ref\Indexersdemo.dll
