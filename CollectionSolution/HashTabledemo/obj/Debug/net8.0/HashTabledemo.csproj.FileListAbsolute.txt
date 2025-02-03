@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\CollectionSolution\HashTabledemo\bin\Debug\net8.0\HashTabledemo.exe
+D:\CsharpWorkspace\CollectionSolution\HashTabledemo\bin\Debug\net8.0\HashTabledemo.deps.json
+D:\CsharpWorkspace\CollectionSolution\HashTabledemo\bin\Debug\net8.0\HashTabledemo.runtimeconfig.json
+D:\CsharpWorkspace\CollectionSolution\HashTabledemo\bin\Debug\net8.0\HashTabledemo.dll
+D:\CsharpWorkspace\CollectionSolution\HashTabledemo\bin\Debug\net8.0\HashTabledemo.pdb
+D:\CsharpWorkspace\CollectionSolution\HashTabledemo\obj\Debug\net8.0\HashTabledemo.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\CollectionSolution\HashTabledemo\obj\Debug\net8.0\HashTabledemo.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\CollectionSolution\HashTabledemo\obj\Debug\net8.0\HashTabledemo.AssemblyInfo.cs
+D:\CsharpWorkspace\CollectionSolution\HashTabledemo\obj\Debug\net8.0\HashTabledemo.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\CollectionSolution\HashTabledemo\obj\Debug\net8.0\HashTabledemo.sourcelink.json
+D:\CsharpWorkspace\CollectionSolution\HashTabledemo\obj\Debug\net8.0\HashTabledemo.dll
+D:\CsharpWorkspace\CollectionSolution\HashTabledemo\obj\Debug\net8.0\refint\HashTabledemo.dll
+D:\CsharpWorkspace\CollectionSolution\HashTabledemo\obj\Debug\net8.0\HashTabledemo.pdb
+D:\CsharpWorkspace\CollectionSolution\HashTabledemo\obj\Debug\net8.0\HashTabledemo.genruntimeconfig.cache
+D:\CsharpWorkspace\CollectionSolution\HashTabledemo\obj\Debug\net8.0\ref\HashTabledemo.dll

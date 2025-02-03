@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\CollectionSolution\IComparabledemo\bin\Debug\net8.0\IComparabledemo.exe
+D:\CsharpWorkspace\CollectionSolution\IComparabledemo\bin\Debug\net8.0\IComparabledemo.deps.json
+D:\CsharpWorkspace\CollectionSolution\IComparabledemo\bin\Debug\net8.0\IComparabledemo.runtimeconfig.json
+D:\CsharpWorkspace\CollectionSolution\IComparabledemo\bin\Debug\net8.0\IComparabledemo.dll
+D:\CsharpWorkspace\CollectionSolution\IComparabledemo\bin\Debug\net8.0\IComparabledemo.pdb
+D:\CsharpWorkspace\CollectionSolution\IComparabledemo\obj\Debug\net8.0\IComparabledemo.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\CollectionSolution\IComparabledemo\obj\Debug\net8.0\IComparabledemo.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\CollectionSolution\IComparabledemo\obj\Debug\net8.0\IComparabledemo.AssemblyInfo.cs
+D:\CsharpWorkspace\CollectionSolution\IComparabledemo\obj\Debug\net8.0\IComparabledemo.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\CollectionSolution\IComparabledemo\obj\Debug\net8.0\IComparabledemo.sourcelink.json
+D:\CsharpWorkspace\CollectionSolution\IComparabledemo\obj\Debug\net8.0\IComparabledemo.dll
+D:\CsharpWorkspace\CollectionSolution\IComparabledemo\obj\Debug\net8.0\refint\IComparabledemo.dll
+D:\CsharpWorkspace\CollectionSolution\IComparabledemo\obj\Debug\net8.0\IComparabledemo.pdb
+D:\CsharpWorkspace\CollectionSolution\IComparabledemo\obj\Debug\net8.0\IComparabledemo.genruntimeconfig.cache
+D:\CsharpWorkspace\CollectionSolution\IComparabledemo\obj\Debug\net8.0\ref\IComparabledemo.dll

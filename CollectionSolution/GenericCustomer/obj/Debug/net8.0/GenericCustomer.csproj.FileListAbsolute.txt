@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\CollectionSolution\GenericCustomer\obj\Debug\net8.0\GenericCustomer.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\CollectionSolution\GenericCustomer\obj\Debug\net8.0\GenericCustomer.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\CollectionSolution\GenericCustomer\obj\Debug\net8.0\GenericCustomer.AssemblyInfo.cs
+D:\CsharpWorkspace\CollectionSolution\GenericCustomer\obj\Debug\net8.0\GenericCustomer.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\CollectionSolution\GenericCustomer\obj\Debug\net8.0\GenericCustomer.sourcelink.json
+D:\CsharpWorkspace\CollectionSolution\GenericCustomer\bin\Debug\net8.0\GenericCustomer.exe
+D:\CsharpWorkspace\CollectionSolution\GenericCustomer\bin\Debug\net8.0\GenericCustomer.deps.json
+D:\CsharpWorkspace\CollectionSolution\GenericCustomer\bin\Debug\net8.0\GenericCustomer.runtimeconfig.json
+D:\CsharpWorkspace\CollectionSolution\GenericCustomer\bin\Debug\net8.0\GenericCustomer.dll
+D:\CsharpWorkspace\CollectionSolution\GenericCustomer\bin\Debug\net8.0\GenericCustomer.pdb
+D:\CsharpWorkspace\CollectionSolution\GenericCustomer\obj\Debug\net8.0\GenericCustomer.dll
+D:\CsharpWorkspace\CollectionSolution\GenericCustomer\obj\Debug\net8.0\refint\GenericCustomer.dll
+D:\CsharpWorkspace\CollectionSolution\GenericCustomer\obj\Debug\net8.0\GenericCustomer.pdb
+D:\CsharpWorkspace\CollectionSolution\GenericCustomer\obj\Debug\net8.0\GenericCustomer.genruntimeconfig.cache
+D:\CsharpWorkspace\CollectionSolution\GenericCustomer\obj\Debug\net8.0\ref\GenericCustomer.dll
