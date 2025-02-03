@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\CollectionSolution\Genericdemo1\bin\Debug\net8.0\Genericdemo1.exe
+D:\CsharpWorkspace\CollectionSolution\Genericdemo1\bin\Debug\net8.0\Genericdemo1.deps.json
+D:\CsharpWorkspace\CollectionSolution\Genericdemo1\bin\Debug\net8.0\Genericdemo1.runtimeconfig.json
+D:\CsharpWorkspace\CollectionSolution\Genericdemo1\bin\Debug\net8.0\Genericdemo1.dll
+D:\CsharpWorkspace\CollectionSolution\Genericdemo1\bin\Debug\net8.0\Genericdemo1.pdb
+D:\CsharpWorkspace\CollectionSolution\Genericdemo1\obj\Debug\net8.0\Genericdemo1.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\CollectionSolution\Genericdemo1\obj\Debug\net8.0\Genericdemo1.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\CollectionSolution\Genericdemo1\obj\Debug\net8.0\Genericdemo1.AssemblyInfo.cs
+D:\CsharpWorkspace\CollectionSolution\Genericdemo1\obj\Debug\net8.0\Genericdemo1.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\CollectionSolution\Genericdemo1\obj\Debug\net8.0\Genericdemo1.sourcelink.json
+D:\CsharpWorkspace\CollectionSolution\Genericdemo1\obj\Debug\net8.0\Genericdemo1.dll
+D:\CsharpWorkspace\CollectionSolution\Genericdemo1\obj\Debug\net8.0\refint\Genericdemo1.dll
+D:\CsharpWorkspace\CollectionSolution\Genericdemo1\obj\Debug\net8.0\Genericdemo1.pdb
+D:\CsharpWorkspace\CollectionSolution\Genericdemo1\obj\Debug\net8.0\Genericdemo1.genruntimeconfig.cache
+D:\CsharpWorkspace\CollectionSolution\Genericdemo1\obj\Debug\net8.0\ref\Genericdemo1.dll
