@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\ExceptionSolution\Throwdemo1\bin\Debug\net8.0\Throwdemo1.exe
+D:\CsharpWorkspace\ExceptionSolution\Throwdemo1\bin\Debug\net8.0\Throwdemo1.deps.json
+D:\CsharpWorkspace\ExceptionSolution\Throwdemo1\bin\Debug\net8.0\Throwdemo1.runtimeconfig.json
+D:\CsharpWorkspace\ExceptionSolution\Throwdemo1\bin\Debug\net8.0\Throwdemo1.dll
+D:\CsharpWorkspace\ExceptionSolution\Throwdemo1\bin\Debug\net8.0\Throwdemo1.pdb
+D:\CsharpWorkspace\ExceptionSolution\Throwdemo1\obj\Debug\net8.0\Throwdemo1.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\ExceptionSolution\Throwdemo1\obj\Debug\net8.0\Throwdemo1.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\ExceptionSolution\Throwdemo1\obj\Debug\net8.0\Throwdemo1.AssemblyInfo.cs
+D:\CsharpWorkspace\ExceptionSolution\Throwdemo1\obj\Debug\net8.0\Throwdemo1.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\ExceptionSolution\Throwdemo1\obj\Debug\net8.0\Throwdemo1.sourcelink.json
+D:\CsharpWorkspace\ExceptionSolution\Throwdemo1\obj\Debug\net8.0\Throwdemo1.dll
+D:\CsharpWorkspace\ExceptionSolution\Throwdemo1\obj\Debug\net8.0\refint\Throwdemo1.dll
+D:\CsharpWorkspace\ExceptionSolution\Throwdemo1\obj\Debug\net8.0\Throwdemo1.pdb
+D:\CsharpWorkspace\ExceptionSolution\Throwdemo1\obj\Debug\net8.0\Throwdemo1.genruntimeconfig.cache
+D:\CsharpWorkspace\ExceptionSolution\Throwdemo1\obj\Debug\net8.0\ref\Throwdemo1.dll
