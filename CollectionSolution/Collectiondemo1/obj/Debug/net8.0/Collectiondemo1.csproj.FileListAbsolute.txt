@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\CollectionSolution\Collectiondemo1\bin\Debug\net8.0\Collectiondemo1.exe
+D:\CsharpWorkspace\CollectionSolution\Collectiondemo1\bin\Debug\net8.0\Collectiondemo1.deps.json
+D:\CsharpWorkspace\CollectionSolution\Collectiondemo1\bin\Debug\net8.0\Collectiondemo1.runtimeconfig.json
+D:\CsharpWorkspace\CollectionSolution\Collectiondemo1\bin\Debug\net8.0\Collectiondemo1.dll
+D:\CsharpWorkspace\CollectionSolution\Collectiondemo1\bin\Debug\net8.0\Collectiondemo1.pdb
+D:\CsharpWorkspace\CollectionSolution\Collectiondemo1\obj\Debug\net8.0\Collectiondemo1.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\CollectionSolution\Collectiondemo1\obj\Debug\net8.0\Collectiondemo1.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\CollectionSolution\Collectiondemo1\obj\Debug\net8.0\Collectiondemo1.AssemblyInfo.cs
+D:\CsharpWorkspace\CollectionSolution\Collectiondemo1\obj\Debug\net8.0\Collectiondemo1.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\CollectionSolution\Collectiondemo1\obj\Debug\net8.0\Collectiondemo1.sourcelink.json
+D:\CsharpWorkspace\CollectionSolution\Collectiondemo1\obj\Debug\net8.0\Collectiondemo1.dll
+D:\CsharpWorkspace\CollectionSolution\Collectiondemo1\obj\Debug\net8.0\refint\Collectiondemo1.dll
+D:\CsharpWorkspace\CollectionSolution\Collectiondemo1\obj\Debug\net8.0\Collectiondemo1.pdb
+D:\CsharpWorkspace\CollectionSolution\Collectiondemo1\obj\Debug\net8.0\Collectiondemo1.genruntimeconfig.cache
+D:\CsharpWorkspace\CollectionSolution\Collectiondemo1\obj\Debug\net8.0\ref\Collectiondemo1.dll
