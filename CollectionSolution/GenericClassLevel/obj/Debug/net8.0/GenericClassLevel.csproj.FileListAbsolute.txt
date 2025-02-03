@@ -1,0 +1,5 @@
+D:\CsharpWorkspace\CollectionSolution\GenericClassLevel\obj\Debug\net8.0\GenericClassLevel.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\CollectionSolution\GenericClassLevel\obj\Debug\net8.0\GenericClassLevel.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\CollectionSolution\GenericClassLevel\obj\Debug\net8.0\GenericClassLevel.AssemblyInfo.cs
+D:\CsharpWorkspace\CollectionSolution\GenericClassLevel\obj\Debug\net8.0\GenericClassLevel.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\CollectionSolution\GenericClassLevel\obj\Debug\net8.0\GenericClassLevel.sourcelink.json
