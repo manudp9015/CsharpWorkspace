@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\CollectionSolution\IEnumerabledemo\bin\Debug\net8.0\IEnumerabledemo.exe
+D:\CsharpWorkspace\CollectionSolution\IEnumerabledemo\bin\Debug\net8.0\IEnumerabledemo.deps.json
+D:\CsharpWorkspace\CollectionSolution\IEnumerabledemo\bin\Debug\net8.0\IEnumerabledemo.runtimeconfig.json
+D:\CsharpWorkspace\CollectionSolution\IEnumerabledemo\bin\Debug\net8.0\IEnumerabledemo.dll
+D:\CsharpWorkspace\CollectionSolution\IEnumerabledemo\bin\Debug\net8.0\IEnumerabledemo.pdb
+D:\CsharpWorkspace\CollectionSolution\IEnumerabledemo\obj\Debug\net8.0\IEnumerabledemo.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\CollectionSolution\IEnumerabledemo\obj\Debug\net8.0\IEnumerabledemo.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\CollectionSolution\IEnumerabledemo\obj\Debug\net8.0\IEnumerabledemo.AssemblyInfo.cs
+D:\CsharpWorkspace\CollectionSolution\IEnumerabledemo\obj\Debug\net8.0\IEnumerabledemo.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\CollectionSolution\IEnumerabledemo\obj\Debug\net8.0\IEnumerabledemo.sourcelink.json
+D:\CsharpWorkspace\CollectionSolution\IEnumerabledemo\obj\Debug\net8.0\IEnumerabledemo.dll
+D:\CsharpWorkspace\CollectionSolution\IEnumerabledemo\obj\Debug\net8.0\refint\IEnumerabledemo.dll
+D:\CsharpWorkspace\CollectionSolution\IEnumerabledemo\obj\Debug\net8.0\IEnumerabledemo.pdb
+D:\CsharpWorkspace\CollectionSolution\IEnumerabledemo\obj\Debug\net8.0\IEnumerabledemo.genruntimeconfig.cache
+D:\CsharpWorkspace\CollectionSolution\IEnumerabledemo\obj\Debug\net8.0\ref\IEnumerabledemo.dll
