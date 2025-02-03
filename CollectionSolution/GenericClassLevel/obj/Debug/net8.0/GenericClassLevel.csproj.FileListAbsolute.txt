@@ -3,3 +3,13 @@ D:\CsharpWorkspace\CollectionSolution\GenericClassLevel\obj\Debug\net8.0\Generic
 D:\CsharpWorkspace\CollectionSolution\GenericClassLevel\obj\Debug\net8.0\GenericClassLevel.AssemblyInfo.cs
 D:\CsharpWorkspace\CollectionSolution\GenericClassLevel\obj\Debug\net8.0\GenericClassLevel.csproj.CoreCompileInputs.cache
 D:\CsharpWorkspace\CollectionSolution\GenericClassLevel\obj\Debug\net8.0\GenericClassLevel.sourcelink.json
+D:\CsharpWorkspace\CollectionSolution\GenericClassLevel\bin\Debug\net8.0\GenericClassLevel.exe
+D:\CsharpWorkspace\CollectionSolution\GenericClassLevel\bin\Debug\net8.0\GenericClassLevel.deps.json
+D:\CsharpWorkspace\CollectionSolution\GenericClassLevel\bin\Debug\net8.0\GenericClassLevel.runtimeconfig.json
+D:\CsharpWorkspace\CollectionSolution\GenericClassLevel\bin\Debug\net8.0\GenericClassLevel.dll
+D:\CsharpWorkspace\CollectionSolution\GenericClassLevel\bin\Debug\net8.0\GenericClassLevel.pdb
+D:\CsharpWorkspace\CollectionSolution\GenericClassLevel\obj\Debug\net8.0\GenericClassLevel.dll
+D:\CsharpWorkspace\CollectionSolution\GenericClassLevel\obj\Debug\net8.0\refint\GenericClassLevel.dll
+D:\CsharpWorkspace\CollectionSolution\GenericClassLevel\obj\Debug\net8.0\GenericClassLevel.pdb
+D:\CsharpWorkspace\CollectionSolution\GenericClassLevel\obj\Debug\net8.0\GenericClassLevel.genruntimeconfig.cache
+D:\CsharpWorkspace\CollectionSolution\GenericClassLevel\obj\Debug\net8.0\ref\GenericClassLevel.dll
