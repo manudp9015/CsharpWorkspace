@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\StringvsStringBuilderSolution\StringvsStringBuilderdemo\bin\Debug\net8.0\StringvsStringBuilderdemo.exe
+D:\CsharpWorkspace\StringvsStringBuilderSolution\StringvsStringBuilderdemo\bin\Debug\net8.0\StringvsStringBuilderdemo.deps.json
+D:\CsharpWorkspace\StringvsStringBuilderSolution\StringvsStringBuilderdemo\bin\Debug\net8.0\StringvsStringBuilderdemo.runtimeconfig.json
+D:\CsharpWorkspace\StringvsStringBuilderSolution\StringvsStringBuilderdemo\bin\Debug\net8.0\StringvsStringBuilderdemo.dll
+D:\CsharpWorkspace\StringvsStringBuilderSolution\StringvsStringBuilderdemo\bin\Debug\net8.0\StringvsStringBuilderdemo.pdb
+D:\CsharpWorkspace\StringvsStringBuilderSolution\StringvsStringBuilderdemo\obj\Debug\net8.0\StringvsStringBuilderdemo.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\StringvsStringBuilderSolution\StringvsStringBuilderdemo\obj\Debug\net8.0\StringvsStringBuilderdemo.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\StringvsStringBuilderSolution\StringvsStringBuilderdemo\obj\Debug\net8.0\StringvsStringBuilderdemo.AssemblyInfo.cs
+D:\CsharpWorkspace\StringvsStringBuilderSolution\StringvsStringBuilderdemo\obj\Debug\net8.0\StringvsStringBuilderdemo.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\StringvsStringBuilderSolution\StringvsStringBuilderdemo\obj\Debug\net8.0\StringvsStringBuilderdemo.sourcelink.json
+D:\CsharpWorkspace\StringvsStringBuilderSolution\StringvsStringBuilderdemo\obj\Debug\net8.0\StringvsStringBuilderdemo.dll
+D:\CsharpWorkspace\StringvsStringBuilderSolution\StringvsStringBuilderdemo\obj\Debug\net8.0\refint\StringvsStringBuilderdemo.dll
+D:\CsharpWorkspace\StringvsStringBuilderSolution\StringvsStringBuilderdemo\obj\Debug\net8.0\StringvsStringBuilderdemo.pdb
+D:\CsharpWorkspace\StringvsStringBuilderSolution\StringvsStringBuilderdemo\obj\Debug\net8.0\StringvsStringBuilderdemo.genruntimeconfig.cache
+D:\CsharpWorkspace\StringvsStringBuilderSolution\StringvsStringBuilderdemo\obj\Debug\net8.0\ref\StringvsStringBuilderdemo.dll

@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\ExceptionSolution\ExceptionHandlingdemo1\bin\Debug\net8.0\ExceptionHandlingdemo1.exe
+D:\CsharpWorkspace\ExceptionSolution\ExceptionHandlingdemo1\bin\Debug\net8.0\ExceptionHandlingdemo1.deps.json
+D:\CsharpWorkspace\ExceptionSolution\ExceptionHandlingdemo1\bin\Debug\net8.0\ExceptionHandlingdemo1.runtimeconfig.json
+D:\CsharpWorkspace\ExceptionSolution\ExceptionHandlingdemo1\bin\Debug\net8.0\ExceptionHandlingdemo1.dll
+D:\CsharpWorkspace\ExceptionSolution\ExceptionHandlingdemo1\bin\Debug\net8.0\ExceptionHandlingdemo1.pdb
+D:\CsharpWorkspace\ExceptionSolution\ExceptionHandlingdemo1\obj\Debug\net8.0\ExceptionHandlingdemo1.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\ExceptionSolution\ExceptionHandlingdemo1\obj\Debug\net8.0\ExceptionHandlingdemo1.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\ExceptionSolution\ExceptionHandlingdemo1\obj\Debug\net8.0\ExceptionHandlingdemo1.AssemblyInfo.cs
+D:\CsharpWorkspace\ExceptionSolution\ExceptionHandlingdemo1\obj\Debug\net8.0\ExceptionHandlingdemo1.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\ExceptionSolution\ExceptionHandlingdemo1\obj\Debug\net8.0\ExceptionHandlingdemo1.sourcelink.json
+D:\CsharpWorkspace\ExceptionSolution\ExceptionHandlingdemo1\obj\Debug\net8.0\ExceptionHandlingdemo1.dll
+D:\CsharpWorkspace\ExceptionSolution\ExceptionHandlingdemo1\obj\Debug\net8.0\refint\ExceptionHandlingdemo1.dll
+D:\CsharpWorkspace\ExceptionSolution\ExceptionHandlingdemo1\obj\Debug\net8.0\ExceptionHandlingdemo1.pdb
+D:\CsharpWorkspace\ExceptionSolution\ExceptionHandlingdemo1\obj\Debug\net8.0\ExceptionHandlingdemo1.genruntimeconfig.cache
+D:\CsharpWorkspace\ExceptionSolution\ExceptionHandlingdemo1\obj\Debug\net8.0\ref\ExceptionHandlingdemo1.dll

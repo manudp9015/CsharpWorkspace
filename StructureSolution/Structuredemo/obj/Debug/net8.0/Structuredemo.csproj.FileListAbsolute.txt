@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\StructureSolution\Structuredemo\bin\Debug\net8.0\Structuredemo.exe
+D:\CsharpWorkspace\StructureSolution\Structuredemo\bin\Debug\net8.0\Structuredemo.deps.json
+D:\CsharpWorkspace\StructureSolution\Structuredemo\bin\Debug\net8.0\Structuredemo.runtimeconfig.json
+D:\CsharpWorkspace\StructureSolution\Structuredemo\bin\Debug\net8.0\Structuredemo.dll
+D:\CsharpWorkspace\StructureSolution\Structuredemo\bin\Debug\net8.0\Structuredemo.pdb
+D:\CsharpWorkspace\StructureSolution\Structuredemo\obj\Debug\net8.0\Structuredemo.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\StructureSolution\Structuredemo\obj\Debug\net8.0\Structuredemo.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\StructureSolution\Structuredemo\obj\Debug\net8.0\Structuredemo.AssemblyInfo.cs
+D:\CsharpWorkspace\StructureSolution\Structuredemo\obj\Debug\net8.0\Structuredemo.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\StructureSolution\Structuredemo\obj\Debug\net8.0\Structuredemo.sourcelink.json
+D:\CsharpWorkspace\StructureSolution\Structuredemo\obj\Debug\net8.0\Structuredemo.dll
+D:\CsharpWorkspace\StructureSolution\Structuredemo\obj\Debug\net8.0\refint\Structuredemo.dll
+D:\CsharpWorkspace\StructureSolution\Structuredemo\obj\Debug\net8.0\Structuredemo.pdb
+D:\CsharpWorkspace\StructureSolution\Structuredemo\obj\Debug\net8.0\Structuredemo.genruntimeconfig.cache
+D:\CsharpWorkspace\StructureSolution\Structuredemo\obj\Debug\net8.0\ref\Structuredemo.dll
