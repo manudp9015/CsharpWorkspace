@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\HospitalManagementSolution\HospitalManagement\obj\Debug\net8.0\HospitalManagement.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\HospitalManagementSolution\HospitalManagement\obj\Debug\net8.0\HospitalManagement.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\HospitalManagementSolution\HospitalManagement\obj\Debug\net8.0\HospitalManagement.AssemblyInfo.cs
+D:\CsharpWorkspace\HospitalManagementSolution\HospitalManagement\obj\Debug\net8.0\HospitalManagement.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\HospitalManagementSolution\HospitalManagement\obj\Debug\net8.0\HospitalManagement.sourcelink.json
+D:\CsharpWorkspace\HospitalManagementSolution\HospitalManagement\bin\Debug\net8.0\HospitalManagement.exe
+D:\CsharpWorkspace\HospitalManagementSolution\HospitalManagement\bin\Debug\net8.0\HospitalManagement.deps.json
+D:\CsharpWorkspace\HospitalManagementSolution\HospitalManagement\bin\Debug\net8.0\HospitalManagement.runtimeconfig.json
+D:\CsharpWorkspace\HospitalManagementSolution\HospitalManagement\bin\Debug\net8.0\HospitalManagement.dll
+D:\CsharpWorkspace\HospitalManagementSolution\HospitalManagement\bin\Debug\net8.0\HospitalManagement.pdb
+D:\CsharpWorkspace\HospitalManagementSolution\HospitalManagement\obj\Debug\net8.0\HospitalManagement.dll
+D:\CsharpWorkspace\HospitalManagementSolution\HospitalManagement\obj\Debug\net8.0\refint\HospitalManagement.dll
+D:\CsharpWorkspace\HospitalManagementSolution\HospitalManagement\obj\Debug\net8.0\HospitalManagement.pdb
+D:\CsharpWorkspace\HospitalManagementSolution\HospitalManagement\obj\Debug\net8.0\HospitalManagement.genruntimeconfig.cache
+D:\CsharpWorkspace\HospitalManagementSolution\HospitalManagement\obj\Debug\net8.0\ref\HospitalManagement.dll

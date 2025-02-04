@@ -19,7 +19,7 @@ namespace IEnumerabledemo
             students = new List<Student>()
             {
                 new Student() { Name = "manu", Id = 1 },
-                new Student() { Name = "rohi", Id = 2 }
+                new Student() { Name = "rohith", Id = 2 }
             };
         }
 
