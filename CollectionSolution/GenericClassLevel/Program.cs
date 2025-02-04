@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Genericdemo1
 {
-    class generic2<T>
+    public class GenericClassLevel<T>
     {
         public void add(T a, T b)
         {
@@ -32,14 +32,14 @@ namespace Genericdemo1
             dynamic d2 = b;
             Console.WriteLine("division value is: " + (d1 / d2));
         }
-    }
-    class Program
-    {
-        
 
-         static void Main()
+
+    }
+    class generic
+    {
+        public static void Main()
         {
-            generic2<double> lt = new generic2<double>();
+            GenericClassLevel<int> lt = new GenericClassLevel<int>();
             lt.add(10, 20);
             lt.sub(20, 30);
             lt.mul(20, 30);

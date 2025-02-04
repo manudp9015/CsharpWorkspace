@@ -33,6 +33,10 @@ namespace Genericdemo1
             Console.WriteLine("division value is: " + (d1 / d2));
         }
 
+       
+    }
+    class generic
+    {
         public static void Main()
         {
             GenericClassLevel<int> lt = new GenericClassLevel<int>();
