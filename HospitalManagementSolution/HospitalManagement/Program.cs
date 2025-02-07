@@ -5,7 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace HospitalManagement
 {
-    
+
     class Program
     {
         public static void Main()
