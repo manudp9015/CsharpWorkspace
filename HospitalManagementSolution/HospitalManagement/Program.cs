@@ -1,9 +1,11 @@
 ﻿using System;
 
+// under this namespace only every class members are present which required in this project(Hospital Management System);
 namespace HospitalManagement
 {
     class Program
     {
+        //this is only main method in my project , execution starts from here 
         public static void Main()
         {
        

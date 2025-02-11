@@ -7,8 +7,8 @@ using static HospitalManagement.Appointment;
 
 namespace HospitalManagement
 {
-    
-    public  class HospitalDataStore
+    //In HospitalDataStore class i just declare the required collection(list,dictionary)in my project  to store value
+    public class HospitalDataStore
     {
         public  Dictionary<string, List<Appointment>> _doctorAppointmentsByDate = new Dictionary<string, List<Appointment>>();
         public  List<Doctor> _doctors = new List<Doctor>();
@@ -17,6 +17,7 @@ namespace HospitalManagement
 
     }
 
+    //In HospitalManagementUtility class contain all the required methods to run the application
     internal class HospitalManagementUtility
     {
 
@@ -26,6 +27,7 @@ namespace HospitalManagement
         private BookPatientAppointment _bookPatientAppointment;
         private CancelPatientAppointment _cancelPatientAppointment;
 
+        //Dependency injection : specifically Constructor injection used here
         public HospitalManagementUtility(
             HospitalDataStore hospitalDataStore,
             DoctorAvailabilityChecker doctorAvailabilityChecker,
@@ -40,6 +42,7 @@ namespace HospitalManagement
             _cancelPatientAppointment = cancelPatientAppointment;
         }
 
+        //In InitializeData class, i initilaize the data required in collection of HospitalDataStore
         private void InitializeData()
         { 
             try
@@ -64,6 +67,10 @@ namespace HospitalManagement
                 throw;
             }
         }
+
+        /// <summary>
+        /// The MainMenu method display all available options to select 
+        /// </summary>
         public void MainMenu()
         {
             try
@@ -102,6 +109,10 @@ namespace HospitalManagement
                 throw;
             }
         }
+
+        /// <summary>
+        /// The AdminLogin method ensure gave access to Admin through using id and password
+        /// </summary>
         private void AdminLogin()
         {
             try

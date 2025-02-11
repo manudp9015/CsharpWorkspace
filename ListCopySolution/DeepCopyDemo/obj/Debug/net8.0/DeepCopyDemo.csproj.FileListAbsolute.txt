@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\ListCopySolution\DeepCopyDemo\bin\Debug\net8.0\DeepCopyDemo.exe
+D:\CsharpWorkspace\ListCopySolution\DeepCopyDemo\bin\Debug\net8.0\DeepCopyDemo.deps.json
+D:\CsharpWorkspace\ListCopySolution\DeepCopyDemo\bin\Debug\net8.0\DeepCopyDemo.runtimeconfig.json
+D:\CsharpWorkspace\ListCopySolution\DeepCopyDemo\bin\Debug\net8.0\DeepCopyDemo.dll
+D:\CsharpWorkspace\ListCopySolution\DeepCopyDemo\bin\Debug\net8.0\DeepCopyDemo.pdb
+D:\CsharpWorkspace\ListCopySolution\DeepCopyDemo\obj\Debug\net8.0\DeepCopyDemo.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\ListCopySolution\DeepCopyDemo\obj\Debug\net8.0\DeepCopyDemo.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\ListCopySolution\DeepCopyDemo\obj\Debug\net8.0\DeepCopyDemo.AssemblyInfo.cs
+D:\CsharpWorkspace\ListCopySolution\DeepCopyDemo\obj\Debug\net8.0\DeepCopyDemo.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\ListCopySolution\DeepCopyDemo\obj\Debug\net8.0\DeepCopyDemo.sourcelink.json
+D:\CsharpWorkspace\ListCopySolution\DeepCopyDemo\obj\Debug\net8.0\DeepCopyDemo.dll
+D:\CsharpWorkspace\ListCopySolution\DeepCopyDemo\obj\Debug\net8.0\refint\DeepCopyDemo.dll
+D:\CsharpWorkspace\ListCopySolution\DeepCopyDemo\obj\Debug\net8.0\DeepCopyDemo.pdb
+D:\CsharpWorkspace\ListCopySolution\DeepCopyDemo\obj\Debug\net8.0\DeepCopyDemo.genruntimeconfig.cache
+D:\CsharpWorkspace\ListCopySolution\DeepCopyDemo\obj\Debug\net8.0\ref\DeepCopyDemo.dll
