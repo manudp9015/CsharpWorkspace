@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace HospitalManagement
 {
+    //The CancelPatientAppointment class has a method CancelAppointment by using it cancel appointment
     internal class CancelPatientAppointment
     {
         private HospitalDataStore _hospitalDataStore;
@@ -13,7 +15,12 @@ namespace HospitalManagement
         {
             _hospitalDataStore= hospitalDataStore;
         }
-        public  void CancelAppointment()
+
+        /// <summary>
+        /// By using this CancelAppointment method we can cancel appointment of patient if patient email is valid and  at 
+        /// selected doctor he have appointment
+        /// </summary>
+        public void CancelAppointment()
         {
             try
             {

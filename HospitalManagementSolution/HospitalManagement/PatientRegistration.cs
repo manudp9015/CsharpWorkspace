@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HospitalManagement
 {
-
+    //The PatientRegistration class provide a method for patient registration
     internal class PatientRegistration
     {
         private HospitalDataStore _hospitalDataStore;
@@ -15,6 +15,10 @@ namespace HospitalManagement
         {
             _hospitalDataStore= hospitalDataStore;
         }
+
+        /// <summary>
+        /// By using this method RegisterNewPatient we can register the new patient to hospital and store in _patientdictionary
+        /// </summary>
         public void RegisterNewPatient()
         {
             try
@@ -39,7 +43,7 @@ namespace HospitalManagement
                 patient.Email = Console.ReadLine();
 
                 string email = patient.Email;
-                string pattern = @"^[a-zA-Z0-9._%+-][A-Z]+@gmail\.com$";
+                string pattern = @"^[a-zA-Z0-9._%+-]+@gmail\.com$";
                 //ManuD@gmail.com
                 if (Regex.IsMatch(email, pattern))
                 {

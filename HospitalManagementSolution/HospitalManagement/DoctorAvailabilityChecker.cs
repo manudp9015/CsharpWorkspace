@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace HospitalManagement
 {
+    //The DoctorAvailabilityChecker class check available doctor and there booked slot and display 
     internal class DoctorAvailabilityChecker
     {
 
@@ -15,12 +16,14 @@ namespace HospitalManagement
         {
             _hospitalDataStore = hospitalDataStore;
         }
-        
-        public  void CheckDoctorAvailability()
+
+        /// <summary>
+        /// The CheckDoctorAvailability check docotr and booked slot for a patient with respect to doctor and display
+        /// </summary>
+        public void CheckDoctorAvailability()
         {
             try
-            {
-                
+            { 
                 foreach (var doctor in _hospitalDataStore._doctors)
                 {
                     Console.WriteLine();

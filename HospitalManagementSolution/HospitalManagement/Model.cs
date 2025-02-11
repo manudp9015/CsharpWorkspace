@@ -3,25 +3,17 @@ using System.Collections.Generic;
 
 namespace HospitalManagement
 {
+    //This class represents a patient with basic details such as name, email, and city.
     public class Patient
     {
         public string Name { get; set; }
         public string Email { get; set; }
-        public string City { get
-            {
-                return City;
-            }
-             set
-            {
-                if(value=="bangalore")
-                {
-
-                }
-            } }
-              
+        public string City { get; set; }
+         
     }
 
-    public  class Doctor
+    // This class represents a doctor with a unique ID, name, and medical specialty.
+    public class Doctor
     {
         public string ID { get; }
         public string Name { get; }
@@ -35,6 +27,7 @@ namespace HospitalManagement
         }
     }
 
+    // This class represents an appointment linking a patient to a doctor at a specific date and time.
     public class Appointment
     {
         public string Date { get; }
