@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\TimerFunctionsSolution\Stopwatchdemo\bin\Debug\net8.0\Stopwatchdemo.exe
+D:\CsharpWorkspace\TimerFunctionsSolution\Stopwatchdemo\bin\Debug\net8.0\Stopwatchdemo.deps.json
+D:\CsharpWorkspace\TimerFunctionsSolution\Stopwatchdemo\bin\Debug\net8.0\Stopwatchdemo.runtimeconfig.json
+D:\CsharpWorkspace\TimerFunctionsSolution\Stopwatchdemo\bin\Debug\net8.0\Stopwatchdemo.dll
+D:\CsharpWorkspace\TimerFunctionsSolution\Stopwatchdemo\bin\Debug\net8.0\Stopwatchdemo.pdb
+D:\CsharpWorkspace\TimerFunctionsSolution\Stopwatchdemo\obj\Debug\net8.0\Stopwatchdemo.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\TimerFunctionsSolution\Stopwatchdemo\obj\Debug\net8.0\Stopwatchdemo.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\TimerFunctionsSolution\Stopwatchdemo\obj\Debug\net8.0\Stopwatchdemo.AssemblyInfo.cs
+D:\CsharpWorkspace\TimerFunctionsSolution\Stopwatchdemo\obj\Debug\net8.0\Stopwatchdemo.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\TimerFunctionsSolution\Stopwatchdemo\obj\Debug\net8.0\Stopwatchdemo.sourcelink.json
+D:\CsharpWorkspace\TimerFunctionsSolution\Stopwatchdemo\obj\Debug\net8.0\Stopwatchdemo.dll
+D:\CsharpWorkspace\TimerFunctionsSolution\Stopwatchdemo\obj\Debug\net8.0\refint\Stopwatchdemo.dll
+D:\CsharpWorkspace\TimerFunctionsSolution\Stopwatchdemo\obj\Debug\net8.0\Stopwatchdemo.pdb
+D:\CsharpWorkspace\TimerFunctionsSolution\Stopwatchdemo\obj\Debug\net8.0\Stopwatchdemo.genruntimeconfig.cache
+D:\CsharpWorkspace\TimerFunctionsSolution\Stopwatchdemo\obj\Debug\net8.0\ref\Stopwatchdemo.dll
