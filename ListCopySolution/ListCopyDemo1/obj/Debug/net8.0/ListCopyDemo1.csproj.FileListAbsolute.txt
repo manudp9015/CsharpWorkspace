@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\ListCopySolution\ListCopyDemo1\bin\Debug\net8.0\ListCopyDemo1.exe
+D:\CsharpWorkspace\ListCopySolution\ListCopyDemo1\bin\Debug\net8.0\ListCopyDemo1.deps.json
+D:\CsharpWorkspace\ListCopySolution\ListCopyDemo1\bin\Debug\net8.0\ListCopyDemo1.runtimeconfig.json
+D:\CsharpWorkspace\ListCopySolution\ListCopyDemo1\bin\Debug\net8.0\ListCopyDemo1.dll
+D:\CsharpWorkspace\ListCopySolution\ListCopyDemo1\bin\Debug\net8.0\ListCopyDemo1.pdb
+D:\CsharpWorkspace\ListCopySolution\ListCopyDemo1\obj\Debug\net8.0\ListCopyDemo1.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\ListCopySolution\ListCopyDemo1\obj\Debug\net8.0\ListCopyDemo1.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\ListCopySolution\ListCopyDemo1\obj\Debug\net8.0\ListCopyDemo1.AssemblyInfo.cs
+D:\CsharpWorkspace\ListCopySolution\ListCopyDemo1\obj\Debug\net8.0\ListCopyDemo1.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\ListCopySolution\ListCopyDemo1\obj\Debug\net8.0\ListCopyDemo1.sourcelink.json
+D:\CsharpWorkspace\ListCopySolution\ListCopyDemo1\obj\Debug\net8.0\ListCopyDemo1.dll
+D:\CsharpWorkspace\ListCopySolution\ListCopyDemo1\obj\Debug\net8.0\refint\ListCopyDemo1.dll
+D:\CsharpWorkspace\ListCopySolution\ListCopyDemo1\obj\Debug\net8.0\ListCopyDemo1.pdb
+D:\CsharpWorkspace\ListCopySolution\ListCopyDemo1\obj\Debug\net8.0\ListCopyDemo1.genruntimeconfig.cache
+D:\CsharpWorkspace\ListCopySolution\ListCopyDemo1\obj\Debug\net8.0\ref\ListCopyDemo1.dll
