@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\TimerFunctionsSolution\TimerFunctionsDemo\bin\Debug\net8.0\TimerFunctionsDemo.exe
+D:\CsharpWorkspace\TimerFunctionsSolution\TimerFunctionsDemo\bin\Debug\net8.0\TimerFunctionsDemo.deps.json
+D:\CsharpWorkspace\TimerFunctionsSolution\TimerFunctionsDemo\bin\Debug\net8.0\TimerFunctionsDemo.runtimeconfig.json
+D:\CsharpWorkspace\TimerFunctionsSolution\TimerFunctionsDemo\bin\Debug\net8.0\TimerFunctionsDemo.dll
+D:\CsharpWorkspace\TimerFunctionsSolution\TimerFunctionsDemo\bin\Debug\net8.0\TimerFunctionsDemo.pdb
+D:\CsharpWorkspace\TimerFunctionsSolution\TimerFunctionsDemo\obj\Debug\net8.0\TimerFunctionsDemo.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\TimerFunctionsSolution\TimerFunctionsDemo\obj\Debug\net8.0\TimerFunctionsDemo.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\TimerFunctionsSolution\TimerFunctionsDemo\obj\Debug\net8.0\TimerFunctionsDemo.AssemblyInfo.cs
+D:\CsharpWorkspace\TimerFunctionsSolution\TimerFunctionsDemo\obj\Debug\net8.0\TimerFunctionsDemo.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\TimerFunctionsSolution\TimerFunctionsDemo\obj\Debug\net8.0\TimerFunctionsDemo.sourcelink.json
+D:\CsharpWorkspace\TimerFunctionsSolution\TimerFunctionsDemo\obj\Debug\net8.0\TimerFunctionsDemo.dll
+D:\CsharpWorkspace\TimerFunctionsSolution\TimerFunctionsDemo\obj\Debug\net8.0\refint\TimerFunctionsDemo.dll
+D:\CsharpWorkspace\TimerFunctionsSolution\TimerFunctionsDemo\obj\Debug\net8.0\TimerFunctionsDemo.pdb
+D:\CsharpWorkspace\TimerFunctionsSolution\TimerFunctionsDemo\obj\Debug\net8.0\TimerFunctionsDemo.genruntimeconfig.cache
+D:\CsharpWorkspace\TimerFunctionsSolution\TimerFunctionsDemo\obj\Debug\net8.0\ref\TimerFunctionsDemo.dll
