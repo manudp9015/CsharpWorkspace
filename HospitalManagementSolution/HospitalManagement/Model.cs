@@ -3,14 +3,25 @@ using System.Collections.Generic;
 
 namespace HospitalManagement
 {
-    internal class Patient
+    public class Patient
     {
         public string Name { get; set; }
         public string Email { get; set; }
-        public string City { get; set; }
+        public string City { get
+            {
+                return City;
+            }
+             set
+            {
+                if(value=="bangalore")
+                {
+
+                }
+            } }
+              
     }
 
-    internal class Doctor
+    public  class Doctor
     {
         public string ID { get; }
         public string Name { get; }
@@ -24,7 +35,7 @@ namespace HospitalManagement
         }
     }
 
-    internal class Appointment
+    public class Appointment
     {
         public string Date { get; }
         public string Time { get; }
