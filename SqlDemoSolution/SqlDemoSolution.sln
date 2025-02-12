@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlDemo1", "SqlDemo1\SqlDemo1.csproj", "{1B88B4A8-E985-4C0B-B4B2-489E0CAD88F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlCrudOperationdemo", "SqlCrudOperationdemo\SqlCrudOperationdemo.csproj", "{12D45A10-84DA-4C76-B723-769D47D9E4CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1B88B4A8-E985-4C0B-B4B2-489E0CAD88F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B88B4A8-E985-4C0B-B4B2-489E0CAD88F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B88B4A8-E985-4C0B-B4B2-489E0CAD88F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B88B4A8-E985-4C0B-B4B2-489E0CAD88F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12D45A10-84DA-4C76-B723-769D47D9E4CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12D45A10-84DA-4C76-B723-769D47D9E4CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12D45A10-84DA-4C76-B723-769D47D9E4CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12D45A10-84DA-4C76-B723-769D47D9E4CB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
