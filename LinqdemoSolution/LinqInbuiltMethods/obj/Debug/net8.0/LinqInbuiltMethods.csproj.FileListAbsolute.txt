@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\LinqdemoSolution\LinqInbuiltMethods\bin\Debug\net8.0\LinqInbuiltMethods.exe
+D:\CsharpWorkspace\LinqdemoSolution\LinqInbuiltMethods\bin\Debug\net8.0\LinqInbuiltMethods.deps.json
+D:\CsharpWorkspace\LinqdemoSolution\LinqInbuiltMethods\bin\Debug\net8.0\LinqInbuiltMethods.runtimeconfig.json
+D:\CsharpWorkspace\LinqdemoSolution\LinqInbuiltMethods\bin\Debug\net8.0\LinqInbuiltMethods.dll
+D:\CsharpWorkspace\LinqdemoSolution\LinqInbuiltMethods\bin\Debug\net8.0\LinqInbuiltMethods.pdb
+D:\CsharpWorkspace\LinqdemoSolution\LinqInbuiltMethods\obj\Debug\net8.0\LinqInbuiltMethods.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\LinqdemoSolution\LinqInbuiltMethods\obj\Debug\net8.0\LinqInbuiltMethods.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\LinqdemoSolution\LinqInbuiltMethods\obj\Debug\net8.0\LinqInbuiltMethods.AssemblyInfo.cs
+D:\CsharpWorkspace\LinqdemoSolution\LinqInbuiltMethods\obj\Debug\net8.0\LinqInbuiltMethods.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\LinqdemoSolution\LinqInbuiltMethods\obj\Debug\net8.0\LinqInbuiltMethods.sourcelink.json
+D:\CsharpWorkspace\LinqdemoSolution\LinqInbuiltMethods\obj\Debug\net8.0\LinqInbuiltMethods.dll
+D:\CsharpWorkspace\LinqdemoSolution\LinqInbuiltMethods\obj\Debug\net8.0\refint\LinqInbuiltMethods.dll
+D:\CsharpWorkspace\LinqdemoSolution\LinqInbuiltMethods\obj\Debug\net8.0\LinqInbuiltMethods.pdb
+D:\CsharpWorkspace\LinqdemoSolution\LinqInbuiltMethods\obj\Debug\net8.0\LinqInbuiltMethods.genruntimeconfig.cache
+D:\CsharpWorkspace\LinqdemoSolution\LinqInbuiltMethods\obj\Debug\net8.0\ref\LinqInbuiltMethods.dll

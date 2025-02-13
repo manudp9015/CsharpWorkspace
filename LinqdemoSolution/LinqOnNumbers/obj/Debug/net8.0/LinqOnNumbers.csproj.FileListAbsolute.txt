@@ -1,0 +1,15 @@
+D:\CsharpWorkspace\LinqdemoSolution\LinqOnNumbers\obj\Debug\net8.0\LinqOnNumbers.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsharpWorkspace\LinqdemoSolution\LinqOnNumbers\obj\Debug\net8.0\LinqOnNumbers.AssemblyInfoInputs.cache
+D:\CsharpWorkspace\LinqdemoSolution\LinqOnNumbers\obj\Debug\net8.0\LinqOnNumbers.AssemblyInfo.cs
+D:\CsharpWorkspace\LinqdemoSolution\LinqOnNumbers\obj\Debug\net8.0\LinqOnNumbers.csproj.CoreCompileInputs.cache
+D:\CsharpWorkspace\LinqdemoSolution\LinqOnNumbers\obj\Debug\net8.0\LinqOnNumbers.sourcelink.json
+D:\CsharpWorkspace\LinqdemoSolution\LinqOnNumbers\bin\Debug\net8.0\LinqOnNumbers.exe
+D:\CsharpWorkspace\LinqdemoSolution\LinqOnNumbers\bin\Debug\net8.0\LinqOnNumbers.deps.json
+D:\CsharpWorkspace\LinqdemoSolution\LinqOnNumbers\bin\Debug\net8.0\LinqOnNumbers.runtimeconfig.json
+D:\CsharpWorkspace\LinqdemoSolution\LinqOnNumbers\bin\Debug\net8.0\LinqOnNumbers.dll
+D:\CsharpWorkspace\LinqdemoSolution\LinqOnNumbers\bin\Debug\net8.0\LinqOnNumbers.pdb
+D:\CsharpWorkspace\LinqdemoSolution\LinqOnNumbers\obj\Debug\net8.0\LinqOnNumbers.dll
+D:\CsharpWorkspace\LinqdemoSolution\LinqOnNumbers\obj\Debug\net8.0\refint\LinqOnNumbers.dll
+D:\CsharpWorkspace\LinqdemoSolution\LinqOnNumbers\obj\Debug\net8.0\LinqOnNumbers.pdb
+D:\CsharpWorkspace\LinqdemoSolution\LinqOnNumbers\obj\Debug\net8.0\LinqOnNumbers.genruntimeconfig.cache
+D:\CsharpWorkspace\LinqdemoSolution\LinqOnNumbers\obj\Debug\net8.0\ref\LinqOnNumbers.dll
