@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqOnNumbers", "LinqOnNumb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqInbuiltMethods", "LinqInbuiltMethods\LinqInbuiltMethods.csproj", "{549E2F8C-A4C8-4C3D-8B80-FE329978364F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqJoindemo", "LinqJoindemo\LinqJoindemo.csproj", "{5A018BE0-8684-41BB-B8D7-12E01DC96AC7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{549E2F8C-A4C8-4C3D-8B80-FE329978364F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{549E2F8C-A4C8-4C3D-8B80-FE329978364F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{549E2F8C-A4C8-4C3D-8B80-FE329978364F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A018BE0-8684-41BB-B8D7-12E01DC96AC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A018BE0-8684-41BB-B8D7-12E01DC96AC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A018BE0-8684-41BB-B8D7-12E01DC96AC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A018BE0-8684-41BB-B8D7-12E01DC96AC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

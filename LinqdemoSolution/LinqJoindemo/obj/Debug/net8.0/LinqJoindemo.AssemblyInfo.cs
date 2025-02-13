@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LinqJoindemo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+84c94f2fd5f9281bfadb00e819663e3c9680e283")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d9acb7e936335d9ab9cb0eb73c8b73ebeb14b531")]
 [assembly: System.Reflection.AssemblyProductAttribute("LinqJoindemo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LinqJoindemo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
