@@ -4,9 +4,9 @@ namespace MutualFundSimulatorApplication
 {
     class Program
     {
-        public static void Main()
+         static void Main()
         {
-            
+
             User _user = new User();
             UserSipInvest _userSip = new UserSipInvest();
             UserLumpsumInvest _userLumpsum = new UserLumpsumInvest();
@@ -16,10 +16,9 @@ namespace MutualFundSimulatorApplication
             Sip _sipInvest = new Sip(_fundBussines, _userSip);
             UserLogin _userLogin = new UserLogin(_repository, _user);
 
-
-
             MutualFundSimulatorUtility mutualFundSimulatorUtility = new MutualFundSimulatorUtility(_userLogin, _user, _fundBussines, _lumpsumInvest, _sipInvest);
             mutualFundSimulatorUtility.MainMenu();
         }
     }
+
 }
