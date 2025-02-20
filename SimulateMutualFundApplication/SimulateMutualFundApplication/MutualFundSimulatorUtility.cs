@@ -22,18 +22,20 @@ namespace MutualFundSimulatorApplication
             _userLogin = userLogin;
             _user = user;
             _fundBussines = fundBussines;
-            _lumpsumInvest =  lumpsumInvest;
+            _lumpsumInvest = lumpsumInvest;
             _sipInvest = sipInvest;
         }
 
         public void MainMenu()
         {
+            Console.WriteLine("hi");
             try
             {
                 if (_fundBussines.IsNavAlreadyUpdated() == false)
                 {
                     _fundBussines.UpdateFundNav();
                 }
+
                 while (true)
                 {
                     Console.WriteLine("\n--- Main Menu ---");
@@ -46,13 +48,25 @@ namespace MutualFundSimulatorApplication
                     {
                         switch (input)
                         {
-                            case 1: _userLogin.LoginUser();SubMenu(); break;
-                            case 2: _userLogin.RegisterUser(); break;
-                            case 3: Console.WriteLine("exiting..."); return;
-                            default: Console.WriteLine("Invalid Input. Give Valid Input"); break;
+                            case 1:
+                                if (_userLogin.LoginUser())
+                                {
+                                    SubMenu();  
+                                }
+                                break;
+                            case 2:
+                                _userLogin.RegisterUser();
+                                break;
+                            case 3:
+                                Console.WriteLine("exiting...");
+                                return;
+                            default:
+                                Console.WriteLine("Invalid Input. Give Valid Input");
+                                break;
                         }
                     }
-                    else Console.WriteLine("Invalid Input. Give Valid Input");
+                    else
+                        Console.WriteLine("Invalid Input. Give Valid Input");
                 }
             }
             catch (Exception ex)
@@ -60,7 +74,7 @@ namespace MutualFundSimulatorApplication
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
         }
-        
+
         public void SubMenu()
         {
             try
@@ -111,7 +125,6 @@ namespace MutualFundSimulatorApplication
             {
                 _fundBussines.UpdateCurrentAmountsForAllInvestments();
                 _fundBussines.DisplayLumpSumPortfolio();
-
                 _fundBussines.IncrementInstallments();
                 _fundBussines.DisplaySIPPortfolio();
             }
@@ -132,7 +145,7 @@ namespace MutualFundSimulatorApplication
                     Console.WriteLine("2: Debt Funds");
                     Console.WriteLine("3: Balanced Funds");
                     Console.WriteLine("4: Index Funds");
-                    Console.WriteLine("5: Liquid Funds");
+                    Console.WriteLine("5: CommodityFundsMenu");
                     Console.WriteLine("6: Exit\n");
 
                     Console.Write("Enter your Choice: ");
@@ -144,7 +157,7 @@ namespace MutualFundSimulatorApplication
                             case 2: DebtFundsMenu(); break;
                             case 3: BalancedFundsMenu(); break;
                             case 4: IndexFundsMenu(); break;
-                            case 5: LiquidFundsMenu(); break;
+                            case 5: CommodityFundsMenu(); break;
                             case 6: Console.WriteLine("exiting..."); return;
                             default: Console.WriteLine("Invalid Input. Give Valid Input"); break;
                         }
@@ -158,28 +171,28 @@ namespace MutualFundSimulatorApplication
             }
         }
 
-        public void LiquidFundsMenu()
+        public void CommodityFundsMenu()
         {
             try
             {
                 while (true)
                 {
-                    Console.WriteLine("\n--- Liquid Funds Menu ---");
-                    Console.WriteLine("1. Overnight Fund");
-                    Console.WriteLine("2. Liquid Fund");
-                    Console.WriteLine("3. Ultra-Short Term Fund");
-                    Console.WriteLine("4. Short-Term Debt Fund");
-                    Console.WriteLine("5. Low Duration Fund");
+                    Console.WriteLine("\n--- Commodity Funds Menu ---");
+                    Console.WriteLine("1. Gold ETF Fund");
+                    Console.WriteLine("2. Silver ETF Fund");
+                    Console.WriteLine("3. Multi-Commodity Fund");
+                    Console.WriteLine("4. Energy Commodity Fund");
+                    Console.WriteLine("5. Agricultural Commodity Fund");
                     Console.WriteLine("6. Back to Fund Menu\n");
                     Console.Write("Enter your choice: ");
 
                     switch (Console.ReadLine())
                     {
-                        case "1": InvestInFund("Overnight Fund"); break;
-                        case "2": InvestInFund("Liquid Fund"); break;
-                        case "3": InvestInFund("Ultra-Short Term Fund"); break;
-                        case "4": InvestInFund("Short-Term Debt Fund"); break;
-                        case "5": InvestInFund("Low Duration Fund"); break;
+                        case "1": InvestInFund("Gold ETF Fund"); break;
+                        case "2": InvestInFund("Silver ETF Fund"); break;
+                        case "3": InvestInFund("Multi-Commodity Fund"); break;
+                        case "4": InvestInFund("Energy Commodity Fund"); break;
+                        case "5": InvestInFund("Agricultural Commodity Fund"); break;
                         case "6": return;
                         default: Console.WriteLine("Invalid choice. Please try again."); break;
                     }
@@ -190,6 +203,7 @@ namespace MutualFundSimulatorApplication
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
         }
+
 
         public void IndexFundsMenu()
         {
@@ -328,10 +342,10 @@ namespace MutualFundSimulatorApplication
             try
             {
                 Console.WriteLine($"You selected: {fundName}");
-                Console.WriteLine("1. View Fund Details");
+                Console.WriteLine("\n1. View Fund Details");
                 Console.WriteLine("2. Lumpsum Invest in this Fund");
                 Console.WriteLine("3. Sip Invest in this Fund");
-                Console.WriteLine("4. Back to Fund Menu");
+                Console.WriteLine("4. Back to Fund Menu\n");
                 Console.Write("Enter your choice: ");
 
                 switch (Console.ReadLine())
@@ -361,13 +375,13 @@ namespace MutualFundSimulatorApplication
                     Console.WriteLine($"\n--- {fundName} Details ---");
                     Console.WriteLine($"Description: {details.description}");
                     Console.WriteLine($"Risk: {details.risk}");
+                    InvestInFund(fundName);
                 }
                 else
                 {
                     Console.WriteLine("Fund details not available.");
                 }
-                Console.WriteLine("\nPress any key to return to the menu...");
-                Console.ReadKey();
+               
             }
             catch (Exception ex)
             {
@@ -380,39 +394,40 @@ namespace MutualFundSimulatorApplication
             try
             {
                 return new Dictionary<string, (string description, string risk)>
-                {
-                    { "Large-Cap Equity Fund", ("This fund focuses on investing in large-cap companies with strong market presence.", "Moderate | Recommended for long-term investors.") },
-                    { "Mid-Cap Equity Fund", ("Invests in mid-cap companies with potential for growth.", "High | Suitable for aggressive investors.") },
-                    { "Small-Cap Equity Fund", ("Targets small-cap companies with high growth potential.", "Very High | Ideal for experienced investors.") },
-                    { "Sectoral/Thematic Fund", ("Focused on specific sectors like IT, Pharma, or Energy.", "High | Suitable for those with sector-specific knowledge.") },
-                    { "Multi-Cap Fund", ("Invests across large-cap, mid-cap, and small-cap stocks.", "Moderate | Offers a balanced portfolio.") },
-                    { "Overnight Fund", ("Invests in overnight securities, providing liquidity and safety.", "Low | Suitable for short-term investors.") },
-                    { "Liquid Fund", ("Invests in short-term debt instruments to provide liquidity with low risk.", "Low | Good for conservative investors.") },
-                    { "Ultra-Short Term Fund", ("Invests in debt and money market instruments with a short-term horizon.", "Low to Moderate | Suitable for conservative investors.") },
-                    { "Short-Term Debt Fund", ("Focuses on debt instruments with a short-term maturity.", "Moderate | Suitable for short-term investors.") },
-                    { "Low Duration Fund", ("Invests in debt instruments with a lower duration, reducing interest rate risk.", "Moderate | Suitable for risk-averse investors.") },
-                    { "Nifty 50 Index Fund", ("Tracks the performance of the Nifty 50 Index, representing the top 50 Indian stocks.", "Moderate | Suitable for passive investors.") },
-                    { "Sensex Index Fund", ("Tracks the performance of the BSE Sensex, representing the top 30 Indian stocks.", "Moderate | Suitable for long-term passive investors.") },
-                    { "Nifty Next 50 Index Fund", ("Tracks the Nifty Next 50 Index, representing 50 companies after the Nifty 50.", "Moderate | Suitable for passive investors.") },
-                    { "Nifty Bank Index Fund", ("Tracks the Nifty Bank Index, representing major Indian banks.", "Moderate | Suitable for those focused on the banking sector.") },
-                    { "Nifty IT Index Fund", ("Tracks the Nifty IT Index, focusing on IT sector companies.", "Moderate | Suitable for those focused on the IT sector.") },
-                    { "Aggressive Hybrid Fund", ("Invests in both equity and debt, with a higher proportion in equity for growth.", "High | Suitable for aggressive investors.") },
-                    { "Conservative Hybrid Fund", ("Invests in both equity and debt, with a higher proportion in debt for stability.", "Low to Moderate | Suitable for conservative investors.") },
-                    { "Dynamic Asset Allocation Fund", ("Adjusts the allocation between equity and debt based on market conditions.", "Moderate | Suitable for investors looking for flexibility.") },
-                    { "Balanced Advantage Fund", ("A flexible fund that dynamically allocates between equity and debt based on valuations.", "Moderate | Suitable for long-term investors.") },
-                    { "Multi-Asset Allocation Fund", ("Invests in multiple asset classes like equity, debt, and commodities.", "Moderate | Suitable for diversification.") },
-                    { "Long Duration Fund", ("Invests in long-term debt instruments, typically with higher interest rate risk.", "High | Suitable for long-term conservative investors.") },
-                    { "Short Duration Fund", ("Invests in debt instruments with a short maturity period, reducing interest rate risk.", "Low to Moderate | Suitable for conservative investors.") },
-                    { "Corporate Bond Fund", ("Invests in corporate bonds, offering higher yields with moderate risk.", "Moderate | Suitable for income-seeking investors.") },
-                    { "Government Bond Fund", ("Invests in government securities, providing stability and low risk.", "Low | Suitable for risk-averse investors.") },
-                    { "Gilt Fund", ("Invests in government securities with longer duration for potentially higher returns.", "Moderate | Suitable for conservative long-term investors.") }
-                };
+        {
+            { "Large-Cap Equity Fund", ("This fund focuses on investing in large-cap companies with strong market presence.", "Moderate | Recommended for long-term investors.") },
+            { "Mid-Cap Equity Fund", ("Invests in mid-cap companies with potential for growth.", "High | Suitable for aggressive investors.") },
+            { "Small-Cap Equity Fund", ("Targets small-cap companies with high growth potential.", "Very High | Ideal for experienced investors.") },
+            { "Sectoral/Thematic Fund", ("Focused on specific sectors like IT, Pharma, or Energy.", "High | Suitable for those with sector-specific knowledge.") },
+            { "Multi-Cap Fund", ("Invests across large-cap, mid-cap, and small-cap stocks.", "Moderate | Offers a balanced portfolio.") },
+            { "Overnight Fund", ("Invests in overnight securities, providing liquidity and safety.", "Low | Suitable for short-term investors.") },
+            { "Liquid Fund", ("Invests in short-term debt instruments to provide liquidity with low risk.", "Low | Good for conservative investors.") },
+            { "Ultra-Short Term Fund", ("Invests in debt and money market instruments with a short-term horizon.", "Low to Moderate | Suitable for conservative investors.") },
+            { "Short-Term Debt Fund", ("Focuses on debt instruments with a short-term maturity.", "Moderate | Suitable for short-term investors.") },
+            { "Low Duration Fund", ("Invests in debt instruments with a lower duration, reducing interest rate risk.", "Moderate | Suitable for risk-averse investors.") },
+            { "Nifty 50 Index Fund", ("Tracks the performance of the Nifty 50 Index, representing the top 50 Indian stocks.", "Moderate | Suitable for passive investors.") },
+            { "Sensex Index Fund", ("Tracks the performance of the BSE Sensex, representing the top 30 Indian stocks.", "Moderate | Suitable for long-term passive investors.") },
+            { "Nifty Next 50 Index Fund", ("Tracks the Nifty Next 50 Index, representing 50 companies after the Nifty 50.", "Moderate | Suitable for passive investors.") },
+            { "Nifty Bank Index Fund", ("Tracks the Nifty Bank Index, representing major Indian banks.", "Moderate | Suitable for those focused on the banking sector.") },
+            { "Nifty IT Index Fund", ("Tracks the Nifty IT Index, focusing on IT sector companies.", "Moderate | Suitable for those focused on the IT sector.") },
+            { "Aggressive Hybrid Fund", ("Invests in both equity and debt, with a higher proportion in equity for growth.", "High | Suitable for aggressive investors.") },
+            { "Conservative Hybrid Fund", ("Invests in both equity and debt, with a higher proportion in debt for stability.", "Low to Moderate | Suitable for conservative investors.") },
+            { "Dynamic Asset Allocation Fund", ("Adjusts the allocation between equity and debt based on market conditions.", "Moderate | Suitable for investors looking for flexibility.") },
+            { "Balanced Advantage Fund", ("A flexible fund that dynamically allocates between equity and debt based on valuations.", "Moderate | Suitable for long-term investors.") },
+            { "Multi-Asset Allocation Fund", ("Invests in multiple asset classes like equity, debt, and commodities.", "Moderate | Suitable for diversification.") },
+            { "Gold ETF Fund", ("Invests in gold-backed assets such as ETFs and gold mining companies.", "Moderate | Suitable for investors seeking an inflation hedge.") },
+            { "Silver ETF Fund", ("Focuses on silver as a commodity, including silver-backed securities.", "Moderate to High | Suitable for commodity-focused investors.") },
+            { "Multi-Commodity Fund", ("Diversified investment in multiple commodities like gold, silver, and metals.", "Moderate | Suitable for diversified commodity exposure.") },
+            { "Energy Commodity Fund", ("Invests in energy-related commodities such as oil, natural gas, and renewables.", "High | Suitable for those interested in energy markets.") },
+            { "Agricultural Commodity Fund", ("Focuses on agricultural commodities like wheat, corn, and soybeans.", "Moderate | Suitable for investors with an interest in agricultural markets.") }
+        };
             }
             catch (Exception)
             {
                 throw;
             }
         }
-        
+
+
     }
 }

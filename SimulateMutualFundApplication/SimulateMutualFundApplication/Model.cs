@@ -37,17 +37,10 @@ namespace MutualFundSimulatorApplication
         public DateTime nextInstallmentDate {  get; set; }
         public DateTime sipEndDate { get; set; }
         public int durationInMonths { get; set; }
-
-        public decimal totalUnits {  get; set; } 
-        
+        public decimal totalUnits {  get; set; }     
         public int totalInstallments {  get; set; }
-
         public decimal totalInvestedAmount { get; set; }
-
         public decimal currentAmount {  get; set; }
-
-
-
 
     }
 

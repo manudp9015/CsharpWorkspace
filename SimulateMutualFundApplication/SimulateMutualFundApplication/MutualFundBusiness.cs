@@ -40,6 +40,10 @@ namespace MutualFundSimulatorApplication
         {
             _repository.UpdateCurrentAmountsForAllInvestments();
         }
+        public void UpdateCurrentAmount(int lumpsumid, decimal updatedCurrentAmount, SqlConnection connection)
+        {
+            _repository.UpdateCurrentAmount(lumpsumid, updatedCurrentAmount, connection);
+        }
         public void IncrementInstallments()
         {
             _repository.IncrementInstallments();    

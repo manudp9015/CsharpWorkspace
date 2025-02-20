@@ -12,12 +12,13 @@ namespace MutualFundSimulatorApplication
     {
 
         private MutualFundRepository _repository;
-       
+        
         private User _user;
         public UserLogin(MutualFundRepository repository, User user)
         {
             _repository = repository;
             _user = user;
+          
         }
         public void RegisterUser()
         {
@@ -175,8 +176,6 @@ namespace MutualFundSimulatorApplication
             }
         }
 
-
-
         private bool ValidateUserName()
         {
             try
@@ -204,7 +203,7 @@ namespace MutualFundSimulatorApplication
             }
         }
 
-        public void LoginUser()
+        public bool LoginUser()
         {
             try
             {
@@ -216,14 +215,18 @@ namespace MutualFundSimulatorApplication
                 if (string.IsNullOrWhiteSpace(_user.userEmail) || string.IsNullOrWhiteSpace(_user.password))
                 {
                     Console.WriteLine("Both email and password are required. Please try again.");
-                    return;
+                    return false;
                 }
                 if (_repository.AuthenticateUser())
                 {
-                    Console.WriteLine("Login successful.");     
+                    Console.WriteLine("Login successful.");
+                    return true;
                 }
                 else
+                {
                     Console.WriteLine("Invalid email or password.");
+                    return false;
+                }
             }
             catch (Exception)
             {
