@@ -1,5 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.IdentityModel.Tokens;
+using MutualFundSimulatorApplication.Business;
+using MutualFundSimulatorApplication.Model;
 using System;
 using System.ClientModel.Primitives;
 using System.Collections.Generic;
@@ -28,21 +30,18 @@ namespace MutualFundSimulatorApplication
 
         public void MainMenu()
         {
-            Console.WriteLine("hi");
             try
             {
                 if (_fundBussines.IsNavAlreadyUpdated() == false)
                 {
                     _fundBussines.UpdateFundNav();
                 }
-
                 while (true)
                 {
                     Console.WriteLine("\n--- Main Menu ---");
                     Console.WriteLine("1: Login User");
                     Console.WriteLine("2: Register User");
                     Console.WriteLine("3: Exit\n");
-
                     Console.Write("Enter your Choice: ");
                     if (int.TryParse(Console.ReadLine(), out int input))
                     {
@@ -54,15 +53,9 @@ namespace MutualFundSimulatorApplication
                                     SubMenu();  
                                 }
                                 break;
-                            case 2:
-                                _userLogin.RegisterUser();
-                                break;
-                            case 3:
-                                Console.WriteLine("exiting...");
-                                return;
-                            default:
-                                Console.WriteLine("Invalid Input. Give Valid Input");
-                                break;
+                            case 2: _userLogin.RegisterUser(); break;
+                            case 3: Console.WriteLine("exiting..."); return;
+                            default: Console.WriteLine("Invalid Input. Give Valid Input"); break;
                         }
                     }
                     else
@@ -85,20 +78,36 @@ namespace MutualFundSimulatorApplication
                     Console.WriteLine("1: Portfolio");
                     Console.WriteLine("2: SipOrLumpsum");
                     Console.WriteLine("3: GetUpcomingSIPInstallments");
-                    Console.WriteLine("4: Exit\n");
+                    Console.WriteLine("4: Add Money to Wallet"); // New option
+                    Console.WriteLine("5: Exit");
                     Console.Write("Enter your Choice: ");
                     if (int.TryParse(Console.ReadLine(), out int input))
                     {
                         switch (input)
                         {
-                            case 1: UserPortfolio(); break;
-                            case 2: SipOrLumpsum(); break;
-                            case 3: _fundBussines.GetUpcomingSIPInstallments(); break;
-                            case 4: return;
-                            default: Console.WriteLine("Invalid Input. Give Valid Input"); break;
+                            case 1:
+                                UserPortfolio();
+                                break;
+                            case 2:
+                                SipOrLumpsum();
+                                break;
+                            case 3:
+                                _fundBussines.GetUpcomingSIPInstallments();
+                                break;
+                            case 4:
+                                AddMoneyToWallet();
+                                break;
+                            case 5:
+                                return;
+                            default:
+                                Console.WriteLine("Invalid Input. Give Valid Input");
+                                break;
                         }
                     }
-                    else Console.WriteLine("Invalid Input. Give Valid Input");
+                    else
+                    {
+                        Console.WriteLine("Invalid Input. Give Valid Input");
+                    }
                 }
             }
             catch (Exception ex)
@@ -107,6 +116,58 @@ namespace MutualFundSimulatorApplication
             }
         }
 
+        private void AddMoneyToWallet()
+        {
+            try
+            {
+                Console.Write("Enter amount to add to wallet (minimum ₹1000): ");
+                if (decimal.TryParse(Console.ReadLine(), out decimal amount) && amount >= 1000)
+                {
+                    _fundBussines.AddMoneyToWallet(amount);
+                }
+                else
+                {
+                    Console.WriteLine("Invalid amount. Minimum amount is ₹1000.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+            }
+        }
+        private void UserPortfolio()
+        {
+            try
+            {
+                _fundBussines.UpdateCurrentAmountsForAllInvestments();
+                decimal lumpSumProfitLoss = _fundBussines.DisplayLumpSumPortfolio();
+                _fundBussines.IncrementInstallments();
+                decimal sipProfitLoss = _fundBussines.DisplaySIPPortfolio();
+                decimal totalProfitLoss = lumpSumProfitLoss + sipProfitLoss;
+
+                Console.WriteLine($"\nWallet Balance: ₹ {_user.walletBalance}");
+
+                Console.Write("\nOverall Profit/Loss: ");
+                if (totalProfitLoss >= 0)
+                {
+                    Console.BackgroundColor = ConsoleColor.Green;
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.Write($"+{totalProfitLoss}");
+                }
+                else
+                {
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write($"-{Math.Abs(totalProfitLoss)}");
+                }
+                Console.ResetColor();
+                Console.WriteLine();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+            }
+        }
         private void SipOrLumpsum()
         {
             try
@@ -118,22 +179,6 @@ namespace MutualFundSimulatorApplication
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
         }
-
-        private void UserPortfolio()
-        {
-            try
-            {
-                _fundBussines.UpdateCurrentAmountsForAllInvestments();
-                _fundBussines.DisplayLumpSumPortfolio();
-                _fundBussines.IncrementInstallments();
-                _fundBussines.DisplaySIPPortfolio();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
-            }
-        }
-
         public void FundMenu()
         {
             try

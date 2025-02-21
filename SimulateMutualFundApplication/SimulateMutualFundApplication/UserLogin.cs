@@ -1,4 +1,7 @@
 ﻿using Azure;
+using Microsoft.Data.SqlClient;
+using MutualFundSimulatorApplication.Model;
+using MutualFundSimulatorApplication.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -219,6 +222,17 @@ namespace MutualFundSimulatorApplication
                 }
                 if (_repository.AuthenticateUser())
                 {
+                    using (SqlConnection connection = new SqlConnection(_repository.ConnectionString))
+                    {
+                        connection.Open();
+                        string query = "SELECT walletbalance FROM Users WHERE useremail = @useremail";
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@useremail", _user.userEmail);
+                            object result = command.ExecuteScalar();
+                            _user.walletBalance = result != null && result != DBNull.Value ? Convert.ToDecimal(result) : 0m; // Handle DBNull
+                        }
+                    }
                     Console.WriteLine("Login successful.");
                     return true;
                 }
@@ -228,9 +242,10 @@ namespace MutualFundSimulatorApplication
                     return false;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                return false;
             }
         }
 

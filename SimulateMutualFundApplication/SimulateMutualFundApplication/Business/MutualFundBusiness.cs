@@ -1,11 +1,12 @@
 ﻿using Microsoft.Data.SqlClient;
+using MutualFundSimulatorApplication.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MutualFundSimulatorApplication
+namespace MutualFundSimulatorApplication.Business
 {
     internal class MutualFundBusiness
     {
@@ -26,7 +27,7 @@ namespace MutualFundSimulatorApplication
         public void SaveLumpsumInvest()
         {
             _repository.SaveLumpsumInvest();
-                
+
         }
         public void SaveSIPInvest()
         {
@@ -35,7 +36,7 @@ namespace MutualFundSimulatorApplication
         public decimal GetFundPrice(string fundName)
         {
             return _repository.GetFundPrice(fundName);
-        }   
+        }
         public void UpdateCurrentAmountsForAllInvestments()
         {
             _repository.UpdateCurrentAmountsForAllInvestments();
@@ -46,16 +47,16 @@ namespace MutualFundSimulatorApplication
         }
         public void IncrementInstallments()
         {
-            _repository.IncrementInstallments();    
+            _repository.IncrementInstallments();
         }
 
-        public void DisplayLumpSumPortfolio()
+        public decimal DisplayLumpSumPortfolio()
         {
-            _repository.DisplayLumpSumPortfolio();
+            return _repository.DisplayLumpSumPortfolio();
         }
-        public void DisplaySIPPortfolio()
+        public decimal DisplaySIPPortfolio()
         {
-            _repository.DisplaySIPPortfolio();
+            return _repository.DisplaySIPPortfolio();
         }
         public void GetUpcomingSIPInstallments()
         {
@@ -73,6 +74,17 @@ namespace MutualFundSimulatorApplication
         public bool IsNavAlreadyUpdated()
         {
             return _repository.IsNavAlreadyUpdated();
+        }
+
+        public void SaveExpense(string fundName, decimal expenseAmount, DateTime expenseDate)
+
+        {
+            _repository.SaveExpense(fundName, expenseAmount, expenseDate);
+        }
+
+        public void AddMoneyToWallet(decimal amount)
+        {
+            _repository.AddMoneyToWallet(amount);
         }
     }
 }
