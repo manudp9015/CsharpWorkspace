@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MutualFundSimulatorApplication")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3a007918179a80703d674882d34e909e3a9bad01")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9930fba53bf762b157774d657cb6022324ceba03")]
 [assembly: System.Reflection.AssemblyProductAttribute("MutualFundSimulatorApplication")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MutualFundSimulatorApplication")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
