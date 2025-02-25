@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MutualFundSimulatorApplication.Model
 {
-
     internal class User
     {
         public string name { get; set; }
@@ -15,6 +10,7 @@ namespace MutualFundSimulatorApplication.Model
         public string userEmail { get; set; }
         public string password { get; set; }
         public decimal walletBalance { get; set; }
+        public static DateTime CurrentDate { get; set; }
     }
 
     internal class UserLumpsumInvest
@@ -22,11 +18,8 @@ namespace MutualFundSimulatorApplication.Model
         public string fundName { get; set; }
         public decimal quantity { get; set; }
         public decimal investedAmount { get; set; }
-        public int durationInMonths { get; set; }
         public DateTime lumpsumStartDate { get; set; }
-        public DateTime lumpsumEndDate { get; set; }
         public decimal currentAmount { get; set; }
-
     }
 
     internal class UserSipInvest
@@ -41,7 +34,5 @@ namespace MutualFundSimulatorApplication.Model
         public int totalInstallments { get; set; }
         public decimal totalInvestedAmount { get; set; }
         public decimal currentAmount { get; set; }
-
     }
-
 }
