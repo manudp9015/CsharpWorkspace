@@ -1,28 +1,25 @@
-﻿using Azure;
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
 using MutualFundSimulatorApplication.Model;
 using MutualFundSimulatorApplication.Repository;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace MutualFundSimulatorApplication
 {
     internal class UserLogin
     {
-
         private MutualFundRepository _repository;
-        
         private User _user;
+
         public UserLogin(MutualFundRepository repository, User user)
         {
             _repository = repository;
             _user = user;
-          
         }
+
+        /// <summary>
+        /// Registers a new user by collecting and validating their details, then saving them to the database.
+        /// </summary>
         public void RegisterUser()
         {
             try
@@ -43,7 +40,7 @@ namespace MutualFundSimulatorApplication
                     return;
                 }
                 string pattern;
-                bool validMail = ValidateUserMail( out pattern);
+                bool validMail = ValidateUserMail(out pattern);
                 if (!validMail)
                 {
                     return;
@@ -53,8 +50,10 @@ namespace MutualFundSimulatorApplication
                 {
                     return;
                 }
-                _repository.SaveUserDetails();
-                Console.WriteLine("User registration completed successfully!");
+                if (_repository.SaveUserDetails())
+                {
+                    Console.WriteLine("User registration completed successfully!");
+                }
             }
             catch (Exception ex)
             {
@@ -62,7 +61,11 @@ namespace MutualFundSimulatorApplication
             }
         }
 
-        private  bool ValidateUserPassword()
+        /// <summary>
+        /// Validates the user's password, ensuring it is not empty, with a maximum of 3 attempts.
+        /// </summary>
+        /// <returns></returns>
+        private bool ValidateUserPassword()
         {
             try
             {
@@ -89,11 +92,15 @@ namespace MutualFundSimulatorApplication
             }
         }
 
-        private  bool ValidateUserMail(out string pattern)
+        /// <summary>
+        /// Validates the user's email address, ensuring it is a valid Gmail address, with a maximum of 3 attempts.
+        /// </summary>
+        /// <param name="pattern"></param>
+        /// <returns></returns>
+        private bool ValidateUserMail(out string pattern)
         {
             try
             {
-                
                 int emailAttempts = 0;
                 do
                 {
@@ -118,7 +125,11 @@ namespace MutualFundSimulatorApplication
             }
         }
 
-        private  bool ValidateUserMobilNumber()
+        /// <summary>
+        /// Validates the user's mobile number, ensuring it is a 10-digit number, with a maximum of 3 attempts.
+        /// </summary>
+        /// <returns></returns>
+        private bool ValidateUserMobilNumber()
         {
             try
             {
@@ -145,13 +156,16 @@ namespace MutualFundSimulatorApplication
             }
         }
 
+        /// <summary>
+        /// Validates the user's age, ensuring it is 18 or older, with a maximum of 3 attempts.
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateUserAge()
         {
             try
             {
                 int ageAttempts = 0;
                 int age;
-
                 while (ageAttempts < 3)
                 {
                     Console.Write("Enter your age: ");
@@ -160,7 +174,7 @@ namespace MutualFundSimulatorApplication
                     {
                         ageAttempts++;
                         Console.WriteLine("Invalid input. Please enter a valid numeric age.");
-                        continue; 
+                        continue;
                     }
                     if (age < 18)
                     {
@@ -179,6 +193,10 @@ namespace MutualFundSimulatorApplication
             }
         }
 
+        /// <summary>
+        /// Validates the user's name, ensuring it is alphabetic and not empty, with a maximum of 3 attempts.
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateUserName()
         {
             try
@@ -206,6 +224,10 @@ namespace MutualFundSimulatorApplication
             }
         }
 
+        /// <summary>
+        /// Authenticates a user by validating email and password, retrieving wallet balance on success.
+        /// </summary>
+        /// <returns></returns>
         public bool LoginUser()
         {
             try
@@ -230,9 +252,10 @@ namespace MutualFundSimulatorApplication
                         {
                             command.Parameters.AddWithValue("@useremail", _user.userEmail);
                             object result = command.ExecuteScalar();
-                            _user.walletBalance = result != null && result != DBNull.Value ? Convert.ToDecimal(result) : 0m; // Handle DBNull
+                            _user.walletBalance = result != null && result != DBNull.Value ? Convert.ToDecimal(result) : 0m;
                         }
                     }
+                    _repository.IncrementInstallments();
                     Console.WriteLine("Login successful.");
                     return true;
                 }
@@ -248,6 +271,5 @@ namespace MutualFundSimulatorApplication
                 return false;
             }
         }
-
     }
 }

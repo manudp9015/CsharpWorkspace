@@ -1,14 +1,8 @@
 ﻿using Microsoft.Data.SqlClient;
-using Microsoft.IdentityModel.Tokens;
 using MutualFundSimulatorApplication.Business;
 using MutualFundSimulatorApplication.Model;
 using System;
-using System.ClientModel.Primitives;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace MutualFundSimulatorApplication
 {
@@ -19,6 +13,7 @@ namespace MutualFundSimulatorApplication
         private MutualFundBusiness _fundBussines;
         private Lumpsum _lumpsumInvest;
         private Sip _sipInvest;
+
         public MutualFundSimulatorUtility(UserLogin userLogin, User user, MutualFundBusiness fundBussines, Lumpsum lumpsumInvest, Sip sipInvest)
         {
             _userLogin = userLogin;
@@ -28,11 +23,15 @@ namespace MutualFundSimulatorApplication
             _sipInvest = sipInvest;
         }
 
+        /// <summary>
+        /// Displays the main menu, allowing users to login, register, or exit the application.
+        /// </summary>
         public void MainMenu()
         {
+            //Console.WriteLine("hii");
             try
             {
-                if (_fundBussines.IsNavAlreadyUpdated() == false)
+                if (!_fundBussines.IsNavAlreadyUpdated())
                 {
                     _fundBussines.UpdateFundNav();
                 }
@@ -50,7 +49,7 @@ namespace MutualFundSimulatorApplication
                             case 1:
                                 if (_userLogin.LoginUser())
                                 {
-                                    SubMenu();  
+                                    SubMenu();
                                 }
                                 break;
                             case 2: _userLogin.RegisterUser(); break;
@@ -68,6 +67,9 @@ namespace MutualFundSimulatorApplication
             }
         }
 
+        /// <summary>
+        /// Displays the sub-menu for logged-in users, showing portfolio, investment options, and wallet management.
+        /// </summary>
         public void SubMenu()
         {
             try
@@ -75,10 +77,10 @@ namespace MutualFundSimulatorApplication
                 while (true)
                 {
                     Console.WriteLine("\n--- Sub Menu ---");
-                    Console.WriteLine("1: Portfolio");
-                    Console.WriteLine("2: SipOrLumpsum");
-                    Console.WriteLine("3: GetUpcomingSIPInstallments");
-                    Console.WriteLine("4: Add Money to Wallet"); // New option
+                    Console.WriteLine("1: Add Money to Wallet");
+                    Console.WriteLine("2: Portfolio");
+                    Console.WriteLine("3: SipOrLumpsum");
+                    Console.WriteLine("4: GetUpcomingSIPInstallments");
                     Console.WriteLine("5: Exit");
                     Console.Write("Enter your Choice: ");
                     if (int.TryParse(Console.ReadLine(), out int input))
@@ -86,16 +88,16 @@ namespace MutualFundSimulatorApplication
                         switch (input)
                         {
                             case 1:
-                                UserPortfolio();
+                                AddMoneyToWallet();
                                 break;
                             case 2:
-                                SipOrLumpsum();
+                                UserPortfolio(); 
                                 break;
                             case 3:
-                                _fundBussines.GetUpcomingSIPInstallments();
+                                SipOrLumpsum();
                                 break;
                             case 4:
-                                AddMoneyToWallet();
+                                _fundBussines.GetUpcomingSIPInstallments();
                                 break;
                             case 5:
                                 return;
@@ -116,6 +118,9 @@ namespace MutualFundSimulatorApplication
             }
         }
 
+        /// <summary>
+        /// Allows the user to add money to their wallet, ensuring a minimum of ₹1000.
+        /// </summary>
         private void AddMoneyToWallet()
         {
             try
@@ -135,13 +140,59 @@ namespace MutualFundSimulatorApplication
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
         }
+
+        /// <summary>
+        /// Displays the user's investment portfolio, including lump sum and SIP details with profit/loss.
+        /// </summary>
         private void UserPortfolio()
         {
             try
             {
+                using (SqlConnection connection = new SqlConnection(_fundBussines.GetConnectionString()))
+                {
+                    connection.Open();
+                    string query = @"
+                        SELECT fundname, investedamount, lumpsumstartdate 
+                        FROM UserLumpsumPortfolio 
+                        WHERE useremail = @useremail AND lumpsumstartdate <= @today AND deducted = 0";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@useremail", _user.userEmail);
+                        command.Parameters.AddWithValue("@today", User.CurrentDate);
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                string fundName = reader.GetString(0);
+                                decimal investedAmount = reader.GetDecimal(1);
+                                DateTime startDate = reader.GetDateTime(2);
+                                decimal originalAmount = investedAmount / (1 - new MutualFundSimulatorUtility(null, null, null, null, null).GetFundDetails()[fundName].expenseRatio / 100m);
+
+                                if (_user.walletBalance >= originalAmount)
+                                {
+                                    _fundBussines.AddMoneyToWallet(-originalAmount);
+                                    _fundBussines.SaveExpense(fundName, originalAmount - investedAmount, startDate);
+
+                                    string updateQuery = "UPDATE UserLumpsumPortfolio SET deducted = 1 WHERE useremail = @useremail AND fundname = @fundname AND lumpsumstartdate = @startdate";
+                                    using (SqlCommand updateCommand = new SqlCommand(updateQuery, connection))
+                                    {
+                                        updateCommand.Parameters.AddWithValue("@useremail", _user.userEmail);
+                                        updateCommand.Parameters.AddWithValue("@fundname", fundName);
+                                        updateCommand.Parameters.AddWithValue("@startdate", startDate);
+                                        updateCommand.ExecuteNonQuery();
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"Insufficient funds for lump sum in {fundName}. Required: ₹{originalAmount}, Available: ₹{_user.walletBalance}");
+                                }
+                            }
+                        }
+                    }
+                }
+
                 _fundBussines.UpdateCurrentAmountsForAllInvestments();
                 decimal lumpSumProfitLoss = _fundBussines.DisplayLumpSumPortfolio();
-                _fundBussines.IncrementInstallments();
                 decimal sipProfitLoss = _fundBussines.DisplaySIPPortfolio();
                 decimal totalProfitLoss = lumpSumProfitLoss + sipProfitLoss;
 
@@ -152,13 +203,13 @@ namespace MutualFundSimulatorApplication
                 {
                     Console.BackgroundColor = ConsoleColor.Green;
                     Console.ForegroundColor = ConsoleColor.Black;
-                    Console.Write($"+{totalProfitLoss}");
+                    Console.Write($"+{totalProfitLoss:F4}");
                 }
                 else
                 {
                     Console.BackgroundColor = ConsoleColor.Red;
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.Write($"-{Math.Abs(totalProfitLoss)}");
+                    Console.Write($"-{Math.Abs(totalProfitLoss):F4}");
                 }
                 Console.ResetColor();
                 Console.WriteLine();
@@ -168,6 +219,10 @@ namespace MutualFundSimulatorApplication
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
         }
+
+        /// <summary>
+        /// Navigates to the fund menu for SIP or lump sum investment options.
+        /// </summary>
         private void SipOrLumpsum()
         {
             try
@@ -179,6 +234,10 @@ namespace MutualFundSimulatorApplication
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
         }
+
+        /// <summary>
+        /// Displays the fund category menu, allowing users to select a fund type for investment.
+        /// </summary>
         public void FundMenu()
         {
             try
@@ -203,7 +262,7 @@ namespace MutualFundSimulatorApplication
                             case 3: BalancedFundsMenu(); break;
                             case 4: IndexFundsMenu(); break;
                             case 5: CommodityFundsMenu(); break;
-                            case 6: Console.WriteLine("exiting..."); return;
+                            case 6: return;
                             default: Console.WriteLine("Invalid Input. Give Valid Input"); break;
                         }
                     }
@@ -216,6 +275,9 @@ namespace MutualFundSimulatorApplication
             }
         }
 
+        /// <summary>
+        /// Displays the commodity funds menu, allowing selection of specific commodity funds.
+        /// </summary>
         public void CommodityFundsMenu()
         {
             try
@@ -249,7 +311,9 @@ namespace MutualFundSimulatorApplication
             }
         }
 
-
+        /// <summary>
+        /// Displays the index funds menu, allowing selection of specific index funds.
+        /// </summary>
         public void IndexFundsMenu()
         {
             try
@@ -283,6 +347,9 @@ namespace MutualFundSimulatorApplication
             }
         }
 
+        /// <summary>
+        /// Displays the balanced funds menu, allowing selection of specific balanced funds.
+        /// </summary>
         public void BalancedFundsMenu()
         {
             try
@@ -316,6 +383,9 @@ namespace MutualFundSimulatorApplication
             }
         }
 
+        /// <summary>
+        /// Displays the debt funds menu, allowing selection of specific debt funds.
+        /// </summary>
         public void DebtFundsMenu()
         {
             try
@@ -349,6 +419,9 @@ namespace MutualFundSimulatorApplication
             }
         }
 
+        /// <summary>
+        /// Displays the equity funds menu, allowing selection of specific equity funds.
+        /// </summary>
         public void EquityFundsMenu()
         {
             try
@@ -382,6 +455,10 @@ namespace MutualFundSimulatorApplication
             }
         }
 
+        /// <summary>
+        /// Provides options to view details or invest in a selected fund.
+        /// </summary>
+        /// <param name="fundName"></param>
         public void InvestInFund(string fundName)
         {
             try
@@ -408,6 +485,53 @@ namespace MutualFundSimulatorApplication
             }
         }
 
+        /// <summary>
+        /// Returns a dictionary of fund details including description, risk, and expense ratio.
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<string, (string description, string risk, decimal expenseRatio)> GetFundDetails()
+        {
+            try
+            {
+                return new Dictionary<string, (string description, string risk, decimal expenseRatio)>
+                {
+                    { "Large-Cap Equity Fund", ("Invests in large-cap companies with strong market presence.", "Moderate", 0.070m) },
+                    { "Mid-Cap Equity Fund", ("Invests in mid-cap companies with growth potential.", "High", 0.075m) },
+                    { "Small-Cap Equity Fund", ("Targets small-cap companies with high growth.", "Very High", 0.080m) },
+                    { "Sectoral/Thematic Fund", ("Focused on specific sectors like IT or Pharma.", "High", 0.072m) },
+                    { "Multi-Cap Fund", ("Invests across large, mid, and small-cap stocks.", "Moderate", 0.068m) },
+                    { "Overnight Fund", ("Invests in overnight securities for safety.", "Low", 0.010m) },
+                    { "Liquid Fund", ("Short-term debt instruments for liquidity.", "Low", 0.015m) },
+                    { "Ultra-Short Term Fund", ("Debt with short-term horizon.", "Low to Moderate", 0.020m) },
+                    { "Short-Term Debt Fund", ("Debt with short maturity.", "Moderate", 0.025m) },
+                    { "Low Duration Fund", ("Low duration debt instruments.", "Moderate", 0.030m) },
+                    { "Nifty 50 Index Fund", ("Tracks Nifty 50 Index.", "Moderate", 0.035m) },
+                    { "Sensex Index Fund", ("Tracks BSE Sensex.", "Moderate", 0.038m) },
+                    { "Nifty Next 50 Index Fund", ("Tracks Nifty Next 50.", "Moderate", 0.040m) },
+                    { "Nifty Bank Index Fund", ("Tracks Nifty Bank Index.", "Moderate", 0.045m) },
+                    { "Nifty IT Index Fund", ("Tracks Nifty IT Index.", "Moderate", 0.050m) },
+                    { "Aggressive Hybrid Fund", ("Higher equity allocation.", "High", 0.060m) },
+                    { "Conservative Hybrid Fund", ("Higher debt allocation.", "Low to Moderate", 0.055m) },
+                    { "Dynamic Asset Allocation Fund", ("Flexible equity-debt allocation.", "Moderate", 0.062m) },
+                    { "Balanced Advantage Fund", ("Dynamic allocation based on valuations.", "Moderate", 0.065m) },
+                    { "Multi-Asset Allocation Fund", ("Multiple asset classes.", "Moderate", 0.070m) },
+                    { "Gold ETF Fund", ("Gold-backed assets.", "Moderate", 0.075m) },
+                    { "Silver ETF Fund", ("Silver-backed securities.", "Moderate to High", 0.080m) },
+                    { "Multi-Commodity Fund", ("Diversified commodities.", "Moderate", 0.082m) },
+                    { "Energy Commodity Fund", ("Energy commodities like oil.", "High", 0.070m) },
+                    { "Agricultural Commodity Fund", ("Agricultural commodities.", "Moderate", 0.078m) }
+                };
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Displays detailed information about a selected fund and offers investment options.
+        /// </summary>
+        /// <param name="fundName"></param>
         public void ViewFundDetails(string fundName)
         {
             try
@@ -420,59 +544,18 @@ namespace MutualFundSimulatorApplication
                     Console.WriteLine($"\n--- {fundName} Details ---");
                     Console.WriteLine($"Description: {details.description}");
                     Console.WriteLine($"Risk: {details.risk}");
+                    Console.WriteLine($"Expense Ratio: {details.expenseRatio}% per month");
                     InvestInFund(fundName);
                 }
                 else
                 {
                     Console.WriteLine("Fund details not available.");
                 }
-               
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
         }
-
-        private Dictionary<string, (string description, string risk)> GetFundDetails()
-        {
-            try
-            {
-                return new Dictionary<string, (string description, string risk)>
-        {
-            { "Large-Cap Equity Fund", ("This fund focuses on investing in large-cap companies with strong market presence.", "Moderate | Recommended for long-term investors.") },
-            { "Mid-Cap Equity Fund", ("Invests in mid-cap companies with potential for growth.", "High | Suitable for aggressive investors.") },
-            { "Small-Cap Equity Fund", ("Targets small-cap companies with high growth potential.", "Very High | Ideal for experienced investors.") },
-            { "Sectoral/Thematic Fund", ("Focused on specific sectors like IT, Pharma, or Energy.", "High | Suitable for those with sector-specific knowledge.") },
-            { "Multi-Cap Fund", ("Invests across large-cap, mid-cap, and small-cap stocks.", "Moderate | Offers a balanced portfolio.") },
-            { "Overnight Fund", ("Invests in overnight securities, providing liquidity and safety.", "Low | Suitable for short-term investors.") },
-            { "Liquid Fund", ("Invests in short-term debt instruments to provide liquidity with low risk.", "Low | Good for conservative investors.") },
-            { "Ultra-Short Term Fund", ("Invests in debt and money market instruments with a short-term horizon.", "Low to Moderate | Suitable for conservative investors.") },
-            { "Short-Term Debt Fund", ("Focuses on debt instruments with a short-term maturity.", "Moderate | Suitable for short-term investors.") },
-            { "Low Duration Fund", ("Invests in debt instruments with a lower duration, reducing interest rate risk.", "Moderate | Suitable for risk-averse investors.") },
-            { "Nifty 50 Index Fund", ("Tracks the performance of the Nifty 50 Index, representing the top 50 Indian stocks.", "Moderate | Suitable for passive investors.") },
-            { "Sensex Index Fund", ("Tracks the performance of the BSE Sensex, representing the top 30 Indian stocks.", "Moderate | Suitable for long-term passive investors.") },
-            { "Nifty Next 50 Index Fund", ("Tracks the Nifty Next 50 Index, representing 50 companies after the Nifty 50.", "Moderate | Suitable for passive investors.") },
-            { "Nifty Bank Index Fund", ("Tracks the Nifty Bank Index, representing major Indian banks.", "Moderate | Suitable for those focused on the banking sector.") },
-            { "Nifty IT Index Fund", ("Tracks the Nifty IT Index, focusing on IT sector companies.", "Moderate | Suitable for those focused on the IT sector.") },
-            { "Aggressive Hybrid Fund", ("Invests in both equity and debt, with a higher proportion in equity for growth.", "High | Suitable for aggressive investors.") },
-            { "Conservative Hybrid Fund", ("Invests in both equity and debt, with a higher proportion in debt for stability.", "Low to Moderate | Suitable for conservative investors.") },
-            { "Dynamic Asset Allocation Fund", ("Adjusts the allocation between equity and debt based on market conditions.", "Moderate | Suitable for investors looking for flexibility.") },
-            { "Balanced Advantage Fund", ("A flexible fund that dynamically allocates between equity and debt based on valuations.", "Moderate | Suitable for long-term investors.") },
-            { "Multi-Asset Allocation Fund", ("Invests in multiple asset classes like equity, debt, and commodities.", "Moderate | Suitable for diversification.") },
-            { "Gold ETF Fund", ("Invests in gold-backed assets such as ETFs and gold mining companies.", "Moderate | Suitable for investors seeking an inflation hedge.") },
-            { "Silver ETF Fund", ("Focuses on silver as a commodity, including silver-backed securities.", "Moderate to High | Suitable for commodity-focused investors.") },
-            { "Multi-Commodity Fund", ("Diversified investment in multiple commodities like gold, silver, and metals.", "Moderate | Suitable for diversified commodity exposure.") },
-            { "Energy Commodity Fund", ("Invests in energy-related commodities such as oil, natural gas, and renewables.", "High | Suitable for those interested in energy markets.") },
-            { "Agricultural Commodity Fund", ("Focuses on agricultural commodities like wheat, corn, and soybeans.", "Moderate | Suitable for investors with an interest in agricultural markets.") }
-        };
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-
     }
 }

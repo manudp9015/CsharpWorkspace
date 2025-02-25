@@ -23,6 +23,10 @@ namespace MutualFundSimulatorApplication.Repository
             _userSip = userSip;
         }
 
+        /// <summary>
+        /// Verifies user details against the database by checking email and password match.
+        /// </summary>
+        /// <returns></returns>
         public bool AuthenticateUser()
         {
             try
@@ -47,38 +51,87 @@ namespace MutualFundSimulatorApplication.Repository
             }
         }
 
-        public void SaveUserDetails()
+        /// <summary>
+        /// Saves a new user's details into the Users table with an initial wallet balance provided by the user.
+        /// </summary>
+        /// <returns></returns>
+        public bool SaveUserDetails()
         {
             try
             {
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     connection.Open();
-                    string query = "INSERT INTO Users (useremail, username, userage, userpassword, userphone, walletbalance) VALUES (@useremail, @username, @userage, @userpassword, @userphone, @walletbalance)";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    string checkQuery = "SELECT COUNT(*) FROM Users WHERE useremail = @useremail";
+                    using (SqlCommand checkCommand = new SqlCommand(checkQuery, connection))
+                    {
+                        checkCommand.Parameters.AddWithValue("@useremail", _user.userEmail);
+                        int existingCount = (int)checkCommand.ExecuteScalar();
+                        if (existingCount > 0)
+                        {
+                            Console.WriteLine($"Error: The email '{_user.userEmail}' is already registered. Please use a different email.");
+                            return false;
+                        }
+                    }
+
+                    decimal initialBalance = 0m;
+                    int attempts = 0;
+                    bool validBalance = false;
+
+                    while (attempts < 3 && !validBalance)
+                    {
+                        Console.Write("Enter initial wallet balance (minimum ₹1000): ");
+                        if (decimal.TryParse(Console.ReadLine(), out initialBalance) && initialBalance >= 1000)
+                        {
+                            validBalance = true;
+                        }
+                        else
+                        {
+                            attempts++;
+                            if (attempts < 3)
+                                Console.WriteLine($"Invalid amount. Please enter at least ₹1000.");
+                            else
+                                Console.WriteLine($"Maximum attempts reached. Registration cancelled due to invalid wallet balance.");
+                        }
+                    }
+
+                    if (!validBalance)
+                        return false;
+
+                    string insertQuery = @"INSERT INTO Users (useremail, username, userage, userpassword, userphone, walletbalance) 
+                                           VALUES (@useremail, @username, @userage, @userpassword, @userphone, @walletbalance)";
+                    using (SqlCommand command = new SqlCommand(insertQuery, connection))
                     {
                         command.Parameters.AddWithValue("@useremail", _user.userEmail);
                         command.Parameters.AddWithValue("@username", _user.name);
                         command.Parameters.AddWithValue("@userage", _user.age);
                         command.Parameters.AddWithValue("@userpassword", _user.password);
                         command.Parameters.AddWithValue("@userphone", _user.phoneNumber);
-                        command.Parameters.AddWithValue("@walletbalance", 0m); // Initialize walletbalance
+                        command.Parameters.AddWithValue("@walletbalance", initialBalance);
 
                         int rowsAffected = command.ExecuteNonQuery();
-                        if (rowsAffected > 0)
-                            Console.WriteLine("User data inserted successfully!");
-                        else
+                        if (rowsAffected <= 0)
+                        {
                             Console.WriteLine("Failed to insert user data.");
+                            return false;
+                        }
+                        _user.walletBalance = initialBalance;
+                        return true;
                     }
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                return false;
             }
         }
 
-        public void SaveLumpsumInvest()
+        /// <summary>
+        /// Save lump sum investment details to the UserLumpsumPortfolio table.
+        /// </summary>
+        /// <param name="deducted"></param>
+        public void SaveLumpsumInvest(bool deducted)
         {
             try
             {
@@ -86,8 +139,8 @@ namespace MutualFundSimulatorApplication.Repository
                 {
                     connection.Open();
                     string query = @"
-                INSERT INTO UserLumpsumPortfolio (useremail, fundname, quantity, investedamount, currentamount, durationinmonths, lumpsumstartdate, lumpsumenddate) 
-                VALUES (@useremail, @fundname, @quantity, @investedamount, @currentamount, @durationinmonths, @lumpsumstartdate, @lumpsumenddate)";
+                INSERT INTO UserLumpsumPortfolio (useremail, fundname, quantity, investedamount, currentamount, lumpsumstartdate, deducted) 
+                VALUES (@useremail, @fundname, @quantity, @investedamount, @currentamount, @lumpsumstartdate, @deducted)";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@useremail", _user.userEmail);
@@ -95,14 +148,11 @@ namespace MutualFundSimulatorApplication.Repository
                         command.Parameters.AddWithValue("@quantity", _userLumpsum.quantity);
                         command.Parameters.AddWithValue("@investedamount", _userLumpsum.investedAmount);
                         command.Parameters.AddWithValue("@currentamount", _userLumpsum.currentAmount);
-                        command.Parameters.AddWithValue("@durationinmonths", _userLumpsum.durationInMonths);
                         command.Parameters.AddWithValue("@lumpsumstartdate", _userLumpsum.lumpsumStartDate);
-                        command.Parameters.AddWithValue("@lumpsumenddate", _userLumpsum.lumpsumEndDate);
+                        command.Parameters.AddWithValue("@deducted", deducted ? 1 : 0);
 
                         int rowsAffected = command.ExecuteNonQuery();
-                        if (rowsAffected > 0)
-                            Console.WriteLine("Lump sum investment saved successfully!");
-                        else
+                        if (rowsAffected <= 0)
                             Console.WriteLine("Failed to save lump sum investment.");
                     }
                 }
@@ -112,7 +162,9 @@ namespace MutualFundSimulatorApplication.Repository
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
         }
-
+        /// <summary>
+        /// Updates the current amount for all lump sum investments based on the latest NAV and monthly expenses.
+        /// </summary>
         public void UpdateCurrentAmountsForAllInvestments()
         {
             try
@@ -121,29 +173,36 @@ namespace MutualFundSimulatorApplication.Repository
                 {
                     connection.Open();
 
-                    string investmentsQuery = "SELECT lumpsumid, useremail, fundname, quantity FROM UserLumpsumPortfolio WHERE useremail = @useremail";
+                    string investmentsQuery = @"
+                SELECT lumpsumid, useremail, fundname, quantity, investedamount, currentamount, lumpsumstartdate 
+                FROM UserLumpsumPortfolio 
+                WHERE useremail = @useremail";
                     SqlCommand investmentsCommand = new SqlCommand(investmentsQuery, connection);
                     investmentsCommand.Parameters.AddWithValue("@useremail", _user.userEmail);
 
-                    List<(int lumpsumid, decimal updatedCurrentAmount)> updates = new List<(int, decimal)>();
+                    List<(int lumpsumid, string fundName, decimal quantity, decimal investedAmount, decimal currentAmount, DateTime startDate)> updates = new List<(int, string, decimal, decimal, decimal, DateTime)>();
 
                     using (SqlDataReader reader = investmentsCommand.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            int lumpsumid = (int)reader["lumpsumid"];
-                            string fundName = (string)reader["fundname"];
-                            decimal quantity = (decimal)reader["quantity"];
-
-                            decimal latestNAV = GetFundPrice(fundName);
-                            decimal updatedCurrentAmount = quantity * latestNAV;
-                            updates.Add((lumpsumid, updatedCurrentAmount));
+                            updates.Add((
+                                (int)reader["lumpsumid"],
+                                (string)reader["fundname"],
+                                (decimal)reader["quantity"],
+                                (decimal)reader["investedamount"],
+                                (decimal)reader["currentamount"],
+                                (DateTime)reader["lumpsumstartdate"]
+                            ));
                         }
                     }
 
                     foreach (var update in updates)
                     {
-                        UpdateCurrentAmount(update.lumpsumid, update.updatedCurrentAmount, connection);
+                        decimal latestNAV = GetFundPrice(update.fundName);
+                        decimal adjustedCurrentAmount = update.quantity * latestNAV;
+
+                        UpdateCurrentAmount(update.lumpsumid, adjustedCurrentAmount, connection);
                     }
                 }
             }
@@ -153,6 +212,12 @@ namespace MutualFundSimulatorApplication.Repository
             }
         }
 
+        /// <summary>
+        /// Updates the current amount for a specific lump sum investment in the database.
+        /// </summary>
+        /// <param name="lumpsumid"></param>
+        /// <param name="updatedCurrentAmount"></param>
+        /// <param name="connection"></param>
         public void UpdateCurrentAmount(int lumpsumid, decimal updatedCurrentAmount, SqlConnection connection)
         {
             try
@@ -164,8 +229,7 @@ namespace MutualFundSimulatorApplication.Repository
                     updateCmd.Parameters.AddWithValue("@lumpsumid", lumpsumid);
 
                     int rowsAffected = updateCmd.ExecuteNonQuery();
-                    if (rowsAffected > 0) { }
-                    else
+                    if (rowsAffected <= 0)
                         Console.WriteLine($"Update failed for lumpsumid {lumpsumid}. No rows affected.");
                 }
             }
@@ -175,6 +239,9 @@ namespace MutualFundSimulatorApplication.Repository
             }
         }
 
+        /// <summary>
+        /// Save SIP investment details to the UserSIPPortfolio table.
+        /// </summary>
         public void SaveSIPInvest()
         {
             try
@@ -183,8 +250,8 @@ namespace MutualFundSimulatorApplication.Repository
                 {
                     connection.Open();
                     string query = @"
-                INSERT INTO UserSIPPortfolio (useremail, fundname, sipamount, sipstartdate, nextinstallmentdate, totalinstallments, totalinvestedamount, currentamount, totalunits, durationinmonths, sipenddate) 
-                VALUES (@useremail, @fundname, @sipamount, @sipstartdate, @nextinstallmentdate, @totalinstallments, @totalinvestedamount, @currentamount, @totalunits, @durationinmonths, @sipenddate)";
+                        INSERT INTO UserSIPPortfolio (useremail, fundname, sipamount, sipstartdate, nextinstallmentdate, totalinstallments, totalinvestedamount, currentamount, totalunits, durationinmonths, sipenddate) 
+                        VALUES (@useremail, @fundname, @sipamount, @sipstartdate, @nextinstallmentdate, @totalinstallments, @totalinvestedamount, @currentamount, @totalunits, @durationinmonths, @sipenddate)";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@useremail", _user.userEmail);
@@ -200,9 +267,7 @@ namespace MutualFundSimulatorApplication.Repository
                         command.Parameters.AddWithValue("@sipenddate", _userSip.sipEndDate);
 
                         int rowsAffected = command.ExecuteNonQuery();
-                        if (rowsAffected > 0)
-                            Console.WriteLine("\nSIP Investment Saved Successfully.");
-                        else
+                        if (rowsAffected <= 0)
                             Console.WriteLine("\nError: SIP Investment Not Saved.");
                     }
                 }
@@ -212,6 +277,13 @@ namespace MutualFundSimulatorApplication.Repository
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
         }
+
+        /// <summary>
+        /// Save a expense entry in the Expenses table for a given fund and date.
+        /// </summary>
+        /// <param name="fundName"></param>
+        /// <param name="expenseAmount"></param>
+        /// <param name="expenseDate"></param>
         public void SaveExpense(string fundName, decimal expenseAmount, DateTime expenseDate)
         {
             try
@@ -234,29 +306,33 @@ namespace MutualFundSimulatorApplication.Repository
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An unexpected error occurred while saving investment expense: {ex.Message}");
+                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
         }
+
+        /// <summary>
+        /// Updates SIP installments based on the current date, deducting funds and applying expenses.
+        /// </summary>
         public void IncrementInstallments()
         {
             try
             {
-                DateTime currentDate = DateTime.Today;
+                DateTime currentDate = User.CurrentDate;
 
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     connection.Open();
 
                     string query = @"
-                SELECT sipid, fundname, sipamount, nextinstallmentdate, totalinstallments, totalinvestedamount, currentamount, totalunits, durationinmonths, sipenddate 
-                FROM UserSIPPortfolio 
-                WHERE useremail = @useremail";
+                        SELECT sipid, fundname, sipamount, sipstartdate, nextinstallmentdate, totalinstallments, totalinvestedamount, currentamount, totalunits, durationinmonths, sipenddate 
+                        FROM UserSIPPortfolio 
+                        WHERE useremail = @useremail";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@useremail", _user.userEmail);
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            List<(int sipid, decimal sipAmount, string fundName, DateTime nextInstallmentDate, int totalInstallments, decimal totalInvestedAmount, decimal totalUnits, DateTime sipEndDate)> sips = new List<(int, decimal, string, DateTime, int, decimal, decimal, DateTime)>();
+                            List<(int sipid, decimal sipAmount, string fundName, DateTime sipStartDate, DateTime nextInstallmentDate, int totalInstallments, decimal totalInvestedAmount, decimal totalUnits, int durationInMonths, DateTime sipEndDate)> sips = new List<(int, decimal, string, DateTime, DateTime, int, decimal, decimal, int, DateTime)>();
 
                             while (reader.Read())
                             {
@@ -264,10 +340,12 @@ namespace MutualFundSimulatorApplication.Repository
                                     (int)reader["sipid"],
                                     (decimal)reader["sipamount"],
                                     (string)reader["fundname"],
+                                    (DateTime)reader["sipstartdate"],
                                     (DateTime)reader["nextinstallmentdate"],
                                     (int)reader["totalinstallments"],
                                     (decimal)reader["totalinvestedamount"],
                                     (decimal)reader["totalunits"],
+                                    (int)reader["durationinmonths"],
                                     (DateTime)reader["sipenddate"]
                                 ));
                             }
@@ -280,16 +358,29 @@ namespace MutualFundSimulatorApplication.Repository
                                 decimal invested = sip.totalInvestedAmount;
                                 decimal units = sip.totalUnits;
 
-                                while (currentDate >= nextDate && nextDate <= sip.sipEndDate)
+                                while (currentDate >= nextDate && nextDate <= sip.sipEndDate && installments < sip.durationInMonths)
                                 {
                                     decimal latestNAV = GetFundPrice(sip.fundName);
-                                    decimal newUnits = Math.Round(sip.sipAmount / latestNAV, 2);
-                                    units += newUnits;
-                                    invested += sip.sipAmount;
-                                    installments++;
-                                    nextDate = nextDate.AddMonths(1);
+                                    decimal monthlyExpenseRatio = GetMonthlyExpenseRatio(sip.fundName, connection);
+                                    decimal expense = sip.sipAmount * monthlyExpenseRatio / 100m;
+                                    decimal netAmount = sip.sipAmount - expense;
+                                    decimal newUnits = Math.Round(netAmount / latestNAV, 2);
 
-                                    Console.WriteLine($"Processed installment {installments} for {sip.fundName} on {nextDate.AddMonths(-1):yyyy-MM-dd}");
+                                    if (_user.walletBalance >= sip.sipAmount)
+                                    {
+                                        AddMoneyToWallet(-sip.sipAmount);
+                                        SaveExpense(sip.fundName, expense, nextDate);
+
+                                        units += newUnits;
+                                        invested += netAmount;
+                                        installments++;
+                                        nextDate = nextDate.AddMonths(1);
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine($"Insufficient funds for installment {installments + 1} of {sip.fundName} on {nextDate:yyyy-MM-dd}. Required: ₹{sip.sipAmount}, Available: ₹{_user.walletBalance}");
+                                        break;
+                                    }
                                 }
 
                                 if (installments > sip.totalInstallments)
@@ -297,13 +388,13 @@ namespace MutualFundSimulatorApplication.Repository
                                     decimal newCurrentAmount = units * GetFundPrice(sip.fundName);
 
                                     string updateQuery = @"
-                                UPDATE UserSIPPortfolio 
-                                SET totalinstallments = @totalinstallments, 
-                                    totalinvestedamount = @totalinvestedamount, 
-                                    currentamount = @currentamount, 
-                                    nextinstallmentdate = @nextinstallmentdate,
-                                    totalunits = @totalunits
-                                WHERE sipid = @sipid";
+                                        UPDATE UserSIPPortfolio 
+                                        SET totalinstallments = @totalinstallments, 
+                                            totalinvestedamount = @totalinvestedamount, 
+                                            currentamount = @currentamount, 
+                                            nextinstallmentdate = @nextinstallmentdate,
+                                            totalunits = @totalunits
+                                        WHERE sipid = @sipid";
 
                                     using (SqlCommand updateCommand = new SqlCommand(updateQuery, connection))
                                     {
@@ -315,8 +406,6 @@ namespace MutualFundSimulatorApplication.Repository
                                         updateCommand.Parameters.AddWithValue("@sipid", sip.sipid);
                                         updateCommand.ExecuteNonQuery();
                                     }
-
-                                    Console.WriteLine($"SIP for {sip.fundName} updated to {installments} installments.");
                                 }
                             }
                         }
@@ -329,34 +418,22 @@ namespace MutualFundSimulatorApplication.Repository
             }
         }
 
-        public decimal GetFundPrice(string fundName)
+        /// <summary>
+        /// Calculates the monthly expense ratio for a fund based on its annual expense ratio.
+        /// </summary>
+        /// <param name="fundName"></param>
+        /// <param name="connection"></param>
+        /// <returns></returns>
+        private decimal GetMonthlyExpenseRatio(string fundName, SqlConnection connection)
         {
-            try
-            {
-                decimal navValue = 0m;
-                using (SqlConnection connection = new SqlConnection(ConnectionString))
-                {
-                    connection.Open();
-                    string query = "SELECT TOP 1 navvalue FROM FundNAV WHERE fundname = @fundname ORDER BY navdate DESC";
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@fundname", fundName);
-                        object result = command.ExecuteScalar();
-                        if (result != null)
-                        {
-                            navValue = Convert.ToDecimal(result);
-                        }
-                    }
-                }
-                return navValue;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error fetching NAV: {ex.Message}");
-                return 0;
-            }
+            var fundDetails = new MutualFundSimulatorUtility(null, null, null, null, null).GetFundDetails();
+            return fundDetails.ContainsKey(fundName) ? fundDetails[fundName].expenseRatio : 0.070m;
         }
 
+        /// <summary>
+        /// Displays the user's lump sum investment portfolio and calculates total profit/loss.
+        /// </summary>
+        /// <returns></returns>
         public decimal DisplayLumpSumPortfolio()
         {
             decimal totalLumpSumProfitLoss = 0;
@@ -366,13 +443,13 @@ namespace MutualFundSimulatorApplication.Repository
                 {
                     connection.Open();
                     string query = @"
-                SELECT fundname, 
-                       SUM(investedamount) AS TotalInvestedAmount, 
-                       SUM(currentamount) AS TotalCurrentAmount
-                FROM UserLumpsumPortfolio 
-                WHERE useremail = @useremail
-                GROUP BY fundname
-                ORDER BY fundname";
+                    SELECT fundname, 
+                           SUM(investedamount) AS TotalInvestedAmount, 
+                           SUM(quantity) AS TotalQuantity
+                    FROM UserLumpsumPortfolio 
+                    WHERE useremail = @useremail
+                    GROUP BY fundname
+                    ORDER BY fundname";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -382,15 +459,19 @@ namespace MutualFundSimulatorApplication.Repository
                             if (reader.HasRows)
                             {
                                 Console.WriteLine("\n--- User LumpSum Portfolio ---");
-                                Console.WriteLine("Fund Name\t\tTotal Invested Amount\tTotal Current Amount");
+                                Console.WriteLine("Fund Name\t\tQuantity\tTotal Invested Amount\tTotal Current Amount");
                                 while (reader.Read())
                                 {
+                                    string fundName = reader.GetString(reader.GetOrdinal("fundname"));
                                     decimal totalInvestedAmount = reader.GetDecimal(reader.GetOrdinal("TotalInvestedAmount"));
-                                    decimal totalCurrentAmount = reader.GetDecimal(reader.GetOrdinal("TotalCurrentAmount"));
+                                    decimal totalQuantity = reader.GetDecimal(reader.GetOrdinal("TotalQuantity"));
+                                    decimal latestNAV = GetFundPrice(fundName);
+                                    decimal totalCurrentAmount = totalQuantity * latestNAV;
+
                                     decimal profitLoss = totalCurrentAmount - totalInvestedAmount;
                                     totalLumpSumProfitLoss += profitLoss;
 
-                                    Console.WriteLine($"{reader["fundname"]}\t\t{totalInvestedAmount}\t\t\t{totalCurrentAmount}");
+                                    Console.WriteLine($"{fundName}\t\t{totalQuantity:F2}\t\t{totalInvestedAmount:F2}\t\t\t{totalCurrentAmount:F4}");
                                 }
                             }
                             else
@@ -405,9 +486,13 @@ namespace MutualFundSimulatorApplication.Repository
             {
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
-            return totalLumpSumProfitLoss; // Return profit/loss for lump sum
+            return totalLumpSumProfitLoss;
         }
 
+        /// <summary>
+        /// Displays the user's SIP investment portfolio and calculates total profit/loss.
+        /// </summary>
+        /// <returns></returns>
         public decimal DisplaySIPPortfolio()
         {
             decimal totalSipProfitLoss = 0;
@@ -417,10 +502,10 @@ namespace MutualFundSimulatorApplication.Repository
                 {
                     connection.Open();
                     string query = @"
-                SELECT fundname, sipamount, sipstartdate, nextinstallmentdate, 
-                       totalinstallments, totalinvestedamount, currentamount
-                FROM UserSIPPortfolio
-                WHERE useremail = @useremail";
+                    SELECT fundname, sipamount, sipstartdate, nextinstallmentdate, 
+                           totalinstallments, totalinvestedamount, totalunits
+                    FROM UserSIPPortfolio
+                    WHERE useremail = @useremail";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -430,20 +515,24 @@ namespace MutualFundSimulatorApplication.Repository
                             if (reader.HasRows)
                             {
                                 Console.WriteLine("\n--- User SIP Portfolio ---");
-                                Console.WriteLine("Fund Name\t\tSIP Amount\tSIP Start Date\tNext Installment Date\tTotal Installments\tTotal Invested Amount\tCurrent Amount");
+                                Console.WriteLine("Fund Name\t\tSIP Amount\tQuantity\tSIP Start Date\tNext Installment\tTotal Installments\tTotal Invested Amount\tCurrent Amount");
                                 while (reader.Read())
                                 {
+                                    string fundName = reader.GetString(reader.GetOrdinal("fundname"));
                                     decimal totalInvestedAmount = reader.GetDecimal(reader.GetOrdinal("totalinvestedamount"));
-                                    decimal currentAmount = reader.GetDecimal(reader.GetOrdinal("currentamount"));
+                                    decimal totalUnits = reader.GetDecimal(reader.GetOrdinal("totalunits"));
+                                    decimal latestNAV = GetFundPrice(fundName);
+                                    decimal currentAmount = totalUnits * latestNAV;
+
                                     decimal profitLoss = currentAmount - totalInvestedAmount;
                                     totalSipProfitLoss += profitLoss;
 
-                                    Console.WriteLine($"{reader["fundname"]}\t{reader["sipamount"]}\t\t{reader["sipstartdate"]:yyyy-MM-dd}\t{reader["nextinstallmentdate"]:yyyy-MM-dd}\t\t{reader["totalinstallments"]}\t\t\t{totalInvestedAmount}\t\t\t{currentAmount}");
+                                    Console.WriteLine($"{fundName}\t{reader["sipamount"]}\t\t{totalUnits:F2}\t\t{reader["sipstartdate"]:yyyy-MM-dd}\t{reader["nextinstallmentdate"]:yyyy-MM-dd}\t\t{reader["totalinstallments"]}\t\t\t{totalInvestedAmount:F2}\t\t\t{currentAmount:F4}");
                                 }
                             }
                             else
                             {
-                                Console.WriteLine("No SIP investments found in your portfolio.");
+                                Console.WriteLine("\nNo SIP investments found in your portfolio.");
                             }
                         }
                     }
@@ -453,9 +542,12 @@ namespace MutualFundSimulatorApplication.Repository
             {
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
-            return totalSipProfitLoss; // Return profit/loss for SIP
+            return totalSipProfitLoss;
         }
 
+        /// <summary>
+        /// Retrieves and displays upcoming SIP installment dates for the user.
+        /// </summary>
         public void GetUpcomingSIPInstallments()
         {
             try
@@ -466,12 +558,12 @@ namespace MutualFundSimulatorApplication.Repository
                     string query = @"
                         SELECT fundname, nextinstallmentdate 
                         FROM UserSIPPortfolio 
-                        WHERE useremail = @useremail AND nextinstallmentdate > @today";
+                        WHERE useremail = @useremail AND nextinstallmentdate > @today AND sipenddate >= @today";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@useremail", _user.userEmail);
-                        command.Parameters.AddWithValue("@today", DateTime.Today);
+                        command.Parameters.AddWithValue("@today", User.CurrentDate);
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             if (reader.HasRows)
@@ -496,6 +588,9 @@ namespace MutualFundSimulatorApplication.Repository
             }
         }
 
+        /// <summary>
+        /// Updates NAV values for all funds in the FundNAV table with random values based on fund type and date.
+        /// </summary>
         public void UpdateFundNav()
         {
             try
@@ -508,7 +603,6 @@ namespace MutualFundSimulatorApplication.Repository
                     { "Balanced", new List<string> { "Aggressive Hybrid Fund", "Conservative Hybrid Fund", "Dynamic Asset Allocation Fund", "Balanced Advantage Fund", "Multi-Asset Allocation Fund" } },
                     { "Commodity", new List<string> { "Gold ETF Fund", "Silver ETF Fund", "Multi-Commodity Fund", "Energy Commodity Fund", "Agricultural Commodity Fund" } }
                 };
-
 
                 Random random = new Random();
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
@@ -540,25 +634,25 @@ namespace MutualFundSimulatorApplication.Repository
                                     percentageChange = (decimal)(random.NextDouble() * 0.5 - 0.25); // -0.25% to +0.25%
                                     break;
                                 default:
-                                    percentageChange = 0; // No change for unknown types
+                                    percentageChange = 0;
                                     break;
                             }
                             decimal newNav = Math.Round(currentNav * (1 + percentageChange / 100), 2);
 
                             string query = @"
-                        IF NOT EXISTS (SELECT 1 FROM FundNAV WHERE fundname = @fundname AND navdate = CAST(GETDATE() AS DATE))
-                        BEGIN
-                            INSERT INTO FundNAV (fundtype, fundname, navvalue, navdate)
-                            VALUES (@fundtype, @fundname, @navvalue, CAST(GETDATE() AS DATE));
-                        END";
+                                IF NOT EXISTS (SELECT 1 FROM FundNAV WHERE fundname = @fundname AND navdate = @currentDate)
+                                BEGIN
+                                    INSERT INTO FundNAV (fundtype, fundname, navvalue, navdate)
+                                    VALUES (@fundtype, @fundname, @navvalue, @currentDate);
+                                END";
 
                             using (SqlCommand command = new SqlCommand(query, connection))
                             {
                                 command.Parameters.AddWithValue("@fundtype", fundType);
                                 command.Parameters.AddWithValue("@fundname", fundName);
                                 command.Parameters.AddWithValue("@navvalue", newNav);
+                                command.Parameters.AddWithValue("@currentDate", User.CurrentDate);
                                 command.ExecuteNonQuery();
-                                Console.WriteLine($"{fundName} ({fundType}): New NAV = ₹ {newNav} (Change: {percentageChange}%)");
                             }
                         }
                     }
@@ -570,6 +664,12 @@ namespace MutualFundSimulatorApplication.Repository
             }
         }
 
+        /// <summary>
+        /// Fetches the latest NAV value for a fund from the database.
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="fundName"></param>
+        /// <returns></returns>
         public decimal GetLatestNAV(SqlConnection connection, string fundName)
         {
             try
@@ -588,6 +688,10 @@ namespace MutualFundSimulatorApplication.Repository
             }
         }
 
+        /// <summary>
+        /// Checks if NAV values have been updated for the current date.
+        /// </summary>
+        /// <returns></returns>
         public bool IsNavAlreadyUpdated()
         {
             try
@@ -595,9 +699,10 @@ namespace MutualFundSimulatorApplication.Repository
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     connection.Open();
-                    string query = "SELECT COUNT(1) FROM FundNAV WHERE navdate = CAST(GETDATE() AS DATE)";
+                    string query = "SELECT COUNT(1) FROM FundNAV WHERE navdate = @currentDate";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
+                        command.Parameters.AddWithValue("@currentDate", User.CurrentDate);
                         int count = (int)command.ExecuteScalar();
                         return count > 0;
                     }
@@ -609,6 +714,10 @@ namespace MutualFundSimulatorApplication.Repository
             }
         }
 
+        /// <summary>
+        /// Adds or subtracts money from the user's wallet balance in the database.
+        /// </summary>
+        /// <param name="amount"></param>
         public void AddMoneyToWallet(decimal amount)
         {
             try
@@ -624,17 +733,49 @@ namespace MutualFundSimulatorApplication.Repository
                         int rowsAffected = command.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            _user.walletBalance += amount; // Update in-memory user object
-                            Console.WriteLine($"Successfully added ₹{amount} to wallet. New balance: ₹{_user.walletBalance}");
+                            _user.walletBalance += amount;
                         }
                         else
-                            Console.WriteLine("Failed to add money to wallet.");
+                            Console.WriteLine("Failed to update wallet balance.");
                     }
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Retrieves the most recent NAV value for a specified fund from the FundNAV table.
+        /// </summary>
+        /// <param name="fundName"></param>
+        /// <returns></returns>
+        public decimal GetFundPrice(string fundName)
+        {
+            try
+            {
+                decimal navValue = 0m;
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT TOP 1 navvalue FROM FundNAV WHERE fundname = @fundname ORDER BY navdate DESC";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@fundname", fundName);
+                        object result = command.ExecuteScalar();
+                        if (result != null)
+                        {
+                            navValue = Convert.ToDecimal(result);
+                        }
+                    }
+                }
+                return navValue;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error fetching NAV: {ex.Message}");
+                return 0;
             }
         }
     }

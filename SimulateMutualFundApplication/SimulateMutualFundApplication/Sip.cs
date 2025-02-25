@@ -8,7 +8,6 @@ namespace MutualFundSimulatorApplication
     {
         private MutualFundBusiness _fundBussines;
         private UserSipInvest _userSip;
-        private const decimal ExpenseRatio = 0.01m; // 1% expense ratio
         private User _user;
 
         public Sip(MutualFundBusiness fundBussines, UserSipInvest userSip, User user)
@@ -18,6 +17,10 @@ namespace MutualFundSimulatorApplication
             _user = user;
         }
 
+        /// <summary>
+        /// Initiates the SIP investment process for a specified fund, amount, start date, and duration.
+        /// </summary>
+        /// <param name="fundName"></param>
         public void SIPInvest(string fundName)
         {
             try
@@ -27,24 +30,18 @@ namespace MutualFundSimulatorApplication
                 decimal pricePerUnit = _fundBussines.GetFundPrice(_userSip.fundName);
                 Console.WriteLine($"Current price per unit: ₹ {pricePerUnit}");
 
-                if (!GetValidSipAmount(out decimal sipAmount))
-                {
+                if (!GetValidSipAmount())
                     return;
-                }
-
-                // Check wallet balance
-                if (_user.walletBalance < sipAmount)
+                if (_user.walletBalance < _userSip.sipAmount)
                 {
                     Console.WriteLine($"Insufficient funds in wallet (₹{_user.walletBalance}). Please add money to your wallet.");
                     return;
                 }
-
-                if (!GetValidDuration(out int durationInMonths))
-                {
+                if (!GetValidStartDate())
                     return;
-                }
-
-                ProcessSipInvestment(sipAmount, durationInMonths, pricePerUnit);
+                if (!GetValidDuration())
+                    return;
+                ProcessSipInvestment(pricePerUnit);
             }
             catch (Exception ex)
             {
@@ -52,21 +49,24 @@ namespace MutualFundSimulatorApplication
             }
         }
 
-        private bool GetValidSipAmount(out decimal sipAmount)
+        /// <summary>
+        /// This method ensure the user to enter a valid SIP amount (minimum ₹500).
+        /// </summary>
+        /// <returns></returns>
+        private bool GetValidSipAmount()
         {
             int attempts = 0;
-            sipAmount = 0;
             bool validAmount = false;
-
             while (attempts < 3 && !validAmount)
             {
                 Console.Write($"Enter SIP amount (minimum ₹500): ");
-                if (decimal.TryParse(Console.ReadLine(), out sipAmount) && sipAmount >= 500)
+                if (decimal.TryParse(Console.ReadLine(), out decimal amount) && amount >= 500)
                 {
+                    _userSip.sipAmount = amount;
                     validAmount = true;
-                    decimal expense = sipAmount * ExpenseRatio;
-                    Console.WriteLine($"SIP amount: ₹ {sipAmount}");
-                    Console.WriteLine($"Expense (1%): ₹ {expense}");
+                    decimal monthlyExpenseRatio = GetExpenseRatio(_userSip.fundName);
+                    Console.WriteLine($"SIP amount: ₹ {_userSip.sipAmount}");
+                    Console.WriteLine($"Monthly Expense Ratio: {monthlyExpenseRatio}%");
                 }
                 else
                 {
@@ -80,18 +80,52 @@ namespace MutualFundSimulatorApplication
             return validAmount;
         }
 
-        private bool GetValidDuration(out int durationInMonths)
+        /// <summary>
+        /// This method ensure the user to enter a valid SIP start date (today or later).
+        /// </summary>
+        /// <returns></returns>
+        private bool GetValidStartDate()
         {
             int attempts = 0;
-            durationInMonths = 0;
-            bool validDuration = false;
-            const int maxDurationMonths = 1200; // 100 years
+            bool validDate = false;
 
+            while (attempts < 3 && !validDate)
+            {
+                Console.Write($"Enter SIP start date (yyyy-MM-dd): ");
+                if (DateTime.TryParse(Console.ReadLine(), out DateTime startDate) && startDate >= User.CurrentDate)
+                {
+                    _userSip.sipStartDate = startDate;
+                    validDate = true;
+                }
+                else
+                {
+                    attempts++;
+                    if (attempts < 3)
+                        Console.WriteLine($"Invalid date. Must be {User.CurrentDate:yyyy-MM-dd} or later (yyyy-MM-dd). Please try again.");
+                    else
+                        Console.WriteLine($"Maximum attempts reached for date. Investment cancelled.");
+                }
+            }
+            return validDate;
+        }
+
+        /// <summary>
+        /// This method ensure the user to enter a valid SIP duration (1 to 1200 months).
+        /// </summary>
+        /// <returns></returns>
+        private bool GetValidDuration()
+        {
+            int attempts = 0;
+            bool validDuration = false;
+            const int maxDurationMonths = 1200;
             while (attempts < 3 && !validDuration)
             {
                 Console.Write($"Enter SIP duration in months (minimum 12, maximum {maxDurationMonths}): ");
-                if (int.TryParse(Console.ReadLine(), out durationInMonths) && durationInMonths >= 12 && durationInMonths <= maxDurationMonths)
+                if (int.TryParse(Console.ReadLine(), out int months) && months >= 12 && months <= maxDurationMonths)
+                {
+                    _userSip.durationInMonths = months;
                     validDuration = true;
+                }
                 else
                 {
                     attempts++;
@@ -104,50 +138,50 @@ namespace MutualFundSimulatorApplication
             return validDuration;
         }
 
-        private void ProcessSipInvestment(decimal sipAmount, int durationInMonths, decimal pricePerUnit)
+        /// <summary>
+        /// Displays SIP investment details and saves the investment if confirmed by the user.
+        /// </summary>
+        /// <param name="pricePerUnit"></param>
+        private void ProcessSipInvestment(decimal pricePerUnit)
         {
-            decimal expense = sipAmount * ExpenseRatio;
-            decimal netAmount = sipAmount - expense;
-            decimal unitsPerInstallment = Math.Round(netAmount / pricePerUnit, 2); // Units per installment
-            decimal currentAmountPerInstallment = unitsPerInstallment * pricePerUnit;
+            _userSip.nextInstallmentDate = _userSip.sipStartDate.AddMonths(1);
+            _userSip.sipEndDate = _userSip.sipStartDate.AddMonths(_userSip.durationInMonths);
+            _userSip.totalUnits = 0m;
+            _userSip.totalInstallments = 0;
+            _userSip.totalInvestedAmount = 0m;
+            _userSip.currentAmount = 0m;
 
-            // Set SIP to start next month
-            DateTime today = DateTime.Today;
-            DateTime nextMonthStart = today.AddMonths(1).AddDays(-today.Day + 1); // First day of next month
-            DateTime nextInstallmentDate = nextMonthStart.AddMonths(1);
-            DateTime endDate = nextMonthStart.AddMonths(durationInMonths);
-
-            _userSip.sipAmount = sipAmount;
-            _userSip.totalUnits = 0m; // No units yet
-            _userSip.totalInstallments = 0; // No installments yet
-            _userSip.totalInvestedAmount = 0m; // No investment yet
-            _userSip.currentAmount = 0m; // No current amount yet
+            decimal monthlyExpenseRatio = GetExpenseRatio(_userSip.fundName);
+            decimal monthlyExpense = _userSip.sipAmount * monthlyExpenseRatio / 100m;
 
             Console.WriteLine($"\nSIP Details:");
             Console.WriteLine($"Fund Name: {_userSip.fundName}");
-            Console.WriteLine($"SIP Amount: ₹ {sipAmount}");
+            Console.WriteLine($"SIP Amount: ₹ {_userSip.sipAmount}");
             Console.WriteLine($"Total Invested Amount: ₹ {_userSip.totalInvestedAmount}");
-            Console.WriteLine($"Expense (1%): ₹ {expense}");
-            Console.WriteLine($"Current Amount after expense: ₹ {_userSip.currentAmount}");
-            Console.WriteLine($"Start Date: {nextMonthStart:yyyy-MM-dd}");
-            Console.WriteLine($"Duration: {durationInMonths} months");
-            Console.WriteLine($"End Date: {endDate:yyyy-MM-dd}");
-            Console.WriteLine($"Next Installment Date: {nextInstallmentDate:yyyy-MM-dd}");
+            Console.WriteLine($"Monthly Expense: ₹ {monthlyExpense:F2} (based on {monthlyExpenseRatio}% monthly ratio)");
+            Console.WriteLine($"Current Amount: ₹ {_userSip.currentAmount}");
+            Console.WriteLine($"Start Date: {_userSip.sipStartDate:yyyy-MM-dd}");
+            Console.WriteLine($"Duration: {_userSip.durationInMonths} months");
+            Console.WriteLine($"End Date: {_userSip.sipEndDate:yyyy-MM-dd}");
+            Console.WriteLine($"Next Installment Date: {_userSip.nextInstallmentDate:yyyy-MM-dd}");
 
             Console.Write("Confirm SIP investment? (yes/no): ");
             string confirmation = Console.ReadLine()?.ToLower();
             if (confirmation == "yes")
-            {
-                _userSip.durationInMonths = durationInMonths;
-                _userSip.sipStartDate = nextMonthStart; // Start next month
-                _userSip.sipEndDate = endDate;
-                _userSip.nextInstallmentDate = nextInstallmentDate;
-
-                // No immediate deduction or investment; handled by IncrementInstallments
                 _fundBussines.SaveSIPInvest();
-            }
             else
                 Console.WriteLine("Investment cancelled.");
+        }
+
+        /// <summary>
+        /// Retrieves the expense ratio for the specified fund from fund details.
+        /// </summary>
+        /// <param name="fundName"></param>
+        /// <returns></returns>
+        private decimal GetExpenseRatio(string fundName)
+        {
+            var fundDetails = new MutualFundSimulatorUtility(null, null, null, null, null).GetFundDetails();
+            return fundDetails.TryGetValue(fundName, out var details) ? details.expenseRatio : 0.070m;
         }
     }
 }
