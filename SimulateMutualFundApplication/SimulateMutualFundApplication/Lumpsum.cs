@@ -41,7 +41,6 @@ namespace MutualFundSimulatorApplication
                     Console.WriteLine($"Insufficient funds in wallet (₹{_user.walletBalance}). Please add money to your wallet.");
                     return;
                 }
-
                 ProcessInvestment(pricePerUnit, amount);
             }
             catch (Exception ex)
@@ -123,7 +122,7 @@ namespace MutualFundSimulatorApplication
         }
 
         /// <summary>
-        /// Calculates the monthly expense ratio for a fund based on its annual expense ratio.
+        /// Retrieve the monthly expense ratio for a specific fund
         /// </summary>
         /// <param name="fundName"></param>
         /// <returns></returns>

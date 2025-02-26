@@ -419,7 +419,7 @@ namespace MutualFundSimulatorApplication.Repository
         }
 
         /// <summary>
-        /// Calculates the monthly expense ratio for a fund based on its annual expense ratio.
+        /// Retrieve the monthly expense ratio for a specific fund.
         /// </summary>
         /// <param name="fundName"></param>
         /// <param name="connection"></param>

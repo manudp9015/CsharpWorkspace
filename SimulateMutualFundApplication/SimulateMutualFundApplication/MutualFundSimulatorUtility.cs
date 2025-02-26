@@ -537,7 +537,6 @@ namespace MutualFundSimulatorApplication
             try
             {
                 var fundDetails = GetFundDetails();
-
                 if (fundDetails.ContainsKey(fundName))
                 {
                     var details = fundDetails[fundName];
