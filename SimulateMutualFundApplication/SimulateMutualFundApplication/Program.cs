@@ -19,7 +19,7 @@ namespace MutualFundSimulatorApplication
             UserLogin _userLogin = new UserLogin(_repository, _user);
 
             // Set the current date  for testing purpose, To check sip works correctly or not.
-            User.CurrentDate = new DateTime(2025, 02, 25);
+            User.CurrentDate = new DateTime(2025, 02, 27);
 
             // Create database tables 
             DBPatch dBPatch = new DBPatch(_repository.ConnectionString);
