@@ -9,6 +9,6 @@ namespace WebApiDemo.Data
         {
 
         }
-        public DbSet <Employee> Emplyees { get; set; }
+        public DbSet<Employee> Emplyees { get; set; }
     }
 }

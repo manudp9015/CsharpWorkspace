@@ -1,39 +1,63 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebApiDemo.Data;
 using WebApiDemo.Models.Entity;
+using WebApiDemo.Services;
 
 namespace WebApiDemo.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-
-    public class EmployeeController:ControllerBase
+    public class EmployeeController : ControllerBase
     {
-        private readonly ApplicationDbContext dbContext;
-        public EmployeeController(ApplicationDbContext dbContext)
+        private readonly IEmployeeService employeeService;
+
+        public EmployeeController(IEmployeeService employeeService)
         {
-            this.dbContext = dbContext;
+            this.employeeService = employeeService;
         }
+
         [HttpGet]
         public IActionResult GetAllEmployees()
         {
-           // var allEmployees = dbContext.Emplyees.ToList();
-
-            //return Ok(allEmployees);
-            return Ok(dbContext.Emplyees.ToList());
+            return Ok(employeeService.GetAllEmployees());
         }
-        [HttpPut]
+
+        [HttpGet("{id:guid}")]
+        public IActionResult GetEmployee(Guid id)
+        {
+            var employee = employeeService.GetEmployeeById(id);
+            if(employee is null)
+            {
+                return NotFound();
+            }
+            return Ok(employee);
+        }
+
+        [HttpPost]
         public IActionResult AddEmployee(EmployeeDto employeeDto)
         {
-            var addEmployeeEntity = new Employee() { 
-                Phone = employeeDto.Phone,
-                Name = employeeDto.Name,
-                Salary = employeeDto.Salary,
-                Email = employeeDto.Email
-                };
-            dbContext.Emplyees.Add(addEmployeeEntity);
-            dbContext.SaveChanges();
-            return Ok(addEmployeeEntity);
+            var addedEmployee = employeeService.AddEmployee(employeeDto);
+            return Ok(addedEmployee);
+        }
+
+        [HttpPut("{id:guid}")]
+        public IActionResult UpdateEmployee(Guid id, UpdateEmployeeDto updateEmployeeDto)
+        {
+            var updatedEmployee = employeeService.UpdateEmployee(id, updateEmployeeDto);
+            if(updatedEmployee is null)
+            {
+                return NotFound();
+            }
+            return Ok(updatedEmployee);
+        }
+
+        [HttpDelete("{id:guid}")]
+        public IActionResult DeleteEmployee(Guid id)
+        {  
+            if (employeeService.DeleteEmployee(id))
+            {
+                return Ok("Deleted Successfully");
+            }
+            return NotFound();
         }
     }
 }
