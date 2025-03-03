@@ -1,32 +1,85 @@
-﻿using MutualFundSimulatorApplication.Business;
-using MutualFundSimulatorApplication.Model;
-using MutualFundSimulatorApplication.Repository;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using MutualFundSimulatorService.Business;
+using MutualFundSimulatorService.Model;
+using MutualFundSimulatorService.Repository;
+using MutualFundSimulatorService.Interfaces;
 using System;
+using MutualFundSimulatorService;
 
 namespace MutualFundSimulatorApplication
 {
     class Program
     {
-        static void Main()
+        static async Task Main(string[] args)
         {
-            User _user = new User();
-            UserSipInvest _userSip = new UserSipInvest();
-            UserLumpsumInvest _userLumpsum = new UserLumpsumInvest();
-            MutualFundRepository _repository = new MutualFundRepository(_user, _userLumpsum, _userSip);
-            MutualFundBusiness _fundBussines = new MutualFundBusiness(_repository);
-            Lumpsum _lumpsumInvest = new Lumpsum(_fundBussines, _userLumpsum, _user);
-            Sip _sipInvest = new Sip(_fundBussines, _userSip, _user);
-            UserLogin _userLogin = new UserLogin(_repository, _user);
+            var builder = WebApplication.CreateBuilder(args);
+            ConfigureServices(builder.Services);
+            var app = builder.Build();
 
-            // Set the current date  for testing purpose, To check sip works correctly or not.
-            User.CurrentDate = new DateTime(2025, 02, 27);
+            // Configure the HTTP pipeline
+            app.UseRouting();
 
-            // Create database tables 
-            DBPatch dBPatch = new DBPatch(_repository.ConnectionString);
-            dBPatch.CreateTablesForMutualFunds();
+            // Add Swagger middleware
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mutual Fund Simulator API V1");
+                c.RoutePrefix = string.Empty; // Set Swagger UI as the default page (/)
+            });
 
-            MutualFundSimulatorUtility mutualFundSimulatorUtility = new MutualFundSimulatorUtility(_userLogin, _user, _fundBussines, _lumpsumInvest, _sipInvest);
-            mutualFundSimulatorUtility.MainMenu();
+            app.UseEndpoints(endpoints => endpoints.MapControllers());
+
+            // Initialize services
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                var dbPatch = services.GetService<DBPatch>();
+                var utility = services.GetService<MutualFundSimulatorUtility>();
+
+                User.CurrentDate = new DateTime(2025, 04, 28);
+                dbPatch.CreateTablesForMutualFunds();
+
+                // Run console mode only if --console is explicitly passed
+                if (args.Length > 0 && args[0] == "--console")
+                {
+                    utility.MainMenu();
+                    return;
+                }
+            }
+
+            // Start the Web API
+            Console.WriteLine("Starting Web API at http://localhost:5000");
+            await app.RunAsync();
+        }
+
+        private static void ConfigureServices(IServiceCollection services)
+        {
+            services.AddControllers();
+
+            // Add Swagger services
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
+                    Title = "Mutual Fund Simulator API",
+                    Version = "v1",
+                    Description = "API for Mutual Fund Simulator Application"
+                });
+            });
+
+            services.AddSingleton<User>();
+            services.AddSingleton<UserSipInvest>();
+            services.AddSingleton<UserLumpsumInvest>();
+            services.AddScoped<MutualFundRepository>();
+            services.AddScoped<MutualFundBusiness>();
+            services.AddScoped<Lumpsum>();
+            services.AddScoped<Sip>();
+            services.AddScoped<UserLogin>();
+            services.AddScoped<IUserLogin, UserLogin>();
+            services.AddTransient<DBPatch>();
+            services.AddTransient<MutualFundSimulatorUtility>();
         }
     }
 }

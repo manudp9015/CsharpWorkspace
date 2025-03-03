@@ -4,14 +4,14 @@
     "D:\\CsharpWorkspace\\SimulateMutualFundApplication\\SimulateMutualFundApplication\\MutualFundSimulatorApplication.csproj": {}
   },
   "projects": {
-    "D:\\CsharpWorkspace\\SimulateMutualFundApplication\\SimulateMutualFundApplication\\MutualFundSimulatorApplication.csproj": {
+    "D:\\CsharpWorkspace\\SimulateMutualFundApplication\\MutualFundSimulatorService\\MutualFundSimulatorService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\CsharpWorkspace\\SimulateMutualFundApplication\\SimulateMutualFundApplication\\MutualFundSimulatorApplication.csproj",
-        "projectName": "MutualFundSimulatorApplication",
-        "projectPath": "D:\\CsharpWorkspace\\SimulateMutualFundApplication\\SimulateMutualFundApplication\\MutualFundSimulatorApplication.csproj",
+        "projectUniqueName": "D:\\CsharpWorkspace\\SimulateMutualFundApplication\\MutualFundSimulatorService\\MutualFundSimulatorService.csproj",
+        "projectName": "MutualFundSimulatorService",
+        "projectPath": "D:\\CsharpWorkspace\\SimulateMutualFundApplication\\MutualFundSimulatorService\\MutualFundSimulatorService.csproj",
         "packagesPath": "C:\\Users\\MANU DP\\.nuget\\packages\\",
-        "outputPath": "D:\\CsharpWorkspace\\SimulateMutualFundApplication\\SimulateMutualFundApplication\\obj\\",
+        "outputPath": "D:\\CsharpWorkspace\\SimulateMutualFundApplication\\MutualFundSimulatorService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -53,6 +53,10 @@
             "Microsoft.Data.SqlClient": {
               "target": "Package",
               "version": "[6.0.1, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[9.0.2, )"
             }
           },
           "imports": [
@@ -67,6 +71,92 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\CsharpWorkspace\\SimulateMutualFundApplication\\SimulateMutualFundApplication\\MutualFundSimulatorApplication.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\CsharpWorkspace\\SimulateMutualFundApplication\\SimulateMutualFundApplication\\MutualFundSimulatorApplication.csproj",
+        "projectName": "MutualFundSimulatorApplication",
+        "projectPath": "D:\\CsharpWorkspace\\SimulateMutualFundApplication\\SimulateMutualFundApplication\\MutualFundSimulatorApplication.csproj",
+        "packagesPath": "C:\\Users\\MANU DP\\.nuget\\packages\\",
+        "outputPath": "D:\\CsharpWorkspace\\SimulateMutualFundApplication\\SimulateMutualFundApplication\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\MANU DP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\CsharpWorkspace\\SimulateMutualFundApplication\\MutualFundSimulatorService\\MutualFundSimulatorService.csproj": {
+                "projectPath": "D:\\CsharpWorkspace\\SimulateMutualFundApplication\\MutualFundSimulatorService\\MutualFundSimulatorService.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[7.3.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

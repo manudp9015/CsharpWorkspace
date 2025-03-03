@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿// WebApiDemo/Controllers/EmployeeController.cs
+using Microsoft.AspNetCore.Mvc;
 using WebApiDemo.Models.Entity;
 using WebApiDemo.Services;
 
@@ -8,24 +9,24 @@ namespace WebApiDemo.Controllers
     [ApiController]
     public class EmployeeController : ControllerBase
     {
-        private readonly IEmployeeService employeeService;
+        private readonly IEmployeeService _employeeService;
 
         public EmployeeController(IEmployeeService employeeService)
         {
-            this.employeeService = employeeService;
+            _employeeService = employeeService;
         }
 
         [HttpGet]
-        public IActionResult GetAllEmployees()
+        public async Task<IActionResult> GetAllEmployees()
         {
-            return Ok(employeeService.GetAllEmployees());
+            return Ok(await _employeeService.GetAllEmployees());
         }
 
         [HttpGet("{id:guid}")]
-        public IActionResult GetEmployee(Guid id)
+        public async Task<IActionResult> GetEmployee(Guid id)
         {
-            var employee = employeeService.GetEmployeeById(id);
-            if(employee is null)
+            var employee = await _employeeService.GetEmployeeById(id);
+            if (employee == null)
             {
                 return NotFound();
             }
@@ -33,17 +34,17 @@ namespace WebApiDemo.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddEmployee(EmployeeDto employeeDto)
+        public async Task<IActionResult> AddEmployee(EmployeeDto employeeDto)
         {
-            var addedEmployee = employeeService.AddEmployee(employeeDto);
+            var addedEmployee = await _employeeService.AddEmployee(employeeDto);
             return Ok(addedEmployee);
         }
 
         [HttpPut("{id:guid}")]
-        public IActionResult UpdateEmployee(Guid id, UpdateEmployeeDto updateEmployeeDto)
+        public async Task<IActionResult> UpdateEmployee(Guid id, UpdateEmployeeDto updateEmployeeDto)
         {
-            var updatedEmployee = employeeService.UpdateEmployee(id, updateEmployeeDto);
-            if(updatedEmployee is null)
+            var updatedEmployee = await _employeeService.UpdateEmployee(id, updateEmployeeDto);
+            if (updatedEmployee == null)
             {
                 return NotFound();
             }
@@ -51,9 +52,9 @@ namespace WebApiDemo.Controllers
         }
 
         [HttpDelete("{id:guid}")]
-        public IActionResult DeleteEmployee(Guid id)
-        {  
-            if (employeeService.DeleteEmployee(id))
+        public async Task<IActionResult> DeleteEmployee(Guid id)
+        {
+            if (await _employeeService.DeleteEmployee(id))
             {
                 return Ok("Deleted Successfully");
             }
