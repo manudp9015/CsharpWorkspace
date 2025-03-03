@@ -1,66 +1,57 @@
-﻿using WebApiDemo.Data;
-using WebApiDemo.Models.Entity;
-using Microsoft.EntityFrameworkCore;
+﻿using WebApiDemo.Models.Entity;
+using WebApiDemo.Repository;
+using WebApiDemo.Repository;
 
 namespace WebApiDemo.Services
 {
     public class EmployeeService : IEmployeeService
     {
-        private readonly ApplicationDbContext dbContext;
+        private readonly IEmployeeRepository _employeeRepository;
 
-        public EmployeeService(ApplicationDbContext dbContext)
+        public EmployeeService(IEmployeeRepository employeeRepository)
         {
-            this.dbContext = dbContext;
+            _employeeRepository = employeeRepository;
         }
 
-        public List<Employee> GetAllEmployees()
+        public async Task<List<Employee>> GetAllEmployees()
         {
-            return dbContext.Emplyees.ToList();
+            return await _employeeRepository.GetAllAsync();
         }
 
-        public Employee GetEmployeeById(Guid id)
+        public async Task<Employee> GetEmployeeById(Guid id)
         {
-            return dbContext.Emplyees.Find(id);
+            return await _employeeRepository.GetByIdAsync(id);
         }
 
-        public Employee AddEmployee(EmployeeDto employeeDto)
+        public async Task<Employee> AddEmployee(EmployeeDto employeeDto)
         {
-            Employee employeeEntity = new Employee()
+            var employee = new Employee
             {
                 Name = employeeDto.Name,
                 Email = employeeDto.Email,
                 Phone = employeeDto.Phone,
                 Salary = employeeDto.Salary
             };
-            dbContext.Emplyees.Add(employeeEntity);
-            dbContext.SaveChanges();
-            return employeeEntity;
+            return await _employeeRepository.AddAsync(employee);
         }
 
-        public Employee UpdateEmployee(Guid id, UpdateEmployeeDto updateEmployeeDto)
+        public async Task<Employee> UpdateEmployee(Guid id, UpdateEmployeeDto updateEmployeeDto)
         {
-            var employee = dbContext.Emplyees.Find(id);
-            if (employee is null)
+            var employee = await _employeeRepository.GetByIdAsync(id);
+            if (employee == null)
                 return null;
 
-            employee.Phone = updateEmployeeDto.Phone;
             employee.Name = updateEmployeeDto.Name;
-            employee.Salary = updateEmployeeDto.Salary;
             employee.Email = updateEmployeeDto.Email;
+            employee.Phone = updateEmployeeDto.Phone;
+            employee.Salary = updateEmployeeDto.Salary;
 
-            dbContext.SaveChanges();
-            return employee;
+            return await _employeeRepository.UpdateAsync(employee);
         }
 
-        public bool DeleteEmployee(Guid id)
+        public async Task<bool> DeleteEmployee(Guid id)
         {
-            var employee = dbContext.Emplyees.Find(id);
-            if (employee == null)
-                return false;
-
-            dbContext.Emplyees.Remove(employee);
-            dbContext.SaveChanges();
-            return true;
+            return await _employeeRepository.DeleteAsync(id);
         }
     }
 }

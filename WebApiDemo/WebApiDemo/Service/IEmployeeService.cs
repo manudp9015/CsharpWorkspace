@@ -1,13 +1,14 @@
-﻿using WebApiDemo.Models.Entity;
+﻿// WebApiDemo/Services/IEmployeeService.cs
+using WebApiDemo.Models.Entity;
 
 namespace WebApiDemo.Services
 {
     public interface IEmployeeService
     {
-        List<Employee> GetAllEmployees();
-        Employee GetEmployeeById(Guid id);
-        Employee AddEmployee(EmployeeDto employeeDto);
-        Employee UpdateEmployee(Guid id, UpdateEmployeeDto updateEmployeeDto);
-        bool DeleteEmployee(Guid id);
+        Task<List<Employee>> GetAllEmployees();
+        Task<Employee> GetEmployeeById(Guid id);
+        Task<Employee> AddEmployee(EmployeeDto employeeDto);
+        Task<Employee> UpdateEmployee(Guid id, UpdateEmployeeDto updateEmployeeDto);
+        Task<bool> DeleteEmployee(Guid id);
     }
 }
