@@ -1,8 +1,298 @@
 [
   {
-    "ContainingType": "MutualFundSimulatorApplication.Controllers.AuthController",
-    "Method": "Login",
-    "RelativePath": "api/Auth/login",
+    "ContainingType": "MutualFundSimulatorApplication.Controllers.ExpenseController",
+    "Method": "SaveExpense",
+    "RelativePath": "api/Expense",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "MutualFundSimulatorService.Model.Expense",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MutualFundSimulatorApplication.Controller.FundController",
+    "Method": "GetFundDetails",
+    "RelativePath": "api/Fund/fund/details",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "fundName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MutualFundSimulatorApplication.Controller.FundController",
+    "Method": "GetFundPrice",
+    "RelativePath": "api/Fund/fund/price",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "fundName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MutualFundSimulatorApplication.Controller.FundController",
+    "Method": "GetMainFunds",
+    "RelativePath": "api/Fund/funds",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MutualFundSimulatorApplication.Controller.FundController",
+    "Method": "GetBalancedFunds",
+    "RelativePath": "api/Fund/funds/balanced",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MutualFundSimulatorApplication.Controller.FundController",
+    "Method": "GetCommodityFunds",
+    "RelativePath": "api/Fund/funds/commodity",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MutualFundSimulatorApplication.Controller.FundController",
+    "Method": "GetDebtFunds",
+    "RelativePath": "api/Fund/funds/debt",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MutualFundSimulatorApplication.Controller.FundController",
+    "Method": "GetEquityFunds",
+    "RelativePath": "api/Fund/funds/equity",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MutualFundSimulatorApplication.Controller.FundController",
+    "Method": "GetIndexFunds",
+    "RelativePath": "api/Fund/funds/index",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MutualFundSimulatorApplication.Controllers.LumpsumController",
+    "Method": "SaveLumpsumInvest",
+    "RelativePath": "api/Lumpsum/invest",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "fundName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "amount",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
+        "Name": "deducted",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MutualFundSimulatorApplication.Controllers.LumpsumController",
+    "Method": "UpdateCurrentAmountsForAllInvestments",
+    "RelativePath": "api/Lumpsum/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MutualFundSimulatorApplication.Controller.NavController",
+    "Method": "GetLatestNAV",
+    "RelativePath": "api/Nav/nav/latest",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "fundName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MutualFundSimulatorApplication.Controller.NavController",
+    "Method": "UpdateFundNav",
+    "RelativePath": "api/Nav/nav/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MutualFundSimulatorApplication.Controller.NavController",
+    "Method": "IsNavAlreadyUpdated",
+    "RelativePath": "api/Nav/nav/updated",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MutualFundSimulatorApplication.Controller.PortfolioController",
+    "Method": "DisplayLumpSumPortfolio",
+    "RelativePath": "api/Portfolio/lumpsum/portfolio",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userEmail",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MutualFundSimulatorApplication.Controller.PortfolioController",
+    "Method": "DisplaySIPPortfolio",
+    "RelativePath": "api/Portfolio/sip/portfolio",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userEmail",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MutualFundSimulatorApplication.Controller.PortfolioController",
+    "Method": "GetUpcomingSIPInstallments",
+    "RelativePath": "api/Portfolio/sip/upcoming",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userEmail",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MutualFundSimulatorApplication.Controllers.SipController",
+    "Method": "IncrementInstallments",
+    "RelativePath": "api/Sip/increment",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MutualFundSimulatorApplication.Controllers.SipController",
+    "Method": "SaveSIPInvest",
+    "RelativePath": "api/Sip/invest",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "fundName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "sipAmount",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
+        "Name": "sipStartDate",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "durationInMonths",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MutualFundSimulatorApplication.Controllers.UserController",
+    "Method": "LoginUser",
+    "RelativePath": "api/User/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userEmail",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "password",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MutualFundSimulatorApplication.Controllers.UserController",
+    "Method": "Register",
+    "RelativePath": "api/User/register",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -16,10 +306,10 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "MutualFundSimulatorApplication.Controllers.AuthController",
-    "Method": "Register",
-    "RelativePath": "api/Auth/register",
-    "HttpMethod": "POST",
+    "ContainingType": "MutualFundSimulatorApplication.Controllers.UserController",
+    "Method": "AddMoneyToWallet",
+    "RelativePath": "api/User/wallet/add",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [

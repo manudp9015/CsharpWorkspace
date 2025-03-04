@@ -35,4 +35,11 @@ namespace MutualFundSimulatorService.Model
         public decimal totalInvestedAmount { get; set; }
         public decimal currentAmount { get; set; }
     }
+    public class Expense
+    {
+        public string FundName { get; set; }
+        public decimal ExpenseAmount { get; set; }
+        public DateTime ExpenseDate { get; set; }
+    }
+
 }

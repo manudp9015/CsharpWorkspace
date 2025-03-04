@@ -534,10 +534,9 @@ namespace MutualFundSimulatorService.Repository
                 {
                     connection.Open();
                     string query = @"
-                        SELECT fundname, nextinstallmentdate 
-                        FROM UserSIPPortfolio 
-                        WHERE useremail = @useremail AND nextinstallmentdate > @today AND sipenddate >= @today";
-
+                SELECT fundname, nextinstallmentdate 
+                FROM UserSIPPortfolio 
+                WHERE useremail = @useremail AND nextinstallmentdate > @today AND sipenddate >= @today";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@useremail", _user.userEmail);
@@ -565,7 +564,6 @@ namespace MutualFundSimulatorService.Repository
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
         }
-
         /// <summary>
         /// Updates NAV values for all funds in the FundNAV table with random values based on fund type and date.
         /// </summary>

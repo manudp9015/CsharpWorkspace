@@ -1,6 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.DependencyInjection;
-using MutualFundSimulatorService.Interfaces;
 using MutualFundSimulatorService.Model;
 using MutualFundSimulatorService.Repository;
 using System;
@@ -9,7 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace MutualFundSimulatorService.Business
 {
-    public class UserLogin : IUserLogin
+    public class UserLogin 
     {
         private MutualFundRepository _repository;
         private User _user;
@@ -237,52 +236,6 @@ namespace MutualFundSimulatorService.Business
         /// Authenticates a user by validating email and password, retrieving wallet balance on success.
         /// </summary>
         /// <returns></returns>
-        public bool LoginUser()
-        {
-            try
-            {
-                Console.Write("Enter your email: ");
-                _user.userEmail = Console.ReadLine();
-                Console.Write("Enter your password: ");
-                _user.password = Console.ReadLine();
-
-                if (string.IsNullOrWhiteSpace(_user.userEmail) || string.IsNullOrWhiteSpace(_user.password))
-                {
-                    Console.WriteLine("Both email and password are required. Please try again.");
-                    return false;
-                }
-                if (_repository.AuthenticateUser())
-                {
-                    using (SqlConnection connection = new SqlConnection(_repository.ConnectionString))
-                    {
-                        connection.Open();
-                        string query = "SELECT walletbalance FROM Users WHERE useremail = @useremail";
-                        using (SqlCommand command = new SqlCommand(query, connection))
-                        {
-                            command.Parameters.AddWithValue("@useremail", _user.userEmail);
-                            object result = command.ExecuteScalar();
-                            _user.walletBalance = result != null && result != DBNull.Value ? Convert.ToDecimal(result) : 0m;
-                        }
-                    }
-                    _repository.IncrementInstallments();
-                    Console.WriteLine("Login successful.");
-                    return true;
-                }
-                else
-                {
-                    Console.WriteLine("Invalid email or password.");
-                    return false;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
-                return false;
-            }
-        }
-
-
-
         public bool LoginUser(string email, string password)
         {
             try
@@ -316,7 +269,6 @@ namespace MutualFundSimulatorService.Business
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
                 return false;
             }
-
         }
     }
 }

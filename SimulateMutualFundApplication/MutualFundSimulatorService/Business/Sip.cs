@@ -172,7 +172,50 @@ namespace MutualFundSimulatorService.Business
             else
                 Console.WriteLine("Investment cancelled.");
         }
+        public void ProcessSipInvestment(string fundName, decimal sipAmount, DateTime sipStartDate, int durationInMonths)
+        {
+            try
+            {
+                _userSip.fundName = fundName;
 
+                // Validate inputs
+                if (string.IsNullOrWhiteSpace(fundName))
+                    throw new ArgumentException("Fund name is required.");
+                if (sipAmount < 500)
+                    throw new ArgumentException("SIP amount must be at least ₹500.");
+                if (sipStartDate < User.CurrentDate)
+                    throw new ArgumentException($"Start date must be {User.CurrentDate:yyyy-MM-dd} or later.");
+                if (durationInMonths < 12 || durationInMonths > 1200)
+                    throw new ArgumentException("Duration must be between 12 and 1200 months.");
+
+                _userSip.sipAmount = sipAmount;
+                _userSip.sipStartDate = sipStartDate;
+                _userSip.durationInMonths = durationInMonths;
+
+                decimal pricePerUnit = _fundBusiness.GetFundPrice(_userSip.fundName);
+                if (pricePerUnit <= 0)
+                    throw new ArgumentException("Invalid fund price.");
+
+                decimal quantity = Math.Round(_userSip.sipAmount / pricePerUnit, 2);
+                decimal monthlyExpenseRatio = GetExpenseRatio(_userSip.fundName);
+                decimal monthlyExpense = _userSip.sipAmount * monthlyExpenseRatio / 100m;
+
+                // Calculate and set fields
+                _userSip.nextInstallmentDate = _userSip.sipStartDate.AddMonths(1);
+                _userSip.sipEndDate = _userSip.sipStartDate.AddMonths(_userSip.durationInMonths);
+                _userSip.totalUnits = quantity; // Initial units for first installment
+                _userSip.totalInstallments = 1; // First installment
+                _userSip.totalInvestedAmount = _userSip.sipAmount; // Initial investment
+                _userSip.currentAmount = quantity * pricePerUnit; // Current value
+
+                // Save the SIP investment
+                _fundBusiness.SaveSIPInvest();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Failed to process SIP investment: {ex.Message}", ex);
+            }
+        }
         /// <summary>
         /// Retrieves the expense ratio for the specified fund from fund details.
         /// </summary>
