@@ -120,7 +120,41 @@ namespace MutualFundSimulatorService.Business
                 Console.WriteLine("Investment cancelled.");
             }
         }
+        public void ProcessInvestment(string fundName, decimal amount, bool deducted)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(fundName))
+                    throw new ArgumentException("Fund name is required.");
+                if (amount < 5000)
+                    throw new ArgumentException("Lump sum amount must be at least ₹5000.");
 
+                _userLumpsum.fundName = fundName;
+                decimal pricePerUnit = _fundBusiness.GetFundPrice(_userLumpsum.fundName);
+                if (pricePerUnit <= 0)
+                    throw new ArgumentException("Invalid fund price.");
+
+                decimal monthlyExpenseRatio = GetExpenseRatio(_userLumpsum.fundName);
+                decimal expense = amount * monthlyExpenseRatio / 100m;
+                decimal netAmount = amount - expense;
+
+                _userLumpsum.investedAmount = netAmount;
+                _userLumpsum.quantity = Math.Round(netAmount / pricePerUnit, 2);
+                _userLumpsum.currentAmount = _userLumpsum.quantity * pricePerUnit;
+                _userLumpsum.lumpsumStartDate = User.CurrentDate;
+
+                if (_user.walletBalance < amount)
+                    throw new ArgumentException($"Insufficient funds in wallet (₹{_user.walletBalance}). Required: ₹{amount}");
+
+                _fundBusiness.AddMoneyToWallet(-amount);
+                _fundBusiness.SaveExpense(_userLumpsum.fundName, expense, _userLumpsum.lumpsumStartDate);
+                _fundBusiness.SaveLumpsumInvest(deducted);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Failed to process lumpsum investment: {ex.Message}", ex);
+            }
+        }
         /// <summary>
         /// Retrieve the monthly expense ratio for a specific fund
         /// </summary>

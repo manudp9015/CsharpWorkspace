@@ -47,7 +47,7 @@ namespace MutualFundSimulatorService.Business
                         switch (input)
                         {
                             case 1:
-                                if (_userLogin.LoginUser())
+                                if (_userLogin.LoginUser(_user.userEmail,_user.password))
                                 {
                                     SubMenu();
                                 }

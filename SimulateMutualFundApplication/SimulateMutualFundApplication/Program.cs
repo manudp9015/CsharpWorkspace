@@ -4,7 +4,6 @@ using Microsoft.Extensions.Hosting;
 using MutualFundSimulatorService.Business;
 using MutualFundSimulatorService.Model;
 using MutualFundSimulatorService.Repository;
-using MutualFundSimulatorService.Interfaces;
 using System;
 using MutualFundSimulatorService;
 
@@ -77,7 +76,6 @@ namespace MutualFundSimulatorApplication
             services.AddScoped<Lumpsum>();
             services.AddScoped<Sip>();
             services.AddScoped<UserLogin>();
-            services.AddScoped<IUserLogin, UserLogin>();
             services.AddTransient<DBPatch>();
             services.AddTransient<MutualFundSimulatorUtility>();
         }

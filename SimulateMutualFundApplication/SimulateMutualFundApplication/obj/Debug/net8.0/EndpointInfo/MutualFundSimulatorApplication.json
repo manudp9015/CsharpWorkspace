@@ -6,10 +6,396 @@
     "version": "v1"
   },
   "paths": {
-    "/api/Auth/login": {
+    "/api/Expense": {
       "post": {
         "tags": [
-          "Auth"
+          "Expense"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Expense"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Expense"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Expense"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Fund/funds": {
+      "get": {
+        "tags": [
+          "Fund"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Fund/funds/equity": {
+      "get": {
+        "tags": [
+          "Fund"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Fund/funds/debt": {
+      "get": {
+        "tags": [
+          "Fund"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Fund/funds/index": {
+      "get": {
+        "tags": [
+          "Fund"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Fund/funds/balanced": {
+      "get": {
+        "tags": [
+          "Fund"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Fund/funds/commodity": {
+      "get": {
+        "tags": [
+          "Fund"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Fund/fund/details": {
+      "get": {
+        "tags": [
+          "Fund"
+        ],
+        "parameters": [
+          {
+            "name": "fundName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Fund/fund/price": {
+      "get": {
+        "tags": [
+          "Fund"
+        ],
+        "parameters": [
+          {
+            "name": "fundName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Lumpsum/invest": {
+      "post": {
+        "tags": [
+          "Lumpsum"
+        ],
+        "parameters": [
+          {
+            "name": "fundName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "amount",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "deducted",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Lumpsum/update": {
+      "put": {
+        "tags": [
+          "Lumpsum"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Nav/nav/update": {
+      "put": {
+        "tags": [
+          "Nav"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Nav/nav/latest": {
+      "get": {
+        "tags": [
+          "Nav"
+        ],
+        "parameters": [
+          {
+            "name": "fundName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Nav/nav/updated": {
+      "get": {
+        "tags": [
+          "Nav"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Portfolio/lumpsum/portfolio": {
+      "get": {
+        "tags": [
+          "Portfolio"
+        ],
+        "parameters": [
+          {
+            "name": "userEmail",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Portfolio/sip/portfolio": {
+      "get": {
+        "tags": [
+          "Portfolio"
+        ],
+        "parameters": [
+          {
+            "name": "userEmail",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Portfolio/sip/upcoming": {
+      "get": {
+        "tags": [
+          "Portfolio"
+        ],
+        "parameters": [
+          {
+            "name": "userEmail",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Sip/invest": {
+      "post": {
+        "tags": [
+          "Sip"
+        ],
+        "parameters": [
+          {
+            "name": "fundName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sipAmount",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "sipStartDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "durationInMonths",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Sip/increment": {
+      "put": {
+        "tags": [
+          "Sip"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/User/login": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "userEmail",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/User/register": {
+      "post": {
+        "tags": [
+          "User"
         ],
         "requestBody": {
           "content": {
@@ -37,10 +423,10 @@
         }
       }
     },
-    "/api/Auth/register": {
-      "post": {
+    "/api/User/wallet/add": {
+      "put": {
         "tags": [
-          "Auth"
+          "User"
         ],
         "requestBody": {
           "content": {
@@ -71,6 +457,24 @@
   },
   "components": {
     "schemas": {
+      "Expense": {
+        "type": "object",
+        "properties": {
+          "fundName": {
+            "type": "string",
+            "nullable": true
+          },
+          "expenseAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "expenseDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
       "User": {
         "type": "object",
         "properties": {
