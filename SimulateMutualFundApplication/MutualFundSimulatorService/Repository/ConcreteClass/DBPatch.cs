@@ -1,22 +1,24 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.DependencyInjection;
-using MutualFundSimulatorService.Repository;
+using MutualFundSimulatorService.Repository.Interface;
 using System;
 
-namespace MutualFundSimulatorService
+namespace MutualFundSimulatorService.Repository.ConcreteClass
 {
     public class DBPatch
     {
         private readonly string _masterConnectionString = @"Server=LAPTOP-HS9AFKH4;Database=master;Trusted_Connection=True;TrustServerCertificate=True;";
-        private readonly MutualFundRepository _repository;
 
-        public DBPatch(MutualFundRepository repository)
+        private readonly IRepository _repository;
+
+        public DBPatch(IRepository repository)
         {
             _repository = repository;
         }
 
+
         /// <summary>
-        /// Creates the MutualFundSimulator database and its required tables if they do not already exist.
+        /// Creates the MutualFundSimulatorApi database and its required tables if they do not already exist.
         /// </summary>
         public void CreateTablesForMutualFunds()
         {
@@ -26,11 +28,11 @@ namespace MutualFundSimulatorService
                 {
                     masterConnection.Open();
                     string createDbQuery = @"
-                        IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'MutualFundSimulator')
+                        IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'MutualFundSimulatorApi')
                         BEGIN
-                            CREATE DATABASE MutualFundSimulator
+                            CREATE DATABASE MutualFundSimulatorApi
                         END";
-                    ExecuteNonQuery(masterConnection, createDbQuery, "Failed to create database MutualFundSimulator");
+                    ExecuteNonQuery(masterConnection, createDbQuery, "Failed to create database MutualFundSimulatorApi");
                 }
 
                 using (SqlConnection connection = new SqlConnection(_repository.ConnectionString))
@@ -41,7 +43,8 @@ namespace MutualFundSimulatorService
                         IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'Users')
                         BEGIN
                             CREATE TABLE Users (
-                                useremail VARCHAR(100) PRIMARY KEY,
+                                id INT IDENTITY(1,1) PRIMARY KEY,
+                                useremail VARCHAR(100) UNIQUE,
                                 username VARCHAR(50),
                                 userage INT,
                                 userpassword VARCHAR(100),
@@ -70,14 +73,14 @@ namespace MutualFundSimulatorService
                     BEGIN
                         CREATE TABLE UserLumpsumPortfolio (
                             lumpsumid INT IDENTITY(1,1) PRIMARY KEY,
-                            useremail VARCHAR(100),
+                            userid INT,
                             fundname VARCHAR(50),
                             quantity DECIMAL(10, 2),
                             investedamount DECIMAL(10, 2),
                             currentamount DECIMAL(10, 2),
                             lumpsumstartdate DATE,
                             deducted BIT DEFAULT 0,
-                            FOREIGN KEY (useremail) REFERENCES Users(useremail)
+                            FOREIGN KEY (userid) REFERENCES Users(id)
                         )
                     END";
                     ExecuteNonQuery(connection, createUserLumpsumPortfolioTable, "Failed to create UserLumpsumPortfolio table");
@@ -87,7 +90,7 @@ namespace MutualFundSimulatorService
                         BEGIN
                             CREATE TABLE UserSIPPortfolio (
                                 sipid INT IDENTITY(1,1) PRIMARY KEY,
-                                useremail VARCHAR(100),
+                                userid INT,
                                 fundname VARCHAR(50),
                                 sipamount DECIMAL(10, 2),
                                 sipstartdate DATE,
@@ -98,7 +101,7 @@ namespace MutualFundSimulatorService
                                 totalinvestedamount DECIMAL(10,2) DEFAULT 0,
                                 currentamount DECIMAL(10,2) DEFAULT 0,
                                 durationinmonths INT,
-                                FOREIGN KEY (useremail) REFERENCES Users(useremail)
+                                FOREIGN KEY (userid) REFERENCES Users(id)
                             )
                         END";
                     ExecuteNonQuery(connection, createUserSIPPortfolioTable, "Failed to create UserSIPPortfolio table");
@@ -108,10 +111,11 @@ namespace MutualFundSimulatorService
                         BEGIN
                             CREATE TABLE Expenses (
                                 expenseid INT IDENTITY(1,1) PRIMARY KEY,
-                                useremail NVARCHAR(255),
+                                userid INT,
                                 fundname NVARCHAR(255),
                                 expenseamount DECIMAL(18, 2),
-                                expensedate DATE
+                                expensedate DATE,
+                                FOREIGN KEY (userid) REFERENCES Users(id)
                             )
                         END";
                     ExecuteNonQuery(connection, createExpensesTable, "Failed to create Expenses table");
@@ -124,7 +128,7 @@ namespace MutualFundSimulatorService
         }
 
         /// <summary>
-        /// Executes a SQL query on the provided connection, Disaplay an error message if it fails.
+        /// Executes a SQL query on the provided connection, Display an error message if it fails.
         /// </summary>
         /// <param name="connection"></param>
         /// <param name="query"></param>

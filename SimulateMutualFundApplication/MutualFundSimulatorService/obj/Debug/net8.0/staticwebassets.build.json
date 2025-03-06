@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "iHjr+UI40a/L/Q18EtbBkJST5QXSQbVOMZis9pO+D9k=",
+  "Source": "MutualFundSimulatorService",
+  "BasePath": "_content/MutualFundSimulatorService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

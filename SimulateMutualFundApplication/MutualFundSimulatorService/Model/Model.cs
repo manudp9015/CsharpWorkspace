@@ -4,6 +4,7 @@ namespace MutualFundSimulatorService.Model
 {
     public class User
     {
+        public int id { get; set; }
         public string name { get; set; }
         public int age { get; set; }
         public string phoneNumber { get; set; }
@@ -41,5 +42,22 @@ namespace MutualFundSimulatorService.Model
         public decimal ExpenseAmount { get; set; }
         public DateTime ExpenseDate { get; set; }
     }
-
+    public class LumpSumPortfolioItem
+    {
+        public string FundName { get; set; }
+        public decimal Quantity { get; set; }
+        public decimal TotalInvestedAmount { get; set; }
+        public decimal TotalCurrentAmount { get; set; }
+    }
+    public class SipPortfolioItem
+    {
+        public string FundName { get; set; }
+        public decimal SipAmount { get; set; }
+        public decimal Quantity { get; set; }
+        public DateTime SipStartDate { get; set; }
+        public DateTime NextInstallment { get; set; }
+        public int TotalInstallments { get; set; }
+        public decimal TotalInvestedAmount { get; set; }
+        public decimal CurrentAmount { get; set; }
+    }
 }

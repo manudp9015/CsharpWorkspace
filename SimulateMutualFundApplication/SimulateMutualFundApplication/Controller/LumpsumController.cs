@@ -1,56 +1,30 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MutualFundSimulatorService.Model;
-using MutualFundSimulatorService.Repository;
-using MutualFundSimulatorService.Business;
+using MutualFundSimulatorService.Business.Interfaces;
 
 namespace MutualFundSimulatorApplication.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class LumpsumController : ControllerBase
     {
-        private readonly MutualFundRepository _repository;
-        private readonly User _user;
-        private readonly UserLumpsumInvest _userLumpsum;
-        private readonly Lumpsum _lumpsumInvest;
+        private readonly ILumpsumService _lumpsumService;
 
-        public LumpsumController(
-            MutualFundRepository repository,
-            User user,
-            UserLumpsumInvest userLumpsum,
-            Lumpsum lumpsumInvest)
+        public LumpsumController(ILumpsumService lumpsumService)
         {
-            _repository = repository;
-            _user = user;
-            _userLumpsum = userLumpsum;
-            _lumpsumInvest = lumpsumInvest;
+            _lumpsumService = lumpsumService;
         }
 
-        [HttpPost("invest")]
-        public IActionResult SaveLumpsumInvest(
-            [FromQuery] string fundName,
-            [FromQuery] decimal amount,
-            [FromQuery] bool deducted)
+        [HttpPost]
+        [Route("api/lumpsum/invest")]
+        public IActionResult SaveLumpsumInvest([FromQuery] int id, [FromQuery] string fundName, [FromQuery] decimal amount)
         {
-            if (string.IsNullOrWhiteSpace(fundName) || amount <= 0)
-                return BadRequest(new { Message = "Fund name and amount are required" });
-
-            try
-            {
-                _lumpsumInvest.ProcessInvestment(fundName, amount, deducted);
-                return Ok(new { Message = "Lumpsum investment saved", Quantity = _userLumpsum.quantity });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { Message = ex.Message });
-            }
+            return _lumpsumService.SaveLumpsumInvest(id, fundName, amount);
         }
 
-        [HttpPut("update")]
+        [HttpPut]
+        [Route("api/lumpsum/update")]
         public IActionResult UpdateCurrentAmountsForAllInvestments()
         {
-            _repository.UpdateCurrentAmountsForAllInvestments();
-            return Ok(new { Message = "Lumpsum amounts updated" });
+            return _lumpsumService.UpdateCurrentAmountsForAllInvestments();
         }
     }
 }

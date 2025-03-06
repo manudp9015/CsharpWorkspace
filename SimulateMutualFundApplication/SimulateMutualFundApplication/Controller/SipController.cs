@@ -1,57 +1,32 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MutualFundSimulatorService.Model;
-using MutualFundSimulatorService.Repository;
-using MutualFundSimulatorService.Business;
+using MutualFundSimulatorService.Business.Interfaces;
+using MutualFundSimulatorService.Model.DTO;
 
 namespace MutualFundSimulatorApplication.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/sip")]
     [ApiController]
     public class SipController : ControllerBase
     {
-        private readonly MutualFundRepository _repository;
-        private readonly User _user;
-        private readonly UserSipInvest _userSip;
-        private readonly Sip _sipInvest;
+        private readonly ISipService _sipService;
 
-        public SipController(
-            MutualFundRepository repository,
-            User user,
-            UserSipInvest userSip,
-            Sip sipInvest)
+        public SipController(ISipService sipService)
         {
-            _repository = repository;
-            _user = user;
-            _userSip = userSip;
-            _sipInvest = sipInvest;
+            _sipService = sipService;
         }
 
-        [HttpPost("invest")]
-        public IActionResult SaveSIPInvest(
-            [FromQuery] string fundName,
-            [FromQuery] decimal sipAmount,
-            [FromQuery] DateTime sipStartDate,
-            [FromQuery] int durationInMonths)
+        [HttpPost]
+        [Route("invest")]
+        public IActionResult SaveSIPInvest([FromQuery] int id, [FromBody] SaveSIPInvestDto saveSipInvestDto)
         {
-            if (string.IsNullOrWhiteSpace(fundName) || sipAmount <= 0 || durationInMonths <= 0)
-                return BadRequest(new { Message = "Fund name, SIP amount, and duration are required" });
-
-            try
-            {
-                _sipInvest.ProcessSipInvestment(fundName, sipAmount, sipStartDate, durationInMonths);
-                return Ok(new { Message = "SIP investment saved", Quantity = _userSip.totalUnits });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { Message = ex.Message });
-            }
+            return _sipService.SaveSIPInvest(id, saveSipInvestDto);
         }
 
-        [HttpPut("increment")]
-        public IActionResult IncrementInstallments()
+        [HttpPut]
+        [Route("increment")]
+        public IActionResult IncrementInstallments([FromQuery] int id)
         {
-            _repository.IncrementInstallments();
-            return Ok(new { Message = "SIP installments incremented" });
+            return _sipService.IncrementInstallments(id);
         }
     }
 }

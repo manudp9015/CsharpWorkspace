@@ -1,90 +1,38 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MutualFundSimulatorService.Model;
-using MutualFundSimulatorService.Repository;
-using Microsoft.Data.SqlClient;
+using MutualFundSimulatorService.Business.Interfaces;
 
-namespace MutualFundSimulatorApplication.Controller
+namespace MutualFundSimulatorApplication.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/portfolio")]
     [ApiController]
     public class PortfolioController : ControllerBase
     {
-        private readonly MutualFundRepository _repository;
-        private readonly User _user;
+        private readonly IPortfolioService _portfolioService;
 
-        public PortfolioController(MutualFundRepository repository, User user)
+        public PortfolioController(IPortfolioService portfolioService)
         {
-            _repository = repository;
-            _user = user;
+            _portfolioService = portfolioService;
         }
 
-        [HttpGet("lumpsum/portfolio")]
-        public IActionResult DisplayLumpSumPortfolio([FromQuery] string userEmail)
+        [HttpGet]
+        [Route("lumpsum")]
+        public IActionResult DisplayLumpSumPortfolio([FromQuery] int id)
         {
-            if (string.IsNullOrWhiteSpace(userEmail))
-                return BadRequest(new { Message = "User email is required" });
-
-            _user.userEmail = userEmail;
-
-            decimal profitLoss = _repository.DisplayLumpSumPortfolio();
-            if (profitLoss == 0)
-            {
-                using (var connection = new SqlConnection(_repository.ConnectionString))
-                {
-                    connection.Open();
-                    string checkQuery = "SELECT COUNT(*) FROM Users WHERE useremail = @useremail";
-                    using (var command = new SqlCommand(checkQuery, connection))
-                    {
-                        command.Parameters.AddWithValue("@useremail", userEmail);
-                        int count = (int)command.ExecuteScalar();
-                        if (count == 0)
-                            return NotFound(new { Message = "User not found" });
-                    }
-                }
-                return Ok(new { Message = "No lumpsum portfolio found for this user", ProfitLoss = profitLoss });
-            }
-
-            return Ok(new { UserEmail = userEmail, ProfitLoss = profitLoss });
+            return _portfolioService.DisplayLumpSumPortfolio(id);
         }
 
-        [HttpGet("sip/portfolio")]
-        public IActionResult DisplaySIPPortfolio([FromQuery] string userEmail)
+        [HttpGet]
+        [Route("sip")]
+        public IActionResult DisplaySIPPortfolio([FromQuery] int id)
         {
-            if (string.IsNullOrWhiteSpace(userEmail))
-                return BadRequest(new { Message = "User email is required" });
-
-            _user.userEmail = userEmail;
-
-            decimal profitLoss = _repository.DisplaySIPPortfolio();
-            if (profitLoss == 0)
-            {
-                using (var connection = new SqlConnection(_repository.ConnectionString))
-                {
-                    connection.Open();
-                    string checkQuery = "SELECT COUNT(*) FROM Users WHERE useremail = @useremail";
-                    using (var command = new SqlCommand(checkQuery, connection))
-                    {
-                        command.Parameters.AddWithValue("@useremail", userEmail);
-                        int count = (int)command.ExecuteScalar();
-                        if (count == 0)
-                            return NotFound(new { Message = "User not found" });
-                    }
-                }
-                return Ok(new { Message = "No SIP portfolio found for this user", ProfitLoss = profitLoss });
-            }
-
-            return Ok(new { UserEmail = userEmail, ProfitLoss = profitLoss });
+            return _portfolioService.DisplaySIPPortfolio(id);
         }
 
-        [HttpGet("sip/upcoming")]
-        public IActionResult GetUpcomingSIPInstallments([FromQuery] string userEmail)
+        [HttpGet]
+        [Route("sip/upcoming")]
+        public IActionResult GetUpcomingSIPInstallments([FromQuery] int id)
         {
-            if (string.IsNullOrWhiteSpace(userEmail))
-                return BadRequest(new { Message = "User email is required" });
-
-            _user.userEmail = userEmail;
-            _repository.GetUpcomingSIPInstallments();
-            return Ok(new { Message = "Upcoming SIP installments retrieved for " + userEmail });
+            return _portfolioService.GetUpcomingSIPInstallments(id);
         }
     }
 }
