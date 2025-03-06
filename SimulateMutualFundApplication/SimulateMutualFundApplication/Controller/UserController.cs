@@ -1,59 +1,47 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MutualFundSimulatorService.Business.Interfaces;
 using MutualFundSimulatorService.Model;
-using MutualFundSimulatorService.Repository;
-using MutualFundSimulatorService.Business;
+using MutualFundSimulatorService.Model.DTO;
+using Newtonsoft.Json.Linq;
 
 namespace MutualFundSimulatorApplication.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/user")]
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly MutualFundRepository _repository;
-        private readonly User _user;
-        private readonly UserLogin _userLogin;
+        private readonly IUserService _userService;
 
-        public UserController(
-            MutualFundRepository repository,
-            User user,
-            UserLogin userLogin)
+        public UserController(IUserService userService)
         {
-            _repository = repository;
-            _user = user;
-            _userLogin = userLogin;
+            _userService = userService;
         }
 
-        [HttpPost("login")]
-        public IActionResult LoginUser([FromQuery] string userEmail, [FromQuery] string password)
+        [HttpPost]
+        [Route("login")]
+        public IActionResult LoginUser([FromQuery] string userEmail,[FromQuery] string password)
         {
-            if (string.IsNullOrWhiteSpace(userEmail) || string.IsNullOrWhiteSpace(password))
-                return BadRequest(new { Message = "Email and password are required" });
-
-            bool success = _userLogin.LoginUser(userEmail, password);
-            return success ? Ok(new { Message = "Authentication successful" }) : Unauthorized(new { Message = "Invalid credentials" });
+            return _userService.LoginUser(userEmail, password);
         }
 
-        [HttpPost("register")]
-        public IActionResult Register([FromBody] User request)
+        [HttpPost]
+        [Route("register")]
+        public IActionResult Register([FromBody] UserDto userDto)
         {
-            if (string.IsNullOrWhiteSpace(request.name) || request.age <= 0 ||
-                string.IsNullOrWhiteSpace(request.phoneNumber) || string.IsNullOrWhiteSpace(request.userEmail) ||
-                string.IsNullOrWhiteSpace(request.password) || request.walletBalance < 1000)
-            {
-                return BadRequest(new { Message = "All fields are required and wallet balance must be at least ₹1000" });
-            }
-            bool success = _repository.SaveUserDetails(request);
-            return success ? Ok(new { Message = "Registration successful" }) :
-                             BadRequest(new { Message = "Registration failed, email may already exist" });
+            return _userService.Register(userDto);
         }
-        [HttpPut("wallet/add")]
-        public IActionResult AddMoneyToWallet([FromBody] User request)
-        {
-            if (request.walletBalance == 0)
-                return BadRequest(new { Message = "Amount must be non-zero" });
+        //public IActionResult Register(JObject userDtoObj)
+        //{
+        //    var userDto = userDtoObj.ToObject<UserDto>();
+        //    return _userService.Register(userDto);
+        //}
 
-            _repository.AddMoneyToWallet(request.walletBalance);
-            return Ok(new { Message = "Wallet balance updated" });
+
+        [HttpPut]
+        [Route("wallet/add")]
+        public IActionResult AddMoneyToWallet([FromQuery] int id,[FromQuery] decimal amount)
+        {
+            return _userService.AddMoneyToWallet(id, amount);
         }
     }
 }

@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MutualFundSimulatorService.Business;
 using MutualFundSimulatorService.Model;
-using MutualFundSimulatorService.Repository;
-using System;
-using MutualFundSimulatorService;
+using MutualFundSimulatorService.Business.ConcreteClass;
+using MutualFundSimulatorService.Business.Interfaces;
+using MutualFundSimulatorService.Repository.ConcreteClass;
+using MutualFundSimulatorService.Repository.Interface;
 
 namespace MutualFundSimulatorApplication
 {
@@ -17,38 +17,29 @@ namespace MutualFundSimulatorApplication
             ConfigureServices(builder.Services);
             var app = builder.Build();
 
-            // Configure the HTTP pipeline
-            app.UseRouting();
+            //builder.Services.AddTransient<DBPatch>(sp =>
+            //{
+            //    var repository = sp.GetRequiredService<IRepository>();
+            //    return new DBPatch(repository);  // Manual construction
+            //});
 
-            // Add Swagger middleware
+            app.UseRouting();
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mutual Fund Simulator API V1");
-                c.RoutePrefix = string.Empty; // Set Swagger UI as the default page (/)
+                c.RoutePrefix = string.Empty;
             });
 
             app.UseEndpoints(endpoints => endpoints.MapControllers());
 
-            // Initialize services
             using (var scope = app.Services.CreateScope())
             {
-                var services = scope.ServiceProvider;
-                var dbPatch = services.GetService<DBPatch>();
-                var utility = services.GetService<MutualFundSimulatorUtility>();
-
-                User.CurrentDate = new DateTime(2025, 04, 28);
+                var dbPatch = scope.ServiceProvider.GetService<DBPatch>();
+                User.CurrentDate = new DateTime(2025, 03, 06);
                 dbPatch.CreateTablesForMutualFunds();
-
-                // Run console mode only if --console is explicitly passed
-                if (args.Length > 0 && args[0] == "--console")
-                {
-                    utility.MainMenu();
-                    return;
-                }
             }
 
-            // Start the Web API
             Console.WriteLine("Starting Web API at http://localhost:5000");
             await app.RunAsync();
         }
@@ -56,8 +47,6 @@ namespace MutualFundSimulatorApplication
         private static void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
-            // Add Swagger services
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
@@ -68,16 +57,27 @@ namespace MutualFundSimulatorApplication
                 });
             });
 
-            services.AddSingleton<User>();
-            services.AddSingleton<UserSipInvest>();
-            services.AddSingleton<UserLumpsumInvest>();
-            services.AddScoped<MutualFundRepository>();
-            services.AddScoped<MutualFundBusiness>();
-            services.AddScoped<Lumpsum>();
-            services.AddScoped<Sip>();
-            services.AddScoped<UserLogin>();
+            services.AddScoped<User>();
+            services.AddScoped<UserSipInvest>();
+            services.AddScoped<UserLumpsumInvest>();
+
+            // Register repository
+            services.AddScoped<IRepository, MutualFundRepository>();
+
+            // Register services
+            services.AddScoped<IFundService, FundService>();
+            services.AddScoped<ILumpsumService, LumpsumService>();
+            services.AddScoped<ISipService, SipService>();
+            services.AddScoped<IPortfolioService, PortfolioService>();
+            services.AddScoped<INavService, NavService>();
+            services.AddScoped<IUserService, UserService>();
+
+            // Register DBPatch
             services.AddTransient<DBPatch>();
-            services.AddTransient<MutualFundSimulatorUtility>();
+            
+           
+
+
         }
     }
 }

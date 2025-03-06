@@ -11,3 +11,15 @@ D:\CsharpWorkspace\SimulateMutualFundApplication\MutualFundSimulatorService\obj\
 D:\CsharpWorkspace\SimulateMutualFundApplication\MutualFundSimulatorService\obj\Debug\net8.0\refint\MutualFundSimulatorService.dll
 D:\CsharpWorkspace\SimulateMutualFundApplication\MutualFundSimulatorService\obj\Debug\net8.0\MutualFundSimulatorService.pdb
 D:\CsharpWorkspace\SimulateMutualFundApplication\MutualFundSimulatorService\obj\Debug\net8.0\ref\MutualFundSimulatorService.dll
+D:\CsharpWorkspace\SimulateMutualFundApplication\MutualFundSimulatorService\bin\Debug\net8.0\MutualFundSimulatorService.staticwebassets.endpoints.json
+D:\CsharpWorkspace\SimulateMutualFundApplication\MutualFundSimulatorService\obj\Debug\net8.0\scopedcss\bundle\MutualFundSimulatorService.styles.css
+D:\CsharpWorkspace\SimulateMutualFundApplication\MutualFundSimulatorService\obj\Debug\net8.0\staticwebassets.build.json
+D:\CsharpWorkspace\SimulateMutualFundApplication\MutualFundSimulatorService\obj\Debug\net8.0\staticwebassets.development.json
+D:\CsharpWorkspace\SimulateMutualFundApplication\MutualFundSimulatorService\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\CsharpWorkspace\SimulateMutualFundApplication\MutualFundSimulatorService\obj\Debug\net8.0\staticwebassets\msbuild.MutualFundSimulatorService.Microsoft.AspNetCore.StaticWebAssets.props
+D:\CsharpWorkspace\SimulateMutualFundApplication\MutualFundSimulatorService\obj\Debug\net8.0\staticwebassets\msbuild.MutualFundSimulatorService.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+D:\CsharpWorkspace\SimulateMutualFundApplication\MutualFundSimulatorService\obj\Debug\net8.0\staticwebassets\msbuild.build.MutualFundSimulatorService.props
+D:\CsharpWorkspace\SimulateMutualFundApplication\MutualFundSimulatorService\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.MutualFundSimulatorService.props
+D:\CsharpWorkspace\SimulateMutualFundApplication\MutualFundSimulatorService\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.MutualFundSimulatorService.props
+D:\CsharpWorkspace\SimulateMutualFundApplication\MutualFundSimulatorService\obj\Debug\net8.0\staticwebassets.pack.json
+D:\CsharpWorkspace\SimulateMutualFundApplication\MutualFundSimulatorService\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

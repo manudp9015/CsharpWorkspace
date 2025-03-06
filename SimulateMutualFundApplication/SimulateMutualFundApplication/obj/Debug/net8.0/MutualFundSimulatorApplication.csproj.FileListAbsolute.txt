@@ -81,3 +81,5 @@ D:\CsharpWorkspace\SimulateMutualFundApplication\SimulateMutualFundApplication\b
 D:\CsharpWorkspace\SimulateMutualFundApplication\SimulateMutualFundApplication\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\CsharpWorkspace\SimulateMutualFundApplication\SimulateMutualFundApplication\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\CsharpWorkspace\SimulateMutualFundApplication\SimulateMutualFundApplication\obj\Debug\net8.0\MutualFundSimulatorApplication.MvcApplicationPartsAssemblyInfo.cs
+D:\CsharpWorkspace\SimulateMutualFundApplication\SimulateMutualFundApplication\bin\Debug\net8.0\MutualFundSimulatorService.staticwebassets.endpoints.json
+D:\CsharpWorkspace\SimulateMutualFundApplication\SimulateMutualFundApplication\bin\Debug\net8.0\Newtonsoft.Json.dll

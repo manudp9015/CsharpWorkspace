@@ -6,38 +6,7 @@
     "version": "v1"
   },
   "paths": {
-    "/api/Expense": {
-      "post": {
-        "tags": [
-          "Expense"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Expense"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Expense"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Expense"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Fund/funds": {
+    "/api/funds": {
       "get": {
         "tags": [
           "Fund"
@@ -49,7 +18,7 @@
         }
       }
     },
-    "/api/Fund/funds/equity": {
+    "/api/funds/equity": {
       "get": {
         "tags": [
           "Fund"
@@ -61,7 +30,7 @@
         }
       }
     },
-    "/api/Fund/funds/debt": {
+    "/api/funds/debt": {
       "get": {
         "tags": [
           "Fund"
@@ -73,7 +42,7 @@
         }
       }
     },
-    "/api/Fund/funds/index": {
+    "/api/funds/index": {
       "get": {
         "tags": [
           "Fund"
@@ -85,7 +54,7 @@
         }
       }
     },
-    "/api/Fund/funds/balanced": {
+    "/api/funds/balanced": {
       "get": {
         "tags": [
           "Fund"
@@ -97,7 +66,7 @@
         }
       }
     },
-    "/api/Fund/funds/commodity": {
+    "/api/funds/commodity": {
       "get": {
         "tags": [
           "Fund"
@@ -109,7 +78,7 @@
         }
       }
     },
-    "/api/Fund/fund/details": {
+    "/api/fund/details": {
       "get": {
         "tags": [
           "Fund"
@@ -130,7 +99,7 @@
         }
       }
     },
-    "/api/Fund/fund/price": {
+    "/api/fund/price": {
       "get": {
         "tags": [
           "Fund"
@@ -151,12 +120,20 @@
         }
       }
     },
-    "/api/Lumpsum/invest": {
+    "/api/lumpsum/invest": {
       "post": {
         "tags": [
           "Lumpsum"
         ],
         "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
           {
             "name": "fundName",
             "in": "query",
@@ -171,13 +148,6 @@
               "type": "number",
               "format": "double"
             }
-          },
-          {
-            "name": "deducted",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
           }
         ],
         "responses": {
@@ -187,7 +157,7 @@
         }
       }
     },
-    "/api/Lumpsum/update": {
+    "/api/lumpsum/update": {
       "put": {
         "tags": [
           "Lumpsum"
@@ -199,7 +169,7 @@
         }
       }
     },
-    "/api/Nav/nav/update": {
+    "/api/nav/update": {
       "put": {
         "tags": [
           "Nav"
@@ -211,7 +181,7 @@
         }
       }
     },
-    "/api/Nav/nav/latest": {
+    "/api/nav/latest": {
       "get": {
         "tags": [
           "Nav"
@@ -232,7 +202,7 @@
         }
       }
     },
-    "/api/Nav/nav/updated": {
+    "/api/nav/updated": {
       "get": {
         "tags": [
           "Nav"
@@ -244,100 +214,14 @@
         }
       }
     },
-    "/api/Portfolio/lumpsum/portfolio": {
+    "/api/portfolio/lumpsum": {
       "get": {
         "tags": [
           "Portfolio"
         ],
         "parameters": [
           {
-            "name": "userEmail",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Portfolio/sip/portfolio": {
-      "get": {
-        "tags": [
-          "Portfolio"
-        ],
-        "parameters": [
-          {
-            "name": "userEmail",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Portfolio/sip/upcoming": {
-      "get": {
-        "tags": [
-          "Portfolio"
-        ],
-        "parameters": [
-          {
-            "name": "userEmail",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Sip/invest": {
-      "post": {
-        "tags": [
-          "Sip"
-        ],
-        "parameters": [
-          {
-            "name": "fundName",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "sipAmount",
-            "in": "query",
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
-          },
-          {
-            "name": "sipStartDate",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "durationInMonths",
+            "name": "id",
             "in": "query",
             "schema": {
               "type": "integer",
@@ -352,10 +236,20 @@
         }
       }
     },
-    "/api/Sip/increment": {
-      "put": {
+    "/api/portfolio/sip": {
+      "get": {
         "tags": [
-          "Sip"
+          "Portfolio"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -364,7 +258,92 @@
         }
       }
     },
-    "/api/User/login": {
+    "/api/portfolio/sip/upcoming": {
+      "get": {
+        "tags": [
+          "Portfolio"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sip/invest": {
+      "post": {
+        "tags": [
+          "Sip"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveSIPInvestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveSIPInvestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveSIPInvestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sip/increment": {
+      "put": {
+        "tags": [
+          "Sip"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/user/login": {
       "post": {
         "tags": [
           "User"
@@ -392,7 +371,7 @@
         }
       }
     },
-    "/api/User/register": {
+    "/api/user/register": {
       "post": {
         "tags": [
           "User"
@@ -401,17 +380,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/User"
+                "$ref": "#/components/schemas/UserDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/User"
+                "$ref": "#/components/schemas/UserDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/User"
+                "$ref": "#/components/schemas/UserDto"
               }
             }
           }
@@ -423,30 +402,29 @@
         }
       }
     },
-    "/api/User/wallet/add": {
+    "/api/user/wallet/add": {
       "put": {
         "tags": [
           "User"
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/User"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/User"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/User"
-              }
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "amount",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
             }
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -457,25 +435,29 @@
   },
   "components": {
     "schemas": {
-      "Expense": {
+      "SaveSIPInvestDto": {
         "type": "object",
         "properties": {
           "fundName": {
             "type": "string",
             "nullable": true
           },
-          "expenseAmount": {
+          "sipAmount": {
             "type": "number",
             "format": "double"
           },
-          "expenseDate": {
+          "sipStartDate": {
             "type": "string",
             "format": "date-time"
+          },
+          "durationInMonths": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
       },
-      "User": {
+      "UserDto": {
         "type": "object",
         "properties": {
           "name": {
