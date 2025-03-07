@@ -16,27 +16,51 @@ namespace MutualFundSimulatorService.Business.ConcreteClass
 
         public IActionResult UpdateFundNav()
         {
-            _repository.UpdateFundNav();
-            return new OkObjectResult(new { Message = "NAV values updated" });
+            try
+            {
+                _repository.UpdateFundNav();
+                return new OkObjectResult(new { Message = "NAV values updated" });
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public IActionResult GetLatestNAV(string fundName)
         {
-            if (string.IsNullOrWhiteSpace(fundName))
-                return new BadRequestObjectResult(new { Message = "Fund name is required" });
-
-            using (var connection = new SqlConnection(_repository.ConnectionString))
+            try
             {
-                connection.Open();
-                decimal nav = _repository.GetLatestNAV(connection, fundName);
-                return new OkObjectResult(new { FundName = fundName, NAV = nav });
+                if (string.IsNullOrWhiteSpace(fundName))
+                    return new BadRequestObjectResult(new { Message = "Fund name is required" });
+
+                using (var connection = new SqlConnection(_repository.ConnectionString))
+                {
+                    connection.Open();
+                    decimal nav = _repository.GetLatestNAV(connection, fundName);
+                    return new OkObjectResult(new { FundName = fundName, NAV = nav });
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 
         public IActionResult IsNavAlreadyUpdated()
         {
-            bool updated = _repository.IsNavAlreadyUpdated();
-            return new OkObjectResult(new { IsUpdated = updated });
+            try
+            {
+                bool updated = _repository.IsNavAlreadyUpdated();
+                return new OkObjectResult(new { IsUpdated = updated });
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

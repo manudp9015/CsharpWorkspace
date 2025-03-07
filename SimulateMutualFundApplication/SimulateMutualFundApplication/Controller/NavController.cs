@@ -18,21 +18,45 @@ namespace MutualFundSimulatorApplication.Controllers
         [Route("update")]
         public IActionResult UpdateFundNav()
         {
-            return _navService.UpdateFundNav();
+            try
+            {
+                return _navService.UpdateFundNav();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         [HttpGet]
         [Route("latest")]
         public IActionResult GetLatestNAV([FromQuery] string fundName)
         {
-            return _navService.GetLatestNAV(fundName);
+            try
+            {
+                return _navService.GetLatestNAV(fundName);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         [HttpGet]
         [Route("updated")]
         public IActionResult IsNavAlreadyUpdated()
         {
-            return _navService.IsNavAlreadyUpdated();
+            try
+            {
+                return _navService.IsNavAlreadyUpdated();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

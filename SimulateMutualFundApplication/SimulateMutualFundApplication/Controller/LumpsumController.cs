@@ -17,14 +17,28 @@ namespace MutualFundSimulatorApplication.Controllers
         [Route("api/lumpsum/invest")]
         public IActionResult SaveLumpsumInvest([FromQuery] int id, [FromQuery] string fundName, [FromQuery] decimal amount)
         {
-            return _lumpsumService.SaveLumpsumInvest(id, fundName, amount);
+            try
+            {
+                return _lumpsumService.SaveLumpsumInvest(id, fundName, amount);
+            }
+            catch (Exception)
+            {
+                throw;
+            }        
         }
 
         [HttpPut]
         [Route("api/lumpsum/update")]
         public IActionResult UpdateCurrentAmountsForAllInvestments()
         {
-            return _lumpsumService.UpdateCurrentAmountsForAllInvestments();
+            try
+            {
+                return _lumpsumService.UpdateCurrentAmountsForAllInvestments();
+            }
+            catch (Exception)
+            {
+                throw;
+            }        
         }
     }
 }

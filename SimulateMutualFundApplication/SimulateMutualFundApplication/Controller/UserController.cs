@@ -21,27 +21,48 @@ namespace MutualFundSimulatorApplication.Controllers
         [Route("login")]
         public IActionResult LoginUser([FromQuery] string userEmail,[FromQuery] string password)
         {
-            return _userService.LoginUser(userEmail, password);
+            try
+            {
+                return _userService.LoginUser(userEmail, password);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         [HttpPost]
         [Route("register")]
         public IActionResult Register([FromBody] UserDto userDto)
         {
-            return _userService.Register(userDto);
+            try
+            {
+                return _userService.Register(userDto);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
+
         //public IActionResult Register(JObject userDtoObj)
         //{
         //    var userDto = userDtoObj.ToObject<UserDto>();
         //    return _userService.Register(userDto);
         //}
 
-
         [HttpPut]
         [Route("wallet/add")]
         public IActionResult AddMoneyToWallet([FromQuery] int id,[FromQuery] decimal amount)
         {
-            return _userService.AddMoneyToWallet(id, amount);
+            try
+            {
+                return _userService.AddMoneyToWallet(id, amount);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

@@ -17,56 +17,115 @@ namespace MutualFundSimulatorApplication.Controllers
         [Route("api/funds")]
         public IActionResult GetMainFunds()
         {
-            return _fundService.GetMainFunds();
+            try
+            {
+                return _fundService.GetMainFunds();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         [HttpGet]
         [Route("api/funds/equity")]
         public IActionResult GetEquityFunds()
         {
-            return _fundService.GetEquityFunds();
+            try
+            {
+                return _fundService.GetEquityFunds();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         [HttpGet]
         [Route("api/funds/debt")]
         public IActionResult GetDebtFunds()
         {
-            return _fundService.GetDebtFunds();
+            try
+            {
+                return _fundService.GetDebtFunds();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         [HttpGet]
         [Route("api/funds/index")]
         public IActionResult GetIndexFunds()
         {
-            return _fundService.GetIndexFunds();
+            try
+            {
+                return _fundService.GetIndexFunds();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         [HttpGet]
         [Route("api/funds/balanced")]
         public IActionResult GetBalancedFunds()
         {
-            return _fundService.GetBalancedFunds();
+            try
+            {
+                return _fundService.GetBalancedFunds();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         [HttpGet]
         [Route("api/funds/commodity")]
         public IActionResult GetCommodityFunds()
         {
-            return _fundService.GetCommodityFunds();
+            try
+            {
+                return _fundService.GetCommodityFunds();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }        
         }
 
         [HttpGet]
         [Route("api/fund/details")]
         public IActionResult GetFundDetails([FromQuery] string fundName)
         {
-            return _fundService.GetFundDetails(fundName);
+            try
+            {
+                return _fundService.GetFundDetails(fundName);
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }        
         }
 
         [HttpGet]
         [Route("api/fund/price")]
         public IActionResult GetFundPrice([FromQuery] string fundName)
         {
-            return _fundService.GetFundPrice(fundName);
+            try
+            {
+                return _fundService.GetFundPrice(fundName);
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }        
         }
     }
 }
