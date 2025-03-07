@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MutualFundSimulatorService.Business.Interfaces;
 using MutualFundSimulatorService.Model;
+using MutualFundSimulatorService.Repository;
 using MutualFundSimulatorService.Repository.Interface;
 
 namespace MutualFundSimulatorService.Business.ConcreteClass
@@ -21,7 +22,7 @@ namespace MutualFundSimulatorService.Business.ConcreteClass
         public IActionResult SaveLumpsumInvest(int id, string fundName, decimal amount)
         {
             if (id <= 0 || string.IsNullOrWhiteSpace(fundName) || amount < 5000)
-                return new BadRequestObjectResult(new { Message = "User ID, fund name, and amount(Min 5000) are required" });
+                return new BadRequestObjectResult(new { Message = "User ID, fund name, and amount (minimum ₹5000) are required" });
 
             if (!_repository.IsValidUserId(id))
                 return new BadRequestObjectResult(new { Message = "Invalid user ID" });
@@ -29,6 +30,10 @@ namespace MutualFundSimulatorService.Business.ConcreteClass
             try
             {
                 _user.id = id;
+                decimal walletBalance = _repository.GetWalletBalance();
+                if (walletBalance < amount)
+                    return new BadRequestObjectResult(new { Message = $"Insufficient wallet balance. Required: {amount}, Available: {walletBalance}" });
+
                 decimal pricePerUnit = _repository.GetFundPrice(fundName);
                 if (pricePerUnit <= 0) throw new Exception("Invalid fund price");
 
@@ -57,8 +62,16 @@ namespace MutualFundSimulatorService.Business.ConcreteClass
 
         public IActionResult UpdateCurrentAmountsForAllInvestments()
         {
-            _repository.UpdateCurrentAmountsForAllInvestments();
-            return new OkObjectResult(new { Message = "Lumpsum amounts updated" });
+            try
+            {
+                _repository.UpdateCurrentAmountsForAllInvestments();
+                return new OkObjectResult(new { Message = "Lumpsum amounts updated" });
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

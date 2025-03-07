@@ -115,6 +115,10 @@ namespace MutualFundSimulatorService.Repository.ConcreteClass
             }
         }
 
+        /// <summary>
+        /// Save Lumpsum investment details to the SaveLumpsumInvest table.
+        /// </summary>
+        /// <param name="deducted"></param>
         public void SaveLumpsumInvest(bool deducted)
         {
             try
@@ -221,7 +225,6 @@ namespace MutualFundSimulatorService.Repository.ConcreteClass
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
         }
-
 
         /// <summary>
         /// Save SIP investment details to the UserSIPPortfolio table.
@@ -414,11 +417,11 @@ namespace MutualFundSimulatorService.Repository.ConcreteClass
             }
         }
 
-        private decimal GetMonthlyExpenseRatio(string fundName, SqlConnection connection)
-        {
-            var fundDetails = FundDetailsUtility.GetFundDetails();
-            return fundDetails.ContainsKey(fundName) ? fundDetails[fundName].expenseRatio : 0.070m;
-        }
+        //private decimal GetMonthlyExpenseRatio(string fundName, SqlConnection connection)
+        //{
+        //    var fundDetails = FundDetailsUtility.GetFundDetails();
+        //    return fundDetails.ContainsKey(fundName) ? fundDetails[fundName].expenseRatio : 0.070m;
+        //}
 
         /// <summary>
         /// Displays the user's lump sum investment portfolio and calculates total profit/loss.
@@ -726,6 +729,7 @@ namespace MutualFundSimulatorService.Repository.ConcreteClass
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
         }
+
         /// <summary>
         /// Retrieves the most recent NAV value for a specified fund from the FundNAV table.
         /// </summary>
@@ -787,6 +791,10 @@ namespace MutualFundSimulatorService.Repository.ConcreteClass
             }
         }
 
+        /// <summary>
+        /// Retreive the Walletbalance on using user id
+        /// </summary>
+        /// <returns></returns>
         public decimal GetWalletBalance()
         {
             try

@@ -2,6 +2,7 @@
 using MutualFundSimulatorService.Business.Interfaces;
 using MutualFundSimulatorService.Model;
 using MutualFundSimulatorService.Model.DTO;
+using MutualFundSimulatorService.Repository;
 using MutualFundSimulatorService.Repository.Interface;
 
 namespace MutualFundSimulatorService.Business.ConcreteClass
@@ -22,7 +23,7 @@ namespace MutualFundSimulatorService.Business.ConcreteClass
         public IActionResult SaveSIPInvest(int id, SaveSIPInvestDto saveSIPInvestDto)
         {
             if (id <= 0 || string.IsNullOrWhiteSpace(saveSIPInvestDto.fundName) || saveSIPInvestDto.sipAmount < 1000 || saveSIPInvestDto.durationInMonths < 12)
-                return new BadRequestObjectResult(new { Message = "User ID, fund name, SIP amount(Min 1000), and duration are required" });
+                return new BadRequestObjectResult(new { Message = "User ID, fund name, SIP amount (minimum ₹1000), and duration (minimum 12 months) are required" });
 
             if (!_repository.IsValidUserId(id))
                 return new BadRequestObjectResult(new { Message = "Invalid user ID" });
@@ -30,6 +31,10 @@ namespace MutualFundSimulatorService.Business.ConcreteClass
             try
             {
                 _user.id = id;
+                decimal walletBalance = _repository.GetWalletBalance();
+                if (walletBalance < saveSIPInvestDto.sipAmount)
+                    return new BadRequestObjectResult(new { Message = $"Insufficient wallet balance. Required: {saveSIPInvestDto.sipAmount}, Available: {walletBalance}" });
+
                 decimal pricePerUnit = _repository.GetFundPrice(saveSIPInvestDto.fundName);
                 if (pricePerUnit <= 0) throw new Exception("Invalid fund price");
 
@@ -63,15 +68,23 @@ namespace MutualFundSimulatorService.Business.ConcreteClass
 
         public IActionResult IncrementInstallments(int id)
         {
-            if (id <= 0)
-                return new BadRequestObjectResult(new { Message = "User ID is required" });
+            try
+            {
+                if (id <= 0)
+                    return new BadRequestObjectResult(new { Message = "User ID is required" });
 
-            if (!_repository.IsValidUserId(id))
-                return new BadRequestObjectResult(new { Message = "Invalid user ID" });
+                if (!_repository.IsValidUserId(id))
+                    return new BadRequestObjectResult(new { Message = "Invalid user ID" });
 
-            _user.id = id; 
-            _repository.IncrementInstallments();
-            return new OkObjectResult(new { Message = "SIP installments incremented" });
+                _user.id = id;
+                _repository.IncrementInstallments();
+                return new OkObjectResult(new { Message = "SIP installments incremented" });
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

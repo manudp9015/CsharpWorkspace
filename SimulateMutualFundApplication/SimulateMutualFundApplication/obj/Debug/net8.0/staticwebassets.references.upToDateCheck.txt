@@ -20,3 +20,8 @@ D:\CsharpWorkspace\SimulateMutualFundApplication\MutualFundSimulatorService\obj\
 D:\CsharpWorkspace\SimulateMutualFundApplication\MutualFundSimulatorService\obj\Debug\net8.0\staticwebassets.build.json
 D:\CsharpWorkspace\SimulateMutualFundApplication\MutualFundSimulatorService\obj\Debug\net8.0\staticwebassets.build.json
 D:\CsharpWorkspace\SimulateMutualFundApplication\MutualFundSimulatorService\obj\Debug\net8.0\staticwebassets.build.json
+D:\CsharpWorkspace\SimulateMutualFundApplication\MutualFundSimulatorService\obj\Debug\net8.0\staticwebassets.build.json
+D:\CsharpWorkspace\SimulateMutualFundApplication\MutualFundSimulatorService\obj\Debug\net8.0\staticwebassets.build.json
+D:\CsharpWorkspace\SimulateMutualFundApplication\MutualFundSimulatorService\obj\Debug\net8.0\staticwebassets.build.json
+D:\CsharpWorkspace\SimulateMutualFundApplication\MutualFundSimulatorService\obj\Debug\net8.0\staticwebassets.build.json
+D:\CsharpWorkspace\SimulateMutualFundApplication\MutualFundSimulatorService\obj\Debug\net8.0\staticwebassets.build.json

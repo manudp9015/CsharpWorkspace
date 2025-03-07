@@ -18,21 +18,42 @@ namespace MutualFundSimulatorApplication.Controllers
         [Route("lumpsum")]
         public IActionResult DisplayLumpSumPortfolio([FromQuery] int id)
         {
-            return _portfolioService.DisplayLumpSumPortfolio(id);
+            try
+            {
+                return _portfolioService.DisplayLumpSumPortfolio(id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         [HttpGet]
         [Route("sip")]
         public IActionResult DisplaySIPPortfolio([FromQuery] int id)
         {
-            return _portfolioService.DisplaySIPPortfolio(id);
+            try
+            {
+                return _portfolioService.DisplaySIPPortfolio(id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         [HttpGet]
         [Route("sip/upcoming")]
         public IActionResult GetUpcomingSIPInstallments([FromQuery] int id)
         {
-            return _portfolioService.GetUpcomingSIPInstallments(id);
+            try
+            {
+                return _portfolioService.GetUpcomingSIPInstallments(id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

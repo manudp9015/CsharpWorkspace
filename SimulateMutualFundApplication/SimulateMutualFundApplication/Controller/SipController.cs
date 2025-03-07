@@ -19,14 +19,30 @@ namespace MutualFundSimulatorApplication.Controllers
         [Route("invest")]
         public IActionResult SaveSIPInvest([FromQuery] int id, [FromBody] SaveSIPInvestDto saveSipInvestDto)
         {
-            return _sipService.SaveSIPInvest(id, saveSipInvestDto);
+            try
+            {
+                return _sipService.SaveSIPInvest(id, saveSipInvestDto);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         [HttpPut]
         [Route("increment")]
         public IActionResult IncrementInstallments([FromQuery] int id)
         {
-            return _sipService.IncrementInstallments(id);
+            try
+            {
+                return _sipService.IncrementInstallments(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
