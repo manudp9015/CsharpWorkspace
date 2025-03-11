@@ -2,7 +2,7 @@
   {
     "ContainingType": "MutualFundSimulatorApplication.Controllers.FundController",
     "Method": "GetFundDetails",
-    "RelativePath": "api/fund/details",
+    "RelativePath": "api/fund/details/{fundName}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -10,7 +10,7 @@
       {
         "Name": "fundName",
         "Type": "System.String",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -18,7 +18,7 @@
   {
     "ContainingType": "MutualFundSimulatorApplication.Controllers.FundController",
     "Method": "GetFundPrice",
-    "RelativePath": "api/fund/price",
+    "RelativePath": "api/fund/price/{fundName}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -26,7 +26,7 @@
       {
         "Name": "fundName",
         "Type": "System.String",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -94,7 +94,7 @@
   {
     "ContainingType": "MutualFundSimulatorApplication.Controllers.LumpsumController",
     "Method": "SaveLumpsumInvest",
-    "RelativePath": "api/lumpsum/invest",
+    "RelativePath": "api/lumpsum/invest/{id}/{fundName}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -102,12 +102,12 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "fundName",
         "Type": "System.String",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "amount",
@@ -130,7 +130,7 @@
   {
     "ContainingType": "MutualFundSimulatorApplication.Controllers.NavController",
     "Method": "GetLatestNAV",
-    "RelativePath": "api/nav/latest",
+    "RelativePath": "api/nav/latest/{fundName}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -138,7 +138,7 @@
       {
         "Name": "fundName",
         "Type": "System.String",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -166,7 +166,7 @@
   {
     "ContainingType": "MutualFundSimulatorApplication.Controllers.PortfolioController",
     "Method": "DisplayLumpSumPortfolio",
-    "RelativePath": "api/portfolio/lumpsum",
+    "RelativePath": "api/portfolio/lumpsum/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -174,7 +174,7 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -182,7 +182,7 @@
   {
     "ContainingType": "MutualFundSimulatorApplication.Controllers.PortfolioController",
     "Method": "DisplaySIPPortfolio",
-    "RelativePath": "api/portfolio/sip",
+    "RelativePath": "api/portfolio/sip/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -190,7 +190,7 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -198,7 +198,7 @@
   {
     "ContainingType": "MutualFundSimulatorApplication.Controllers.PortfolioController",
     "Method": "GetUpcomingSIPInstallments",
-    "RelativePath": "api/portfolio/sip/upcoming",
+    "RelativePath": "api/portfolio/sip/upcoming/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -206,7 +206,7 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -214,7 +214,7 @@
   {
     "ContainingType": "MutualFundSimulatorApplication.Controllers.SipController",
     "Method": "IncrementInstallments",
-    "RelativePath": "api/sip/increment",
+    "RelativePath": "api/sip/increment/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -222,7 +222,7 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -230,7 +230,7 @@
   {
     "ContainingType": "MutualFundSimulatorApplication.Controllers.SipController",
     "Method": "SaveSIPInvest",
-    "RelativePath": "api/sip/invest",
+    "RelativePath": "api/sip/invest/{id}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -238,7 +238,7 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "saveSipInvestDto",
@@ -251,7 +251,7 @@
   {
     "ContainingType": "MutualFundSimulatorApplication.Controllers.UserController",
     "Method": "LoginUser",
-    "RelativePath": "api/user/login",
+    "RelativePath": "api/user/login/{userEmail}/{password}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -259,12 +259,12 @@
       {
         "Name": "userEmail",
         "Type": "System.String",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "password",
         "Type": "System.String",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -288,7 +288,7 @@
   {
     "ContainingType": "MutualFundSimulatorApplication.Controllers.UserController",
     "Method": "AddMoneyToWallet",
-    "RelativePath": "api/user/wallet/add",
+    "RelativePath": "api/user/wallet/add/{id}/{amount}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -296,12 +296,12 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "amount",
         "Type": "System.Decimal",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

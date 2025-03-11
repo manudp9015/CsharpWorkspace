@@ -78,7 +78,7 @@
         }
       }
     },
-    "/api/fund/details": {
+    "/api/fund/details/{fundName}": {
       "get": {
         "tags": [
           "Fund"
@@ -86,7 +86,8 @@
         "parameters": [
           {
             "name": "fundName",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -99,7 +100,7 @@
         }
       }
     },
-    "/api/fund/price": {
+    "/api/fund/price/{fundName}": {
       "get": {
         "tags": [
           "Fund"
@@ -107,7 +108,8 @@
         "parameters": [
           {
             "name": "fundName",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -120,7 +122,7 @@
         }
       }
     },
-    "/api/lumpsum/invest": {
+    "/api/lumpsum/invest/{id}/{fundName}": {
       "post": {
         "tags": [
           "Lumpsum"
@@ -128,7 +130,8 @@
         "parameters": [
           {
             "name": "id",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -136,7 +139,8 @@
           },
           {
             "name": "fundName",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -181,7 +185,7 @@
         }
       }
     },
-    "/api/nav/latest": {
+    "/api/nav/latest/{fundName}": {
       "get": {
         "tags": [
           "Nav"
@@ -189,7 +193,8 @@
         "parameters": [
           {
             "name": "fundName",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -214,7 +219,7 @@
         }
       }
     },
-    "/api/portfolio/lumpsum": {
+    "/api/portfolio/lumpsum/{id}": {
       "get": {
         "tags": [
           "Portfolio"
@@ -222,7 +227,8 @@
         "parameters": [
           {
             "name": "id",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -236,7 +242,7 @@
         }
       }
     },
-    "/api/portfolio/sip": {
+    "/api/portfolio/sip/{id}": {
       "get": {
         "tags": [
           "Portfolio"
@@ -244,7 +250,8 @@
         "parameters": [
           {
             "name": "id",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -258,7 +265,7 @@
         }
       }
     },
-    "/api/portfolio/sip/upcoming": {
+    "/api/portfolio/sip/upcoming/{id}": {
       "get": {
         "tags": [
           "Portfolio"
@@ -266,7 +273,8 @@
         "parameters": [
           {
             "name": "id",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -280,7 +288,7 @@
         }
       }
     },
-    "/api/sip/invest": {
+    "/api/sip/invest/{id}": {
       "post": {
         "tags": [
           "Sip"
@@ -288,7 +296,8 @@
         "parameters": [
           {
             "name": "id",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -321,7 +330,7 @@
         }
       }
     },
-    "/api/sip/increment": {
+    "/api/sip/increment/{id}": {
       "put": {
         "tags": [
           "Sip"
@@ -329,7 +338,8 @@
         "parameters": [
           {
             "name": "id",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -343,7 +353,7 @@
         }
       }
     },
-    "/api/user/login": {
+    "/api/user/login/{userEmail}/{password}": {
       "post": {
         "tags": [
           "User"
@@ -351,14 +361,16 @@
         "parameters": [
           {
             "name": "userEmail",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "string"
             }
           },
           {
             "name": "password",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -402,7 +414,7 @@
         }
       }
     },
-    "/api/user/wallet/add": {
+    "/api/user/wallet/add/{id}/{amount}": {
       "put": {
         "tags": [
           "User"
@@ -410,7 +422,8 @@
         "parameters": [
           {
             "name": "id",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -418,7 +431,8 @@
           },
           {
             "name": "amount",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "number",
               "format": "double"

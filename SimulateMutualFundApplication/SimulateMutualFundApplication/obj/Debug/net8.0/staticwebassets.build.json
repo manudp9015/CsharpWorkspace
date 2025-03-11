@@ -1,23 +1,11 @@
 {
   "Version": 1,
-  "Hash": "PPyn07UNJXl/x9ZynYA1gGsMriqGq73hXSD5td096H8=",
+  "Hash": "2O4Jxl1WPIPgnYf+fR8Qo7XUUF6e3jpFp8CMudHelrM=",
   "Source": "MutualFundSimulatorApplication",
   "BasePath": "_content/MutualFundSimulatorApplication",
   "Mode": "Default",
   "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [
-    {
-      "Identity": "D:\\CsharpWorkspace\\SimulateMutualFundApplication\\MutualFundSimulatorService\\MutualFundSimulatorService.csproj",
-      "Version": 2,
-      "Source": "MutualFundSimulatorService",
-      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
-      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
-      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
-      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
-      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
-      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
-    }
-  ],
+  "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
   "Assets": [],
   "Endpoints": []

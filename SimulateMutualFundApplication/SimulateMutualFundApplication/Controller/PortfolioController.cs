@@ -15,8 +15,8 @@ namespace MutualFundSimulatorApplication.Controllers
         }
 
         [HttpGet]
-        [Route("lumpsum")]
-        public IActionResult DisplayLumpSumPortfolio([FromQuery] int id)
+        [Route("lumpsum/{id}")]
+        public IActionResult DisplayLumpSumPortfolio(int id)
         {
             try
             {
@@ -29,8 +29,8 @@ namespace MutualFundSimulatorApplication.Controllers
         }
 
         [HttpGet]
-        [Route("sip")]
-        public IActionResult DisplaySIPPortfolio([FromQuery] int id)
+        [Route("sip/{id}")]
+        public IActionResult DisplaySIPPortfolio(int id)
         {
             try
             {
@@ -43,8 +43,8 @@ namespace MutualFundSimulatorApplication.Controllers
         }
 
         [HttpGet]
-        [Route("sip/upcoming")]
-        public IActionResult GetUpcomingSIPInstallments([FromQuery] int id)
+        [Route("sip/upcoming/{id}")]
+        public IActionResult GetUpcomingSIPInstallments(int id)
         {
             try
             {

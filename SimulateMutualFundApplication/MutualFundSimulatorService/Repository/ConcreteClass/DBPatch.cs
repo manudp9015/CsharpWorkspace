@@ -21,7 +21,7 @@ namespace MutualFundSimulatorService.Repository.ConcreteClass
         /// Creates the MutualFundSimulatorApi database and its required tables if they do not already exist.
         /// </summary>
         public void CreateTablesForMutualFunds()
-        {
+        { 
             try
             {
                 using (SqlConnection masterConnection = new SqlConnection(_masterConnectionString))
