@@ -16,8 +16,8 @@ namespace MutualFundSimulatorApplication.Controllers
         }
 
         [HttpPost]
-        [Route("invest")]
-        public IActionResult SaveSIPInvest([FromQuery] int id, [FromBody] SaveSIPInvestDto saveSipInvestDto)
+        [Route("invest/{id}")]
+        public IActionResult SaveSIPInvest(int id, [FromBody] SaveSIPInvestDto saveSipInvestDto)
         {
             try
             {
@@ -31,8 +31,8 @@ namespace MutualFundSimulatorApplication.Controllers
         }
 
         [HttpPut]
-        [Route("increment")]
-        public IActionResult IncrementInstallments([FromQuery] int id)
+        [Route("increment/{id}")]
+        public IActionResult IncrementInstallments(int id)
         {
             try
             {

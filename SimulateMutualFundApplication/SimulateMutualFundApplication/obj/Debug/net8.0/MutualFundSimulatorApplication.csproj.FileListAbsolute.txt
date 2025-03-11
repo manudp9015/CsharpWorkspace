@@ -62,7 +62,6 @@ D:\CsharpWorkspace\SimulateMutualFundApplication\SimulateMutualFundApplication\o
 D:\CsharpWorkspace\SimulateMutualFundApplication\SimulateMutualFundApplication\obj\Debug\net8.0\ref\MutualFundSimulatorApplication.dll
 D:\CsharpWorkspace\SimulateMutualFundApplication\SimulateMutualFundApplication\bin\Debug\net8.0\MutualFundSimulatorService.dll
 D:\CsharpWorkspace\SimulateMutualFundApplication\SimulateMutualFundApplication\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
-D:\CsharpWorkspace\SimulateMutualFundApplication\SimulateMutualFundApplication\bin\Debug\net8.0\MutualFundSimulatorService.pdb
 D:\CsharpWorkspace\SimulateMutualFundApplication\SimulateMutualFundApplication\bin\Debug\net8.0\MutualFundSimulatorApplication.staticwebassets.endpoints.json
 D:\CsharpWorkspace\SimulateMutualFundApplication\SimulateMutualFundApplication\obj\Debug\net8.0\MutualFundSimulatorApplication.MvcApplicationPartsAssemblyInfo.cache
 D:\CsharpWorkspace\SimulateMutualFundApplication\SimulateMutualFundApplication\obj\Debug\net8.0\scopedcss\bundle\MutualFundSimulatorApplication.styles.css
@@ -81,5 +80,4 @@ D:\CsharpWorkspace\SimulateMutualFundApplication\SimulateMutualFundApplication\b
 D:\CsharpWorkspace\SimulateMutualFundApplication\SimulateMutualFundApplication\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\CsharpWorkspace\SimulateMutualFundApplication\SimulateMutualFundApplication\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\CsharpWorkspace\SimulateMutualFundApplication\SimulateMutualFundApplication\obj\Debug\net8.0\MutualFundSimulatorApplication.MvcApplicationPartsAssemblyInfo.cs
-D:\CsharpWorkspace\SimulateMutualFundApplication\SimulateMutualFundApplication\bin\Debug\net8.0\MutualFundSimulatorService.staticwebassets.endpoints.json
 D:\CsharpWorkspace\SimulateMutualFundApplication\SimulateMutualFundApplication\bin\Debug\net8.0\Newtonsoft.Json.dll

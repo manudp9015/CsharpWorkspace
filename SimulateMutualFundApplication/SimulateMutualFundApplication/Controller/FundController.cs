@@ -99,23 +99,23 @@ namespace MutualFundSimulatorApplication.Controllers
         }
 
         [HttpGet]
-        [Route("api/fund/details")]
-        public IActionResult GetFundDetails([FromQuery] string fundName)
+        [Route("api/fund/details/{fundName}")]
+        public IActionResult GetFundDetails(string fundName)
         {
             try
             {
                 return _fundService.GetFundDetails(fundName);
-
             }
             catch (Exception)
             {
                 throw;
-            }        
+            }
         }
 
+
         [HttpGet]
-        [Route("api/fund/price")]
-        public IActionResult GetFundPrice([FromQuery] string fundName)
+        [Route("api/fund/price/{fundName}")]
+        public IActionResult GetFundPrice(string fundName)
         {
             try
             {

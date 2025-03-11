@@ -30,8 +30,8 @@ namespace MutualFundSimulatorApplication.Controllers
         }
 
         [HttpGet]
-        [Route("latest")]
-        public IActionResult GetLatestNAV([FromQuery] string fundName)
+        [Route("latest/{fundName}")]
+        public IActionResult GetLatestNAV(string fundName)
         {
             try
             {

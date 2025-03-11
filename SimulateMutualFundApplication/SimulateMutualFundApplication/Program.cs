@@ -36,7 +36,7 @@ namespace MutualFundSimulatorApplication
             using (var scope = app.Services.CreateScope())
             {
                 var dbPatch = scope.ServiceProvider.GetService<DBPatch>();
-                User.CurrentDate = new DateTime(2025, 08, 07);
+                User.CurrentDate = new DateTime(2025, 03, 11);
                 dbPatch.CreateTablesForMutualFunds();
             }
 

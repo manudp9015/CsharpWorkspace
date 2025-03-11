@@ -18,8 +18,8 @@ namespace MutualFundSimulatorApplication.Controllers
         }
 
         [HttpPost]
-        [Route("login")]
-        public IActionResult LoginUser([FromQuery] string userEmail,[FromQuery] string password)
+        [Route("login/{userEmail}/{password}")]
+        public IActionResult LoginUser(string userEmail,string password)
         {
             try
             {
@@ -52,8 +52,8 @@ namespace MutualFundSimulatorApplication.Controllers
         //}
 
         [HttpPut]
-        [Route("wallet/add")]
-        public IActionResult AddMoneyToWallet([FromQuery] int id,[FromQuery] decimal amount)
+        [Route("wallet/add/{id}/{amount}")]
+        public IActionResult AddMoneyToWallet(int id,decimal amount)
         {
             try
             {

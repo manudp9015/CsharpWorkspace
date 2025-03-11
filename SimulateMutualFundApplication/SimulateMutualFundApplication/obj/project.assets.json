@@ -764,23 +764,6 @@
         "runtime": {
           "lib/netcoreapp2.1/_._": {}
         }
-      },
-      "MutualFundSimulatorService/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "Microsoft.Data.SqlClient": "6.0.1",
-          "Microsoft.Extensions.DependencyInjection": "9.0.2"
-        },
-        "compile": {
-          "bin/placeholder/MutualFundSimulatorService.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/MutualFundSimulatorService.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
       }
     }
   },
@@ -2187,18 +2170,12 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
-    },
-    "MutualFundSimulatorService/1.0.0": {
-      "type": "project",
-      "path": "../MutualFundSimulatorService/MutualFundSimulatorService.csproj",
-      "msbuildProject": "../MutualFundSimulatorService/MutualFundSimulatorService.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "Microsoft.Data.SqlClient >= 6.0.1",
       "Microsoft.Extensions.DependencyInjection >= 9.0.2",
-      "MutualFundSimulatorService >= 1.0.0",
       "Newtonsoft.Json >= 13.0.3",
       "Swashbuckle.AspNetCore >= 7.3.1"
     ]
@@ -2234,11 +2211,7 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {
-            "D:\\CsharpWorkspace\\SimulateMutualFundApplication\\MutualFundSimulatorService\\MutualFundSimulatorService.csproj": {
-              "projectPath": "D:\\CsharpWorkspace\\SimulateMutualFundApplication\\MutualFundSimulatorService\\MutualFundSimulatorService.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {

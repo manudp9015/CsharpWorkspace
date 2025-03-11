@@ -16,7 +16,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\MutualFundSimulatorService\MutualFundSimulatorService.csproj" />
+	  <Reference Include="MutualFundSimulatorService">
+	    <HintPath>..\Libs\MutualFundSimulatorService.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 
 </Project>

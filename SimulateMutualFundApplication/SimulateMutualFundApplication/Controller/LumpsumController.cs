@@ -14,8 +14,8 @@ namespace MutualFundSimulatorApplication.Controllers
         }
 
         [HttpPost]
-        [Route("api/lumpsum/invest")]
-        public IActionResult SaveLumpsumInvest([FromQuery] int id, [FromQuery] string fundName, [FromQuery] decimal amount)
+        [Route("api/lumpsum/invest/{id}/{fundName}")]
+        public IActionResult SaveLumpsumInvest(int id, string fundName, [FromQuery] decimal amount)
         {
             try
             {
@@ -24,7 +24,7 @@ namespace MutualFundSimulatorApplication.Controllers
             catch (Exception)
             {
                 throw;
-            }        
+            }
         }
 
         [HttpPut]
